@@ -8,6 +8,7 @@
 #include "container.h"
 #include "trigger.h"
 #include "xmlParser.h"
+#include "extraFunctions.h"
 
 class room
 {
