@@ -1,4 +1,5 @@
 #ifndef CONDITION_H
+#define CONDITION_H
 
 #include "xmlParser.h"
 using namespace std;
