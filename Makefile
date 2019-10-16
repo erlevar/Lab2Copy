@@ -18,7 +18,7 @@ RM= /bin/rm -f
 all:  xmlTesting 
 
 xmlParser.o: xmlParser.cpp xmlParser.h
-	$(CC) $(CFLAGS)xmlParser.cpp -c
+	$(CC) $(CFLAGS) xmlParser.cpp -c
 	
 turnon.o: turnon.cpp turnon.h xmlParser.h
 	$(CC) $(CFLAGS) turnon.cpp -c
