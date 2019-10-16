@@ -11,47 +11,47 @@ CC= g++
 #For Optimization
 #CFLAGS= -O2
 #For debugging
-CFLAGS= -g
+CFLAGS= -std=c++14
 
 RM= /bin/rm -f
 
 all:  xmlTesting 
 
 xmlParser.o: xmlParser.cpp xmlParser.h
-	g++ -c xmlParser.cpp
+	$(CC) $(CFLAGS)xmlParser.cpp -c
 	
 turnon.o: turnon.cpp turnon.h xmlParser.h
-	g++ -c turnon.cpp
+	$(CC) $(CFLAGS) turnon.cpp -c
 	
 attack.o: attack.cpp attack.h xmlParser.h
-	g++ -c attack.cpp
+	$(CC) $(CFLAGS) attack.cpp -c
 	
 border.o: border.cpp border.h xmlParser.h
-	g++ -c border.cpp
+	$(CC) $(CFLAGS) border.cpp -c
 
 condition.o: condition.cpp condition.h xmlParser.h
-	g++ -c condition.cpp
+	$(CC) $(CFLAGS) condition.cpp -c
 
 trigger.o: trigger.cpp condition.h xmlParser.h
-	g++ -c trigger.cpp
+	$(CC) $(CFLAGS) trigger.cpp -c
 	
 item.o: item.cpp item.h xmlParser.h  turnon.h
-	g++ -c item.cpp
+	$(CC) $(CFLAGS) item.cpp -c
 
 extraFunctions.o: extraFunctions.cpp extraFunctions.h xmlParser.h trigger.h item.h
-	g++ -c extraFunctions.cpp
+	$(CC) $(CFLAGS) extraFunctions.cpp -c
 	
 container.o: container.cpp container.h xmlParser.h item.h trigger.h extraFunctions.h
-	g++ -c container.cpp
+	$(CC) $(CFLAGS) container.cpp -c
 	
 room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creature.h border.h item.h
-	g++ -c room.cpp
+	$(CC) $(CFLAGS) room.cpp -c
 
 xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h
-	$(CC) -c xmlTesting.cpp
+	$(CC) $(CFLAGS) xmlTesting.cpp -c
 	
 xmlTesting: xmlTesting.o xmlParser.o
-	$(CC) xmlTesting.o -o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o  xmlTesting -L/usr/local/lib
+	$(CC) $(CFLAGS) xmlTesting.o -o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o -L/usr/local/lib
 	
 
 clean:
