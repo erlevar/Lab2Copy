@@ -51,7 +51,7 @@ xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h ite
 	$(CC) -c xmlTesting.cpp
 	
 xmlTesting: xmlTesting.o xmlParser.o
-	$(CC) xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o -o xmlTesting -L/usr/local/lib
+	$(CC) xmlTesting.o -o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o  xmlTesting -L/usr/local/lib
 	
 
 clean:
