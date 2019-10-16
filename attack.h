@@ -2,6 +2,7 @@
 #define ATTACK_H
 
 #include "xmlParser.h"
+#include "condition.h"
 #include <vector>
 
 
