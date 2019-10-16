@@ -17,8 +17,6 @@ RM= /bin/rm -f
 
 all:  xmlTesting 
 
-
-
 xmlParser.o: xmlParser.cpp xmlParser.h
 	g++ -c xmlParser.cpp
 	
@@ -49,14 +47,12 @@ container.o: container.cpp container.h xmlParser.h item.h trigger.h extraFunctio
 room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creature.h border.h item.h
 	g++ -c room.cpp
 
-
 xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h
 	$(CC) -c xmlTesting.cpp
 	
 xmlTesting: xmlTesting.o xmlParser.o
 	$(CC) xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o -o xmlTesting -L/usr/local/lib
 	
-
 
 clean:
 	rm -f *.o  xmlTesting
