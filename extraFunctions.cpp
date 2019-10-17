@@ -33,4 +33,6 @@ void separateWords(string s, vector<string> & separated)
         separated.push_back(word);
 
         }while(ss);
+    separated.pop_back();
+    return;
 }
