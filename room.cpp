@@ -122,6 +122,6 @@ item room::checkItems(string input)
 
 item room::fuck(string wow)
 {
-    item newItem();
-    return newItem;
+    item testItem();
+    return testItem;
 }
