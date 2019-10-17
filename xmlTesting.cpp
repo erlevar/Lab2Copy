@@ -14,8 +14,22 @@
 #include "trigger.h"
 #include "turnon.h"
 #include "condition.h"
+#include <map>
+#include <string>
 
 using namespace std;
+
+
+class player
+{
+public:
+    player();
+    player(room startLocation);
+    room currentLocation();
+private :
+    room currentLocation;
+};
+
 
 
 int main (int argc, char ** argv) {
@@ -33,15 +47,61 @@ int main (int argc, char ** argv) {
 
     //room initializer
     room newRoom(roomNode);
+    map<string, room> roomMap;
+    string roomName = newRoom.getName();
+    roomMap[roomName] = newRoom;
     //get information for containers in the room
     //getContainers(roomNode);
     //get information for creatures in the room
     //getCreatures(roomNode);
-
     roomNode=xMainNode.getChildNode(i++);
     } while (!roomNode.isEmpty());
 
-    cout << endl;
+    room entrance = roomMap["Entrance"];
+    player user(entrance);
+    bool foundExit = false;
+    while (foundExit == false)
+        {
+        room current = player.currentLocation();
+        current.readDescription();
+
+        string userinput;
+        getline(userinput);
+
+        if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w"))
+            {
+            string passDirection;
+            if (userinput == "n")
+                {
+                passDirection = "north";
+                }
+            else if (userinput == "s")
+                {
+                passDirection = "south";
+                }
+            else if (userinput == "e")
+                {
+                passDirection = "east";
+                }
+            else if (userinput == "w")
+                {
+                passDirection = "west";
+                }
+            string returnRoomName = current.checkBorders(passDirection);
+            if (returnRoomName == "dummy")
+                {
+                cout << "No room to that direction";
+                }
+            else
+                {
+                cout << "returnRoomName is " << returnRoomName << endl;
+                }
+            }
+
+
+
+
+        }
     return 0;
 }
 
