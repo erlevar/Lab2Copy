@@ -35,7 +35,7 @@ room::room(XMLNode node)
     getTriggers(node, triggers);
     getBorders(node);
     getContainers(node);
-    getCreatures(node);
+    //getCreatures(node);
 
 }
 
@@ -62,7 +62,7 @@ void room::getContainers(XMLNode node)
         }
 }
 
-
+/*
 void room::getCreatures(XMLNode node)
 {
     int numberCreatures = node.nChildNode("creature");
@@ -74,3 +74,4 @@ void room::getCreatures(XMLNode node)
 
         }
 }
+*/
