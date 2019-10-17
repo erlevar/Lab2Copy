@@ -112,7 +112,7 @@ player::player(room startLocation)
     current = startLocation;
 }
 
-player::currentLocation()
+room player::currentLocation()
 {
     return current;
 }
