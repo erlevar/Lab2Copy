@@ -75,3 +75,27 @@ void room::getCreatures(XMLNode node)
         }
 }
 
+string room::getName()
+{
+    return name;
+}
+
+string room::readDescription()
+{
+    cout << description << endl;
+}
+
+string room::checkBorders(string input)
+{
+    for (int i = 0; i<borders.size(); i++)
+        {
+        string direction = borders[i].getDirection();
+        if (input == direction)
+            {
+            return borders[i].getName();
+            }
+        }
+    string noBorder = "dummy";
+    return noBorder;
+}
+
