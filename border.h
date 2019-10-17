@@ -10,6 +10,8 @@ class border
 public:
     border();
     border(XMLNode node);
+    string getDirection();
+    string getName();
 
 private :
     string direction;
