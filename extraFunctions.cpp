@@ -52,7 +52,8 @@ void separateWords(string s, vector<string> & separated)
             }
         }
         */
-    string word = getline(s, " ");
+    stringstream stream(s)
+    string word = getline(stream, " ");
     separated.push_back(word);
 
 }
