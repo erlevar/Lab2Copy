@@ -15,6 +15,7 @@
 #include "turnon.h"
 #include "condition.h"
 #include <map>
+#include <iostream>
 #include <string>
 
 using namespace std;
