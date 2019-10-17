@@ -125,18 +125,26 @@ int main (int argc, char ** argv) {
                     {
                     string passItemName = inputVect[1];
                     item returnItem = current.checkItems(passItemName);
-                    if (returnItem.getName() == "dummy")
+                    item checkInventory = user.checkItems(returnItem);
+                    if (checkInventory.getName() == "dummy")
                         {
-                        cout << "No such item in the room " << endl;
-                        }
+                        if (returnItem.getName() == "dummy")
+                            {
+                            cout << "No such item in the room " << endl;
+                            }
+                        else
+                            {
+                            cout << "You picked up the " << returnItem.getName() << endl;
+                            cout << "Your current inventory is : " << endl;
+                            returnItem.updateOwner("inventory");
+                            current.removeItem(returnItem.getName());
+                            user.takeItem(returnItem);
+                            user.readInventory();
+                            }
+                       }
                     else
                         {
-                        cout << "You picked up the " << returnItem.getName() << endl;
-                        cout << "Your current inventory is : " << endl;
-                        returnItem.updateOwner("inventory");
-                        current.removeItem(returnItem.getName());
-                        user.takeItem(returnItem);
-                        user.readInventory();
+                        cout << "You already have that item " << endl;
                         }
                     }
 
