@@ -63,7 +63,7 @@ int main (int argc, char ** argv) {
     bool foundExit = false;
     while (foundExit == false)
         {
-        room current = player.currentLocation();
+        room current = user.currentLocation();
         current.readDescription();
 
         string userinput;
