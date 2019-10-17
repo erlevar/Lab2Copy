@@ -25,9 +25,10 @@ void getTriggers(XMLNode node, vector<trigger> & triggers)
 void separateWords(string s, vector<string> & separated)
 {
     istringstream ss(s);
-    string word;
+
     do
         {
+        string word;
         ss >> word;
         separated.push_back(word);
 
