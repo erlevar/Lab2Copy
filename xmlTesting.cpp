@@ -105,10 +105,14 @@ int main (int argc, char ** argv) {
                     }
                 }
 
-                if (userinput == "i")
+                else if (userinput == "i")
                     {
                     user.readInventory();
 
+                    }
+                else if (userinput == "quit")
+                    {
+                    foundExit == true;
                     }
             }
         else if (inputVect.size() == 2)
