@@ -20,3 +20,13 @@ border::border(XMLNode node)
     cout << "direction : " << direction << endl;
     cout << "name : " << name << endl;
 }
+
+string border::getDirection()
+{
+    return direction;
+}
+
+string border::getName()
+{
+    return name;
+}
