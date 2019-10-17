@@ -66,6 +66,7 @@ int main (int argc, char ** argv) {
         room current = user.currentLocation();
         current.readDescription();
         string userinput;
+        cin.ignore();
         getline(cin, userinput);
         //userinput += " ";
         vector<string> inputVect;
