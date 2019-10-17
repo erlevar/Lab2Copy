@@ -3,6 +3,7 @@
 
 #include "turnon.h"
 #include "xmlParser.h"
+#include <iostream>
 using namespace std;
 
 
