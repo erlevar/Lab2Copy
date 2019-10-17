@@ -28,7 +28,7 @@ public:
     player(room startLocation);
     room currentLocation();
 private :
-    room currentLocation;
+    room current;
 };
 
 
@@ -107,6 +107,15 @@ int main (int argc, char ** argv) {
 }
 
 
+player::player(room startLocation)
+{
+    current = startLocation;
+}
+
+player::currentLocation()
+{
+    return current;
+}
 
 
 
