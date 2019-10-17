@@ -201,12 +201,12 @@ void player::takeItem(item newItem)
 
 item player::checkItems(string input)
 {
-    for (int i = 0; i<items.size(); i++)
+    for (int i = 0; i<inventory.size(); i++)
         {
-        string itemName = items[i].getName();
+        string itemName = inventory[i].getName();
         if (input == itemName)
             {
-            return items[i];
+            return inventory[i];
             }
         }
     string dummy = "dummy";
