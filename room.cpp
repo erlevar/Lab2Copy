@@ -125,9 +125,6 @@ item room::checkItems(string input)
 
 void room::removeItem(string itemName)
 {
-    //vector<item> newItems;
-    //string removeName = r.getName();
-    //for (int i = 0; i <)
     std::vector<item>::iterator iter;
     for(iter = items.begin(); iter != items.end(); ++iter )
     {
@@ -136,8 +133,11 @@ void room::removeItem(string itemName)
             items.erase(iter);
             break;
         }
+    }
 }
 
-
+void room:addItem(item newItem)
+{
+    items.push_back(newItem);
 }
 
