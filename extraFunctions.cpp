@@ -22,8 +22,9 @@ void getTriggers(XMLNode node, vector<trigger> & triggers)
         }
 }
 
-void separateWords(string s, vector<string> & fullName)
+void separateWords(string s, vector<string> & separated)
 {
+    /*
     vector<char> newWord;
     for (int j = 0; j<s.length(); j++)
         {
@@ -50,4 +51,8 @@ void separateWords(string s, vector<string> & fullName)
             newWord.clear();
             }
         }
+        */
+    string word = getline(s, " ");
+    fullName.push_back(word);
+
 }
