@@ -25,6 +25,8 @@ public :
     string checkBorders(string input);
     item checkItems(string input);
 
+    item fuck(string wow);
+
 
 private :
     string name;
