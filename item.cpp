@@ -1,11 +1,15 @@
 #include "item.h"
 
+item::item()
+{
+    name, writing, status, owner = "";
+}
+
 item::item(string s)
 {
     name = s;
     writing, status, owner="";
 }
-
 
 item::item(XMLNode node)
 {
