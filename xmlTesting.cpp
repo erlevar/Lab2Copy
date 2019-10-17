@@ -17,6 +17,7 @@
 #include <map>
 #include <iostream>
 #include <string>
+#include <iterator>
 
 using namespace std;
 
@@ -31,6 +32,7 @@ public:
     void readInventory();
     void takeItem(item newItem);
     item checkItems(string s);
+    void dropItem();
 
 private :
     room current;
@@ -150,7 +152,25 @@ int main (int argc, char ** argv) {
                         {
                         returnItem.readWriting();
                         }
+                    }
 
+                if (inputVect[0] == "drop")
+                    {
+                    string dropItemName = inputVect[1];
+                    item returnItem = user.checkItems(dropItemName);
+                    if (returnItem.getName() == "dummy")
+                        {
+                        cout << "No such item in your inventory to drop" << endl;
+                        }
+                    else
+                        {
+                        cout << "You dropped the " << returnItem.getName() << endl;
+                        cout << "Your current inventory is : "<< endl;
+                        returnItem.updateOwner(current.getName());
+                        current.addItem(returnItem);
+                        user.dropItem(returnItem);
+                        user.readInventory();
+                        }
 
                     }
 
@@ -213,5 +233,19 @@ item player::checkItems(string input)
     item emptyItem(dummy);
     return emptyItem;
 }
+
+void player::dropItem(string itemName)
+{
+    std::vector<item>::iterator iter;
+    for(iter = inventory.begin(); iter != inventory.end(); ++iter )
+    {
+        if((*iter).getName() == itemName)
+        {
+            inventory.erase(iter);
+            break;
+        }
+    }
+}
+
 
 
