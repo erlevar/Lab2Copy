@@ -1,6 +1,6 @@
 #include "room.h"
 
-room::room
+room::room()
 {
     name, description, type = "";
 }
