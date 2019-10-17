@@ -26,6 +26,7 @@ public :
     string checkBorders(string input);
     item checkItems(string input);
     void removeItem(string itemName);
+    void addItem(item newItem);
 
 
 private :
