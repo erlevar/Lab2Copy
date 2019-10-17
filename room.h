@@ -24,8 +24,7 @@ public :
     void readDescription();
     string checkBorders(string input);
     item checkItems(string input);
-
-    item fuck(string wow);
+    void removeItem(string itemName);
 
 
 private :
