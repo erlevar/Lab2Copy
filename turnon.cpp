@@ -29,6 +29,14 @@ turnon::turnon(XMLNode node)
         }
 }
 
+string turnon::readPrint()
+{
+    cout << print << endl;
+}
 
+string turnon::getAction()
+{
+    return action;
+}
 
 
