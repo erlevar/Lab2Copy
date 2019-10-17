@@ -2,7 +2,7 @@
 #define TURNON_H
 
 #include "xmlParser.h"
-#include <string>
+//#include <string>
 #include <iostream>
 using namespace std;
 
