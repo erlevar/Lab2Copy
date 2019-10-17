@@ -59,3 +59,8 @@ void item::updateOwner(string newOwner)
 {
     owner = newOwner;
 }
+
+void item::readWriting()
+{
+    cout << "Writing on the item : " << writing << endl;
+}
