@@ -2,12 +2,12 @@
 #define ROOM_H
 
 #include <vector>
+#include "xmlParser.h"
 #include "item.h"
 #include "border.h"
-#include "creature.h"
 #include "container.h"
 #include "trigger.h"
-#include "xmlParser.h"
+#include "creature.h"
 using namespace std;
 
 
