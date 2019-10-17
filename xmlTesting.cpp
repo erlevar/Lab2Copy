@@ -66,8 +66,8 @@ int main (int argc, char ** argv) {
         room current = user.currentLocation();
         current.readDescription();
         string userinput;
-
         getline(cin, userinput);
+        userinput += " ";
         vector<string> inputVect;
         separateWords(userinput, inputVect);
         cout << "userInput is: " << userinput << endl;
