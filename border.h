@@ -2,7 +2,7 @@
 #define BORDER_H
 
 #include <iostream>
-#include "XMLParser.h"
+#include "xmlParser.h"
 using namespace std;
 
 class border
