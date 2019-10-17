@@ -1,6 +1,10 @@
 #ifndef BORDER_H
 #define BORDER_H
 
+#include <iostream>
+#include "XMLParser.h"
+using namespace std;
+
 class border
 {
 public:
