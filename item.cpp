@@ -1,5 +1,12 @@
 #include "item.h"
 
+item::item(string s)
+{
+    name = s;
+    writing, status, owner="";
+}
+
+
 item::item(XMLNode node)
 {
     name, writing, status, owner = "";
@@ -32,4 +39,19 @@ item::item(XMLNode node)
     XMLNode turnonNode = node.getChildNode("turnon");
     turnon tempTurnon(turnonNode);
     itemTurnon = tempTurnon;
+}
+
+void item::readName()
+{
+    cout << "Name of item : " << name << endl;
+}
+
+string item::getName()
+{
+    return name;
+}
+
+void item::updateOwner(string newOwner)
+{
+    owner = newOwner;
 }
