@@ -36,6 +36,10 @@ room::room(XMLNode node)
     cout << "Type of the room is : " <<  type << endl;
 
     getItems(node, items);
+    for (int i = 0; i < items.size(); i++)
+        {
+        items[i].updateOwner(name);
+        }
     getTriggers(node, triggers);
     getBorders(node);
     getContainers(node);
@@ -119,9 +123,22 @@ item room::checkItems(string input)
     return emptyItem;
 }
 
-
-item room::fuck(string wow)
+void room::removeItem(string itemName)
 {
-    item testItem;
-    return testItem;
+    //vector<item> newItems;
+    //string removeName = r.getName();
+    //for (int i = 0; i <)
+    std::vector<item>::iterator iter;
+    for(iter = items.begin(); iter != items.end(); ++iter )
+    {
+        if(*iter.getName() == itemName)
+        {
+            items.erase(*iter);
+            cout << "Removing item from room with name " << itemName;
+            break;
+        }
 }
+
+
+}
+
