@@ -1,5 +1,9 @@
 #include "room.h"
 
+room::room
+(
+    name, description, type = "";
+)
 
 room::room(XMLNode node)
 {
