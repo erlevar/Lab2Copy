@@ -53,6 +53,6 @@ void separateWords(string s, vector<string> & separated)
         }
         */
     string word = getline(s, " ");
-    fullName.push_back(word);
+    separated.push_back(word);
 
 }
