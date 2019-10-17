@@ -131,7 +131,7 @@ void room::removeItem(string itemName)
     std::vector<item>::iterator iter;
     for(iter = items.begin(); iter != items.end(); ++iter )
     {
-        if(*iter.getName() == itemName)
+        if((*iter).getName() == itemName)
         {
             items.erase(*iter);
             cout << "Removing item from room with name " << itemName;
