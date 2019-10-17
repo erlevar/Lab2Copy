@@ -181,9 +181,23 @@ int main (int argc, char ** argv) {
                         }
 
                     }
-
-
             }
+            else if (inputVect.size() == 3)
+                {
+                    if ((inputVect[0] == "turn") && (inputVect[1] == "on"))
+                        {
+                        string turnonItem = inputVect[3];
+                        item returnItem = user.checkItems(turnonItem);
+                        if (returnItem.getName() == "dummy")
+                            {
+                            cout << "No such item in your inventory to turn on " << endl;
+                            }
+                        else
+                            {
+                            returnItem.activateTurnon();
+                            }
+                        }
+                }
 
 
 
