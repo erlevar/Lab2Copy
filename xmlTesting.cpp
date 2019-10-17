@@ -42,13 +42,13 @@ int main (int argc, char ** argv) {
     int i = 0;
     // get the first room node
     XMLNode roomNode=xMainNode.getChildNode(i++);
-
+    map<string, room> roomMap;
 
     do {
 
     //room initializer
     room newRoom(roomNode);
-    map<string, room> roomMap;
+
     string roomName = newRoom.getName();
     roomMap[roomName] = newRoom;
     //get information for containers in the room
@@ -67,7 +67,7 @@ int main (int argc, char ** argv) {
         current.readDescription();
 
         string userinput;
-        getline(userinput);
+        getline(cin, userinput);
 
         if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w"))
             {
