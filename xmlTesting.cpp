@@ -65,10 +65,10 @@ int main (int argc, char ** argv) {
         {
         room current = user.currentLocation();
         current.readDescription();
-
+        cout << "HERE~1"<<endl;
         string userinput;
         getline(cin, userinput);
-
+        cout << "HERE2"<<endl;
         if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w"))
             {
             string passDirection;
