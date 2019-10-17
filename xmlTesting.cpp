@@ -32,7 +32,7 @@ public:
     void readInventory();
     void takeItem(item newItem);
     item checkItems(string s);
-    void dropItem();
+    void dropItem(string s);
 
 private :
     room current;
