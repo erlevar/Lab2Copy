@@ -44,14 +44,17 @@ extraFunctions.o: extraFunctions.cpp extraFunctions.h xmlParser.h trigger.h item
 container.o: container.cpp container.h xmlParser.h item.h trigger.h extraFunctions.h
 	$(CC) $(CFLAGS) container.cpp -c
 	
+creature.o: creature.cpp xmlParser.h attack.h trigger.h 
+	$(CC) $(CFLAGS) creature.cpp -c
+	
 room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creature.h border.h item.h
 	$(CC) $(CFLAGS) room.cpp -c
 
 xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h
 	$(CC) -c $(CFLAGS) xmlTesting.cpp 
 	
-xmlTesting: xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o
-	$(CC) $(CFLAGS) xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o -o xmlTesting -L/usr/local/lib
+xmlTesting: xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o
+	$(CC) $(CFLAGS) xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o -o xmlTesting -L/usr/local/lib
 	
 
 clean:
