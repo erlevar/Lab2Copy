@@ -16,6 +16,7 @@ public:
     void readName();
     string getName();
     void updateOwner(string newOwner);
+    void readWriting();
     //void drop();
     //void take();
     //void read();
