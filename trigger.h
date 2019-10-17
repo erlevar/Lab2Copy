@@ -3,6 +3,7 @@
 
 #include "condition.h"
 #include "xmlParser.h"
+#include <iostream>
 using namespace std;
 
 class trigger
