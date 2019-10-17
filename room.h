@@ -19,6 +19,9 @@ public :
     void getBorders(XMLNode node);
     void getContainers(XMLNode node);
     void getCreatures(XMLNode node);
+    string getName();
+    string readDescription();
+    string checkBorders(string input);
 
 
 private :
