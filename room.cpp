@@ -1,4 +1,5 @@
 #include "room.h"
+#include "creature.h" 
 
 room::room(XMLNode node)
 {
