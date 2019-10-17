@@ -67,7 +67,7 @@ int main (int argc, char ** argv) {
         current.readDescription();
         string userinput;
         getline(cin, userinput);
-        userinput += " ";
+        //userinput += " ";
         vector<string> inputVect;
         separateWords(userinput, inputVect);
         cout << "userInput is: " << userinput << endl;
