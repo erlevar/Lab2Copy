@@ -30,6 +30,7 @@ public:
     void updateLocation(room newLocation);
     void readInventory();
     void takeItem(item newItem);
+    item checkItems(string s);
 
 private :
     room current;
@@ -69,11 +70,7 @@ int main (int argc, char ** argv) {
         getline(cin, userinput);
         vector<string> inputVect;
         separateWords(userinput, inputVect);
-        cout << "userInput is: " << userinput << endl;
-        for (int i = 0; i<inputVect.size(); i++)
-            {
-            cout << "inputVect["<<i<<"]: "<<inputVect[i] << endl;
-            }
+
         if (inputVect.size() == 1)
             {
                 userinput = inputVect[0];
@@ -126,7 +123,6 @@ int main (int argc, char ** argv) {
                     {
                     string passItemName = inputVect[1];
                     item returnItem = current.checkItems(passItemName);
-                    //item returnItem = current.fuck("dddd");
                     if (returnItem.getName() == "dummy")
                         {
                         cout << "No such item in the room " << endl;
@@ -136,16 +132,30 @@ int main (int argc, char ** argv) {
                         cout << "You picked up the " << returnItem.getName() << endl;
                         cout << "Your current inventory is : " << endl;
                         returnItem.updateOwner("inventory");
+                        current.removeItem(returnItem.getName());
                         user.takeItem(returnItem);
                         user.readInventory();
                         }
                     }
 
+                if (inputVect[0] == "read")
+                    {
+                    string passItemName = inputVect[1];
+                    item returnItem = user.checkItems(passItemName);
+                    if (returnItem.getName() == "dummy")
+                        {
+                        cout << "No such item in your inventory to be read " << endl;
+                        }
+                    else
+                        {
+                        returnItem.readWriting();
+                        }
+
+
+                    }
+
 
             }
-
-
-
 
 
 
@@ -189,5 +199,19 @@ void player::takeItem(item newItem)
     inventory.push_back(newItem);
 }
 
+item player::checkItems(string input)
+{
+    for (int i = 0; i<items.size(); i++)
+        {
+        string itemName = items[i].getName();
+        if (input == itemName)
+            {
+            return items[i];
+            }
+        }
+    string dummy = "dummy";
+    item emptyItem(dummy);
+    return emptyItem;
+}
 
 
