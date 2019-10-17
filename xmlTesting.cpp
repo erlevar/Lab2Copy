@@ -127,7 +127,7 @@ int main (int argc, char ** argv) {
                         }
                     else
                         {
-                        cout << "You picked up the " << returnItemName << endl;
+                        cout << "You picked up the " << returnItem.getName() << endl;
                         cout << "Your current inventory is : " << endl;
                         returnItem.updateOwner("inventory");
                         user.takeItem(returnItem);
