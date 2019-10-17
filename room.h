@@ -22,6 +22,7 @@ public :
     string getName();
     void readDescription();
     string checkBorders(string input);
+    item checkItems(string input);
 
 
 private :
