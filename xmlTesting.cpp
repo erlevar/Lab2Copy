@@ -168,7 +168,7 @@ int main (int argc, char ** argv) {
                         cout << "Your current inventory is : "<< endl;
                         returnItem.updateOwner(current.getName());
                         current.addItem(returnItem);
-                        user.dropItem(returnItem);
+                        user.dropItem(returnItem.getName());
                         user.readInventory();
                         }
 
