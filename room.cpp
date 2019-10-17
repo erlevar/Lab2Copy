@@ -104,3 +104,24 @@ string room::checkBorders(string input)
     return noBorder;
 }
 
+item room::checkItems(string input)
+{
+    for (int i = 0; i<items.size(); i++)
+        {
+        string itemName = items[i].getName();
+        if (input == itemName)
+            {
+            return items[i];
+            }
+        }
+    string dummy = "dummy";
+    item emptyItem(dummy);
+    return emptyItem;
+}
+
+
+item room::fuck(string wow)
+{
+    item newItem();
+    return newItem();
+}
