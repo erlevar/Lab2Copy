@@ -4,6 +4,8 @@
 #include "turnon.h"
 #include "xmlParser.h"
 #include <iostream>
+#include <vector>
+#include "extraFunctions.h"
 using namespace std;
 
 
@@ -17,6 +19,7 @@ public:
     string getName();
     void updateOwner(string newOwner);
     void readWriting();
+    void activateTurnon();
     //void drop();
     //void take();
     //void read();
@@ -27,6 +30,7 @@ private:
     string writing;
     string status;
     string owner;
+    bool on;
     turnon itemTurnon;
     //bool on;
     //trigger itemTrigger;
