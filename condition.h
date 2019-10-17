@@ -2,6 +2,7 @@
 #define CONDITION_H
 
 #include "xmlParser.h"
+#include <iostream>
 using namespace std;
 
 class condition
