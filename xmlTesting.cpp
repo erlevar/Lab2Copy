@@ -125,7 +125,7 @@ int main (int argc, char ** argv) {
                     {
                     string passItemName = inputVect[1];
                     item returnItem = current.checkItems(passItemName);
-                    item checkInventory = user.checkItems(returnItem);
+                    item checkInventory = user.checkItems(passItemName);
                     if (checkInventory.getName() == "dummy")
                         {
                         if (returnItem.getName() == "dummy")
