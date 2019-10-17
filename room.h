@@ -20,7 +20,7 @@ public :
     void getContainers(XMLNode node);
     void getCreatures(XMLNode node);
     string getName();
-    string readDescription();
+    void readDescription();
     string checkBorders(string input);
 
 
