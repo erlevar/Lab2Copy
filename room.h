@@ -9,6 +9,7 @@
 #include "trigger.h"
 #include "creature.h"
 #include <iostream>
+#include <iterator>
 using namespace std;
 
 
