@@ -120,7 +120,8 @@ int main (int argc, char ** argv) {
                 if (inputVect[0] == "take")
                     {
                     string passItemName = inputVect[1];
-                    item returnItem = current.checkItems(passItemName);
+                    //item returnItem = current.checkItems(passItemName);
+                    item returnItem = current.fuck("dddd");
                     if (returnItem.getName() == "dummy")
                         {
                         cout << "No such item in the room " << endl;
