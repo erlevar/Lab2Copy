@@ -84,9 +84,10 @@ string room::getName()
     return name;
 }
 
-string room::readDescription()
+void room::readDescription()
 {
     cout << description << endl;
+    return;
 }
 
 string room::checkBorders(string input)
