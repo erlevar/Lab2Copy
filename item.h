@@ -10,7 +10,11 @@ class item
 {
 public:
     item();
+    item(string s);
     item(XMLNode node);
+    void readName();
+    string getName();
+    void updateOwner(string newOwner);
     //void drop();
     //void take();
     //void read();
