@@ -134,7 +134,6 @@ void room::removeItem(string itemName)
         if((*iter).getName() == itemName)
         {
             items.erase(iter);
-            cout << "Removing item from room with name " << itemName;
             break;
         }
 }
