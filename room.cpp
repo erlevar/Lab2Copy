@@ -136,7 +136,7 @@ void room::removeItem(string itemName)
     }
 }
 
-void room:addItem(item newItem)
+void room::addItem(item newItem)
 {
     items.push_back(newItem);
 }
