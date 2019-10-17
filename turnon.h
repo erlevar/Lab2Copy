@@ -11,6 +11,8 @@ class turnon
 public :
     turnon();
     turnon(XMLNode node);
+    void readPrint();
+    string getAction();
 
 private:
     string print;
