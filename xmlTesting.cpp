@@ -63,8 +63,9 @@ int main (int argc, char ** argv) {
     bool foundExit = false;
     while (foundExit == false)
         {
-        cout << "HERE0";
+        cout << "HERE0"<<endl;
         room current = user.currentLocation();
+        cout << "HERE0.5"<<endl;
         current.readDescription();
         cout << "HERE~1"<<endl;
         string userinput;
