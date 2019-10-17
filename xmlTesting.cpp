@@ -118,7 +118,7 @@ int main (int argc, char ** argv) {
                     }
                 else if (userinput == "quit")
                     {
-                    foundExit == true;
+                    foundExit = true;
                     }
             }
         else if (inputVect.size() == 2)
@@ -126,8 +126,8 @@ int main (int argc, char ** argv) {
                 if (inputVect[0] == "take")
                     {
                     string passItemName = inputVect[1];
-                    //item returnItem = current.checkItems(passItemName);
-                    item returnItem = current.fuck("dddd");
+                    item returnItem = current.checkItems(passItemName);
+                    //item returnItem = current.fuck("dddd");
                     if (returnItem.getName() == "dummy")
                         {
                         cout << "No such item in the room " << endl;
