@@ -48,7 +48,7 @@ room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creat
 	$(CC) $(CFLAGS) room.cpp -c
 
 xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h
-	$(CC) $(CFLAGS) xmlTesting.cpp -c
+	$(CC) -c $(CFLAGS) xmlTesting.cpp 
 	
 xmlTesting: xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o
 	$(CC) $(CFLAGS) xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o -o xmlTesting -L/usr/local/lib
