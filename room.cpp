@@ -39,6 +39,7 @@ room::room(XMLNode node)
     for (int i = 0; i < items.size(); i++)
         {
         items[i].updateOwner(name);
+        itemMap[items[i].getName()] = items[i];
         }
     getTriggers(node);
     getBorders(node);
@@ -88,7 +89,7 @@ void room::getTriggers(XMLNode node)
     for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
         {
             XMLNode triggerNode=node.getChildNode("trigger", nTriggers);
-            trigger newTrigger(triggerNode);
+            trigger newTrigger(triggerNode, itemMap);
             triggers.push_back(newTrigger);
         }
 }
@@ -145,6 +146,22 @@ item room::checkItems(string input)
     return emptyItem;
 }
 
+trigger room::checkTriggers(string input)
+{
+    for (int i = 0; i<triggers.size(); i++)
+        {
+        string triggerName = triggers[i].getCommand();
+        if (input == triggerName)
+            {
+            return triggers[i];
+            }
+        }
+    string dummy = "dummy";
+    trigger emptyTrigger(dummy);
+    return emptyTrigger;
+}
+
+
 void room::removeItem(string itemName)
 {
     std::vector<item>::iterator iter;
@@ -163,5 +180,18 @@ void room::addItem(item newItem)
     items.push_back(newItem);
 }
 
+void room::getRoomTriggerCommands(vector<string> & commands)
+{
+    for (int i = 0; i < triggers.size(); i++)
+        {
+        commands.push_back(triggers[i].getCommand());
+        }
+}
+
+void room::checkTriggerCondition(string command)
+{
+
+
+}
 
 
