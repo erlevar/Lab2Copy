@@ -7,27 +7,23 @@ turnon::turnon()
 }
 turnon::turnon(XMLNode node)
 {
-    //if (!node.isEmpty())
-        //{
-        string print, action = " ";
+    print, action = " ";
 
-        XMLNode turnonPrintNode = node.getChildNode("print");
-        if (!turnonPrintNode.isEmpty())
-            {
-            print  = turnonPrintNode.getText();
-            }
+    XMLNode turnonPrintNode = node.getChildNode("print");
+    if (!turnonPrintNode.isEmpty())
+        {
+        print  = turnonPrintNode.getText();
+        }
 
-        XMLNode turnonActionNode = node.getChildNode("action");
-        if(!turnonActionNode.isEmpty())
-            {
-            action = turnonActionNode.getText();
-            }
+    XMLNode turnonActionNode = node.getChildNode("action");
+    if(!turnonActionNode.isEmpty())
+        {
+        action = turnonActionNode.getText();
+        }
 
-        cout << "(item turnon information)" << endl;
-        cout << "Item turnon print : " << print << endl;
-        cout << "Item turnon action : " << action << endl;
-        //}
-    cout << "Item turnon action (outside if statement) : " << action << endl;
+    cout << "(item turnon information)" << endl;
+    cout << "Item turnon print : " << print << endl;
+    cout << "Item turnon action : " << action << endl;
 }
 
 void turnon::readPrint()
@@ -37,7 +33,6 @@ void turnon::readPrint()
 
 string turnon::getAction()
 {
-    cout << "action for this item is " << action;
     return action;
 }
 
