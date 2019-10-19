@@ -55,25 +55,25 @@ trigger::trigger(XMLNode node)
     triggerCondition = tempCondition;
 }
 
-string::trigger getCommand()
+std::string::trigger getCommand()
 {
     return command;
 }
 
 
-string::trigger getPrint()
+std::string::trigger getPrint()
 {
     return print;
 }
 
 
-string::trigger getType())
+std::string::trigger getType())
 {
     return type;
 }
 
 
-string::trigger getAction()
+std::string::trigger getAction()
 {
     return action;
 }
