@@ -82,3 +82,8 @@ condition trigger::getCondition()
 {
     return triggerCondition;
 }
+
+void trigger::executePrint()
+{
+    cout << print << endl;
+}
