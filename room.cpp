@@ -39,7 +39,7 @@ room::room(XMLNode node)
     for (int i = 0; i < items.size(); i++)
         {
         items[i].updateOwner(name);
-        itemMap[items[i].getName()] = items[i];
+        //itemMap[items[i].getName()] = items[i];
         }
     getTriggers(node);
     getBorders(node);
@@ -89,7 +89,7 @@ void room::getTriggers(XMLNode node)
     for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
         {
             XMLNode triggerNode=node.getChildNode("trigger", nTriggers);
-            trigger newTrigger(triggerNode, itemMap);
+            trigger newTrigger(triggerNode);
             triggers.push_back(newTrigger);
         }
 }
