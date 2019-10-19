@@ -2,14 +2,14 @@
 
 turnon::turnon()
 {
-    print, action = "";
+    print, action = " ";
 
 }
 turnon::turnon(XMLNode node)
 {
     //if (!node.isEmpty())
         //{
-        string print, action = "";
+        string print, action = " ";
 
         XMLNode turnonPrintNode = node.getChildNode("print");
         if (!turnonPrintNode.isEmpty())
