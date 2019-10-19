@@ -113,7 +113,7 @@ int main (int argc, char ** argv) {
                     }
             }
 
-        else if (triggersPresent == false)
+        if (triggersPresent == false)
             {
                 if (inputVect.size() == 1)
                 {
