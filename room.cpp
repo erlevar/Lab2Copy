@@ -95,7 +95,7 @@ void room::getTriggers(XMLNode node)
 }
                 
                 
-void rooom::getItems(XMLNode node)
+void room::getItems(XMLNode node)
 {
     int numberItems = node.nChildNode("item");
     for (int nItems = 0; nItems < numberItems; nItems++)
