@@ -56,8 +56,8 @@ int main (int argc, char ** argv) {
 
         vector<string> roomTriggerCommands;
         bool triggersPresent = false;
-        //current.getRoomTriggerCommands(roomTriggerCommands);
-        /*
+        current.getRoomTriggerCommands(roomTriggerCommands);
+
         for (int t = 0; k < roomTriggerCommands.size(); k++)
             {
             if (userinput == roomTriggerCommands[t])
@@ -67,10 +67,38 @@ int main (int argc, char ** argv) {
             }
         if (triggersPresent)
             {
-            current.activateTrigger(userinput);
+                trigger commandTrigger = current.checkTriggersByCommand(userinput);
+                condition triggerCondition = commandTrigger.getCondition();
+                string has, object, owner;
+                has = triggerCondition.getHas();
+                object = triggerCondition.getObject();
+                owner = triggerCondition.getOwner();
+                if (has == "") //one kind of room trigger
+                    {
+
+                    }
+                else if (has!= "") //other kind of room trigger. checks user inventory
+                    {
+                    if (has == false)
+                        {
+                        if (owner == "inventory")
+                            {
+                            item returnItem = user.checkItems(object));
+                            if (returnItem.getName() == "dummy")
+                                {
+                                cout << "Print will occur"<<endl;
+                                }
+                            else
+                                {
+                                cout << "print will not occur" <<endl;
+                                }
+                            }
+                        }
+                    }
+
             }
-        */
-        if (triggersPresent == false)
+
+        else if (triggersPresent == false)
             {
                 if (inputVect.size() == 1)
                 {
