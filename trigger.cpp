@@ -1,4 +1,5 @@
 #include "trigger.h"
+using namespace std;
 
 trigger::trigger()
 {
