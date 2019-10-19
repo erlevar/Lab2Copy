@@ -75,7 +75,7 @@ int main (int argc, char ** argv) {
 
         vector<string> roomTriggerCommands;
         bool triggersPresent = false;
-        current.getRoomTriggerCommands(roomTriggerCommands);
+        //current.getRoomTriggerCommands(roomTriggerCommands);
         /*
         for (int t = 0; k < roomTriggerCommands.size(); k++)
             {
