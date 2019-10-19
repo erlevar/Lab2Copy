@@ -12,7 +12,7 @@ trigger::trigger()
     type, action, print = "";
 }
 
-trigger::trigger(XMLNode node, map<string, item> itemMap)
+trigger::trigger(XMLNode node)
 {
     type, command, action, print = "";
     activated = false;
@@ -49,7 +49,7 @@ trigger::trigger(XMLNode node, map<string, item> itemMap)
 
     cout << "condition information for trigger" << endl;
     XMLNode conditionNode = node.getChildNode("condition");
-    condition tempCondition(conditionNode, itemMap);
+    condition tempCondition(conditionNode);
     triggerCondition = tempCondition;
 }
 
