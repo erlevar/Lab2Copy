@@ -195,10 +195,7 @@ int main (int argc, char ** argv) {
                             }
                         else
                             {
-                            cout << "Prior to turnon" << endl;
-                            //returnItem.activateTurnon();
-                            turnon itemTurnon = returnItem.itemTurnon;
-                            cout << "itemTurnon.action" << itemTurnon.action << endl;
+                            returnItem.activateTurnon();
                             cout << "After turnon " << endl;
                             }
                         }
