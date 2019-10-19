@@ -11,6 +11,7 @@
 #include "turnon.h"
 #include <iostream>
 #include <iterator>
+#include <map>
 using namespace std;
 
 
@@ -28,8 +29,12 @@ public :
     void readDescription();
     string checkBorders(string input);
     item checkItems(string input);
+    trigger checkTriggers(string input)
     void removeItem(string itemName);
     void addItem(item newItem);
+    void getRoomTriggerCommands(vector<string> & commands);
+    void checkTriggerConditionss(string command);
+
 
 
 
@@ -42,6 +47,7 @@ private :
     vector<border> borders;
     vector<container> containers;
     vector<creature> creatures;
+    map<string, item> itemMap;
 };
 
 #endif
