@@ -41,7 +41,7 @@ room::room(XMLNode node)
         items[i].updateOwner(name);
         }
     getItems(node);
-    getTriggers(node;
+    getTriggers(node);
     getBorders(node);
     getContainers(node);
     getCreatures(node);
