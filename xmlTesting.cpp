@@ -86,7 +86,7 @@ int main (int argc, char ** argv) {
                             item returnItem = user.checkItems(object);
                             if (returnItem.getName() == "dummy")
                                 {
-                                commandTrigger.print();
+                                commandTrigger.executePrint();
                                 }
                             else
                                 {
@@ -105,7 +105,7 @@ int main (int argc, char ** argv) {
                                 }
                             else
                                 {
-                                commandTrigger.print();
+                                commandTrigger.executePrint();
                                 }
                             }
 
