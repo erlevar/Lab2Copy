@@ -195,7 +195,9 @@ int main (int argc, char ** argv) {
                             }
                         else
                             {
+                            cout << "Prior to turnon" << endl;
                             returnItem.activateTurnon();
+                            cout << "After turnon " << endl;
                             }
                         }
                 }
