@@ -6,9 +6,9 @@ trigger::trigger()
 
 }
 
-trigger::trigger()
+trigger::trigger(string s)
 {
-    command = "dummy";
+    command = s;
     type, action, print = "";
 }
 
