@@ -13,10 +13,10 @@ public:
     trigger();
     trigger(string s);
     trigger(XMLNode node);
-    string getCommand();
-    string getPrint();
-    string getType();
-    string getAction();
+    std::string getCommand();
+    std::string getPrint();
+    std::string getType();
+    std::string getAction();
     void checkCondition();
 
 private :
