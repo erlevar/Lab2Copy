@@ -47,7 +47,7 @@ container.o: container.cpp container.h xmlParser.h item.h trigger.h extraFunctio
 creature.o: creature.cpp xmlParser.h attack.h trigger.h 
 	$(CC) $(CFLAGS) creature.cpp -c
 	
-room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creature.h border.h item.h
+room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creature.h border.h item.h turnon.h
 	$(CC) $(CFLAGS) room.cpp -c
 
 xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h
