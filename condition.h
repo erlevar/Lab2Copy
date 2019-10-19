@@ -11,6 +11,10 @@ class condition
 public:
     condition();
     condition(XMLNode node);
+    string getHas();
+    string getObject();
+    string getStatus();
+    string getOwner();
 
 private:
     string object;
