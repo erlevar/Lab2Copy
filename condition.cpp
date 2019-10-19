@@ -5,7 +5,7 @@ condition::condition()
     object, status, owner, has = "";
 }
 
-condition::condition(XMLNode node)
+condition::condition(XMLNode node, map<string, item> itemMap)
 {
     object, status, owner, has = "";
 
@@ -38,4 +38,6 @@ condition::condition(XMLNode node)
     cout << "has : " << has << endl;
     cout << "object : " << object << endl;
     cout << "status : " << status << endl;
+    conditionItem = itemMap[object];
+    cout << "conditionItem.getName()" << conditionItem.getName() << endl;
 }
