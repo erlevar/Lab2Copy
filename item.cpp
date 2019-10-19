@@ -48,8 +48,6 @@ item::item(XMLNode node)
         {
         turnon tempTurnon(turnonNode);
         itemTurnon = tempTurnon;
-        cout << "tempturnon.action" << tempTurnon.action << endl;
-        cout << "itemTurnon.action" << itemTurnon.action << endl;
         }
 
 }
@@ -79,9 +77,7 @@ void item::activateTurnon()
     if (on == false)
         {
         string action;
-        cout << "Getting turnon Action"<<endl;
         action = itemTurnon.getAction();
-        cout << "Turnon action is " << action << endl;
         itemTurnon.readPrint();
         vector<string> actionVect;
         separateWords(action, actionVect);
