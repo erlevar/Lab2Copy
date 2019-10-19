@@ -58,7 +58,7 @@ int main (int argc, char ** argv) {
         bool triggersPresent = false;
         current.getRoomTriggerCommands(roomTriggerCommands);
 
-        for (int t = 0; k < roomTriggerCommands.size(); k++)
+        for (int t = 0; t < roomTriggerCommands.size(); t++)
             {
             if (userinput == roomTriggerCommands[t])
                 {
@@ -79,7 +79,7 @@ int main (int argc, char ** argv) {
                     }
                 else if (has!= "") //other kind of room trigger. checks user inventory
                     {
-                    if (has == false)
+                    if (has == "no")
                         {
                         if (owner == "inventory")
                             {
