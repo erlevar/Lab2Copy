@@ -88,6 +88,10 @@ void item::activateTurnon()
         {
         cout << "Item has already been turned on " << endl;
         }
-
-
 }
+
+string item::getOwner()
+{
+    return owner;
+}
+    
