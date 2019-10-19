@@ -18,7 +18,6 @@ private:
     string status;
     string has;
     string owner;
-    item conditionItem;
 };
 
 #endif // CONDITION_H
