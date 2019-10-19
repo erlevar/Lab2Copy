@@ -5,7 +5,7 @@ condition::condition()
     object, status, owner, has = "";
 }
 
-condition::condition(XMLNode node, map<string, item> itemMap)
+condition::condition(XMLNode node)
 {
     object, status, owner, has = "";
 
