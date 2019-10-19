@@ -44,8 +44,12 @@ item::item(XMLNode node)
 
     //turnon information for the item
     XMLNode turnonNode = node.getChildNode("turnon");
-    turnon tempTurnon(turnonNode);
-    itemTurnon = tempTurnon;
+    if (!turnonNode.isEmpty())
+        {
+        turnon tempTurnon(turnonNode);
+        itemTurnon = tempTurnon;
+        }
+
 }
 
 void item::readName()
