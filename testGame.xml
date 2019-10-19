@@ -77,6 +77,7 @@
         <condition>
           <object>torch</object>
           <status>inferno</status>
+          <owner>inventory</owner>
         </condition>
         <print>You see a gnome in the dark corner... watching you with its super pointy hat...</print>
       </trigger>
@@ -95,6 +96,7 @@
       <condition>
         <object>lock</object>
         <status>locked</status>
+        <owner>room containers</owner>
       </condition>
       <print>lock needs a key... not to mention you don't want to get too close to that side of the room... there's something in that corner...</print>
     </trigger>
