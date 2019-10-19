@@ -14,6 +14,8 @@ class container
 public:
     container();
     container(XMLNode node);
+    void getTriggers(XMLNode node);
+    void getItems(XMLNode node);
 
 private :
     string name;
