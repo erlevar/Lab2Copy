@@ -38,8 +38,6 @@ room::room(XMLNode node)
     getItems(node);
     for (int i = 0; i < items.size(); i++)
         {
-        turnon temp = items[i].itemTurnon;
-        cout << "items[i].itemTurnon.action " << temp.action << endl;
         items[i].updateOwner(name);
         }
     getTriggers(node);
