@@ -11,7 +11,7 @@ class condition
 {
 public:
     condition();
-    condition(XMLNode node, map<string, item> itemMap);
+    condition(XMLNode node);
 
 private:
     string object;
