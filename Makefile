@@ -35,7 +35,7 @@ border.o: border.cpp border.h xmlParser.h
 condition.o: condition.cpp condition.h xmlParser.h
 	$(CC) $(CFLAGS) condition.cpp -c
 	
-trigger.o: trigger.cpp condition.h xmlParser.h
+trigger.o: trigger.cpp condition.h xmlParser.h item.h
 	$(CC) $(CFLAGS) trigger.cpp -c
 
 extraFunctions.o: extraFunctions.cpp extraFunctions.h xmlParser.h trigger.h item.h
