@@ -20,6 +20,7 @@ public:
     void updateOwner(string newOwner);
     void readWriting();
     void activateTurnon();
+    turnon itemTurnon;
     //void drop();
     //void take();
     //void read();
@@ -31,7 +32,7 @@ private:
     string status;
     string owner;
     bool on;
-    turnon itemTurnon;
+    //turnon itemTurnon;
     //bool on;
     //trigger itemTrigger;
 };
