@@ -76,6 +76,7 @@ int main (int argc, char ** argv) {
         vector<string> roomTriggerCommands;
         bool triggersPresent = false;
         current.getRoomTriggerCommands(roomTriggerCommands);
+        /*
         for (int t = 0; k < roomTriggerCommands.size(); k++)
             {
             if (userinput == roomTriggerCommands[t])
@@ -87,6 +88,7 @@ int main (int argc, char ** argv) {
             {
             current.activateTrigger(userinput);
             }
+        */
         if (triggersPresent == false)
             {
                 if (inputVect.size() == 1)
