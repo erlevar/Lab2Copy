@@ -27,6 +27,7 @@ turnon::turnon(XMLNode node)
         cout << "Item turnon print : " << print << endl;
         cout << "Item turnon action : " << action << endl;
         }
+    cout << "Item turnon action (outside if statement) : " << action << endl;
 }
 
 void turnon::readPrint()
