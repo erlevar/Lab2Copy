@@ -35,12 +35,11 @@ room::room(XMLNode node)
     cout << "Description of the room is : " << description << endl;
     cout << "Type of the room is : " <<  type << endl;
 
-  
+    getItems(node);
     for (int i = 0; i < items.size(); i++)
         {
         items[i].updateOwner(name);
         }
-    getItems(node);
     getTriggers(node);
     getBorders(node);
     getContainers(node);
