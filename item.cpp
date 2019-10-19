@@ -48,6 +48,7 @@ item::item(XMLNode node)
         {
         turnon tempTurnon(turnonNode);
         itemTurnon = tempTurnon;
+        cout << "tempturnon.action" << tempTurnon.action << endl;
         cout << "itemTurnon.action" << itemTurnon.action << endl;
         }
 
