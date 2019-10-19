@@ -35,12 +35,13 @@ room::room(XMLNode node)
     cout << "Description of the room is : " << description << endl;
     cout << "Type of the room is : " <<  type << endl;
 
-    getItems(node, items);
+  
     for (int i = 0; i < items.size(); i++)
         {
         items[i].updateOwner(name);
         }
-    getTriggers(node, triggers);
+    getItems(node);
+    getTriggers(node;
     getBorders(node);
     getContainers(node);
     getCreatures(node);
@@ -79,7 +80,29 @@ void room::getCreatures(XMLNode node)
         XMLNode creatureNode = node.getChildNode("creature", nCreatures);
         creature newCreature(creatureNode);
         creatures.push_back(newCreature);
+        }
+}
 
+void room::getTriggers(XMLNode node)
+{
+    int numberTriggers = node.nChildNode("trigger");
+    for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
+        {
+            XMLNode triggerNode=node.getChildNode("trigger", nTriggers);
+            trigger newTrigger(triggerNode);
+            triggers.push_back(newTrigger);
+        }
+}
+                
+                
+void rooom::getItems(XMLNode node)
+{
+    int numberItems = node.nChildNode("item");
+    for (int nItems = 0; nItems < numberItems; nItems++)
+        {
+        XMLNode itemNode = node.getChildNode("item", nItems);
+        item newItem(itemNode);
+        items.push_back(newItem);
         }
 }
 
@@ -140,4 +163,6 @@ void room::addItem(item newItem)
 {
     items.push_back(newItem);
 }
+
+
 
