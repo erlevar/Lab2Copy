@@ -14,32 +14,13 @@
 #include "trigger.h"
 #include "turnon.h"
 #include "condition.h"
+#include "player.h"
 #include <map>
 #include <iostream>
 #include <string>
 #include <iterator>
 
 using namespace std;
-
-
-class player
-{
-public:
-    player();
-    player(room startLocation);
-    room currentLocation();
-    void updateLocation(room newLocation);
-    void readInventory();
-    void takeItem(item newItem);
-    item checkItems(string s);
-    void dropItem(string s);
-
-private :
-    room current;
-    vector<item> inventory;
-};
-
-
 
 int main (int argc, char ** argv) {
 
@@ -218,75 +199,12 @@ int main (int argc, char ** argv) {
                         }
                 }
 
-
-
-
         }
     return 0;
 }
 
 
-player::player(room startLocation)
-{
-    current = startLocation;
-}
 
-room player::currentLocation()
-{
-    return current;
-}
-
-void player::updateLocation(room newLocation)
-{
-    current = newLocation;
-}
-
-void player::readInventory()
-{
-    if (inventory.size() == 0)
-        {
-        cout << "No items in inventory" << endl;
-        return;
-        }
-    for (int i = 0; i < inventory.size(); i ++)
-        {
-        inventory[i].readName();
-        return;
-        }
-}
-
-void player::takeItem(item newItem)
-{
-    inventory.push_back(newItem);
-}
-
-item player::checkItems(string input)
-{
-    for (int i = 0; i<inventory.size(); i++)
-        {
-        string itemName = inventory[i].getName();
-        if (input == itemName)
-            {
-            return inventory[i];
-            }
-        }
-    string dummy = "dummy";
-    item emptyItem(dummy);
-    return emptyItem;
-}
-
-void player::dropItem(string itemName)
-{
-    std::vector<item>::iterator iter;
-    for(iter = inventory.begin(); iter != inventory.end(); ++iter )
-    {
-        if((*iter).getName() == itemName)
-        {
-            inventory.erase(iter);
-            break;
-        }
-    }
-}
 
 
 
