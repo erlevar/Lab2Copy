@@ -20,8 +20,7 @@ public:
     void updateOwner(string newOwner);
     void readWriting();
     void activateTurnon();
-
-
+    string getOwner();
     //void putInContainer(); //probably should pass the current owner and new owner (e.g. user to container)
 private:
     string name;
