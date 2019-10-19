@@ -83,7 +83,7 @@ int main (int argc, char ** argv) {
                         {
                         if (owner == "inventory")
                             {
-                            item returnItem = user.checkItems(object));
+                            item returnItem = user.checkItems(object);
                             if (returnItem.getName() == "dummy")
                                 {
                                 cout << "Print will occur"<<endl;
