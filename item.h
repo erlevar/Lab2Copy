@@ -20,11 +20,8 @@ public:
     void updateOwner(string newOwner);
     void readWriting();
     void activateTurnon();
-    turnon itemTurnon;
-    //void drop();
-    //void take();
-    //void read();
-    //void turnOn();
+
+
     //void putInContainer(); //probably should pass the current owner and new owner (e.g. user to container)
 private:
     string name;
@@ -32,8 +29,8 @@ private:
     string status;
     string owner;
     bool on;
-    //turnon itemTurnon;
-    //bool on;
+    turnon itemTurnon;
+
     //trigger itemTrigger;
 };
 
