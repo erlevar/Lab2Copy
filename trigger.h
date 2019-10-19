@@ -18,6 +18,7 @@ public:
     string getType();
     string getAction();
     condition getCondition();
+    void executePrint();
 
 private :
     string type;
