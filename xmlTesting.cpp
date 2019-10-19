@@ -73,131 +73,146 @@ int main (int argc, char ** argv) {
         vector<string> inputVect;
         separateWords(userinput, inputVect);
 
-        if (inputVect.size() == 1)
+        vector<string> roomTriggerCommands;
+        bool triggersPresent = false;
+        current.getRoomTriggerCommands(roomTriggerCommands);
+        for (int t = 0; k < roomTriggerCommands.size(); k++)
             {
-                userinput = inputVect[0];
-                if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w"))
+            if (userinput == roomTriggerCommands[t])
                 {
-                string passDirection;
-                if (userinput == "n")
-                    {
-                    passDirection = "north";
-                    }
-                else if (userinput == "s")
-                    {
-                    passDirection = "south";
-                    }
-                else if (userinput == "e")
-                    {
-                    passDirection = "east";
-                    }
-                else if (userinput == "w")
-                    {
-                    passDirection = "west";
-                    }
-                string returnRoomName = current.checkBorders(passDirection);
-                if (returnRoomName == "dummy")
-                    {
-                    cout << "No room to that direction"<<endl;
-                    }
-                else
-                    {
-                    cout << "The name of the room to that direction is " << returnRoomName << endl;
-                    cout << "You enter this room" << endl;
-                    room newLocation = roomMap[returnRoomName];
-                    user.updateLocation(newLocation);
-                    }
+                triggersPresent = true;
                 }
-
-                else if (userinput == "i")
-                    {
-                    user.readInventory();
-
-                    }
-                else if (userinput == "quit")
-                    {
-                    foundExit = true;
-                    }
             }
-        else if (inputVect.size() == 2)
+        if (triggersPresent)
             {
-                if (inputVect[0] == "take")
-                    {
-                    string passItemName = inputVect[1];
-                    item returnItem = current.checkItems(passItemName);
-                    item checkInventory = user.checkItems(passItemName);
-                    if (checkInventory.getName() == "dummy")
-                        {
-                        if (returnItem.getName() == "dummy")
-                            {
-                            cout << "No such item in the room " << endl;
-                            }
-                        else
-                            {
-                            cout << "You picked up the " << returnItem.getName() << endl;
-                            cout << "Your current inventory is : " << endl;
-                            returnItem.updateOwner("inventory");
-                            current.removeItem(returnItem.getName());
-                            user.takeItem(returnItem);
-                            user.readInventory();
-                            }
-                       }
-                    else
-                        {
-                        cout << "You already have that item " << endl;
-                        }
-                    }
-
-                if (inputVect[0] == "read")
-                    {
-                    string passItemName = inputVect[1];
-                    item returnItem = user.checkItems(passItemName);
-                    if (returnItem.getName() == "dummy")
-                        {
-                        cout << "No such item in your inventory to be read " << endl;
-                        }
-                    else
-                        {
-                        returnItem.readWriting();
-                        }
-                    }
-
-                if (inputVect[0] == "drop")
-                    {
-                    string dropItemName = inputVect[1];
-                    item returnItem = user.checkItems(dropItemName);
-                    if (returnItem.getName() == "dummy")
-                        {
-                        cout << "No such item in your inventory to drop" << endl;
-                        }
-                    else
-                        {
-                        cout << "You dropped the " << returnItem.getName() << endl;
-                        cout << "Your current inventory is : "<< endl;
-                        returnItem.updateOwner(current.getName());
-                        current.addItem(returnItem);
-                        user.dropItem(returnItem.getName());
-                        user.readInventory();
-                        }
-
-                    }
+            current.activateTrigger(userinput);
             }
-            else if (inputVect.size() == 3)
+        if (triggersPresent == false)
+            {
+                if (inputVect.size() == 1)
                 {
-                    if ((inputVect[0] == "turn") && (inputVect[1] == "on"))
+                    userinput = inputVect[0];
+                    if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w"))
+                    {
+                    string passDirection;
+                    if (userinput == "n")
                         {
-                        string turnonItem = inputVect[2];
-                        cout << "turnonItem " << turnonItem << endl;
-                        item returnItem = user.checkItems(turnonItem);
-                        if (returnItem.getName() == "dummy")
+                        passDirection = "north";
+                        }
+                    else if (userinput == "s")
+                        {
+                        passDirection = "south";
+                        }
+                    else if (userinput == "e")
+                        {
+                        passDirection = "east";
+                        }
+                    else if (userinput == "w")
+                        {
+                        passDirection = "west";
+                        }
+                    string returnRoomName = current.checkBorders(passDirection);
+                    if (returnRoomName == "dummy")
+                        {
+                        cout << "No room to that direction"<<endl;
+                        }
+                    else
+                        {
+                        cout << "The name of the room to that direction is " << returnRoomName << endl;
+                        cout << "You enter this room" << endl;
+                        room newLocation = roomMap[returnRoomName];
+                        user.updateLocation(newLocation);
+                        }
+                    }
+
+                    else if (userinput == "i")
+                        {
+                        user.readInventory();
+
+                        }
+                    else if (userinput == "quit")
+                        {
+                        foundExit = true;
+                        }
+                }
+                else if (inputVect.size() == 2)
+                    {
+                        if (inputVect[0] == "take")
                             {
-                            cout << "No such item in your inventory to turn on " << endl;
+                            string passItemName = inputVect[1];
+                            item returnItem = current.checkItems(passItemName);
+                            item checkInventory = user.checkItems(passItemName);
+                            if (checkInventory.getName() == "dummy")
+                                {
+                                if (returnItem.getName() == "dummy")
+                                    {
+                                    cout << "No such item in the room " << endl;
+                                    }
+                                else
+                                    {
+                                    cout << "You picked up the " << returnItem.getName() << endl;
+                                    cout << "Your current inventory is : " << endl;
+                                    returnItem.updateOwner("inventory");
+                                    current.removeItem(returnItem.getName());
+                                    user.takeItem(returnItem);
+                                    user.readInventory();
+                                    }
+                               }
+                            else
+                                {
+                                cout << "You already have that item " << endl;
+                                }
                             }
-                        else
+
+                        if (inputVect[0] == "read")
                             {
-                            returnItem.activateTurnon();
-                            cout << "After turnon " << endl;
+                            string passItemName = inputVect[1];
+                            item returnItem = user.checkItems(passItemName);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                cout << "No such item in your inventory to be read " << endl;
+                                }
+                            else
+                                {
+                                returnItem.readWriting();
+                                }
                             }
+
+                        if (inputVect[0] == "drop")
+                            {
+                            string dropItemName = inputVect[1];
+                            item returnItem = user.checkItems(dropItemName);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                cout << "No such item in your inventory to drop" << endl;
+                                }
+                            else
+                                {
+                                cout << "You dropped the " << returnItem.getName() << endl;
+                                cout << "Your current inventory is : "<< endl;
+                                returnItem.updateOwner(current.getName());
+                                current.addItem(returnItem);
+                                user.dropItem(returnItem.getName());
+                                user.readInventory();
+                                }
+
+                            }
+                        }
+                    else if (inputVect.size() == 3)
+                        {
+                            if ((inputVect[0] == "turn") && (inputVect[1] == "on"))
+                                {
+                                string turnonItem = inputVect[2];
+                                item returnItem = user.checkItems(turnonItem);
+                                if (returnItem.getName() == "dummy")
+                                    {
+                                    cout << "No such item in your inventory to turn on " << endl;
+                                    }
+                                else
+                                    {
+                                    returnItem.activateTurnon();
+                                    }
+                                }
                         }
                 }
 
