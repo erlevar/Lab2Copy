@@ -39,3 +39,23 @@ condition::condition(XMLNode node)
     cout << "object : " << object << endl;
     cout << "status : " << status << endl;
 }
+
+string condition::getHas()
+{
+    return has;
+}
+
+string condition::getOwner()
+{
+    return owner;
+}
+
+string condition::getObject()
+{
+    return object;
+}
+
+string condition::getStatus()
+{
+    return status;
+}
