@@ -22,6 +22,9 @@ xmlParser.o: xmlParser.cpp xmlParser.h
 	
 turnon.o: turnon.cpp turnon.h xmlParser.h
 	$(CC) $(CFLAGS) turnon.cpp -c
+	
+condition.o: condition.cpp condition.h xmlParser.h 
+	$(CC) $(CFLAGS) condition.cpp -c
 		
 item.o: item.cpp item.h xmlParser.h turnon.h extraFunctions.h
 	$(CC) $(CFLAGS) item.cpp -c
@@ -37,9 +40,6 @@ trigger.o: trigger.cpp condition.h xmlParser.h
 
 extraFunctions.o: extraFunctions.cpp extraFunctions.h xmlParser.h trigger.h item.h
 	$(CC) $(CFLAGS) extraFunctions.cpp -c
-	
-condition.o: condition.cpp condition.h xmlParser.h 
-	$(CC) $(CFLAGS) condition.cpp -c
 	
 container.o: container.cpp container.h xmlParser.h item.h trigger.h extraFunctions.h
 	$(CC) $(CFLAGS) container.cpp -c
