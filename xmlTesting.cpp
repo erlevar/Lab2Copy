@@ -86,16 +86,31 @@ int main (int argc, char ** argv) {
                             item returnItem = user.checkItems(object);
                             if (returnItem.getName() == "dummy")
                                 {
-                                cout << "Print will occur"<<endl;
+                                commandTrigger.print();
                                 }
                             else
                                 {
-                                cout << "print will not occur" <<endl;
+                                triggersPresent = false;
                                 }
                             }
                         }
-                    }
+                    else
+                        {
+                        if (owner == "inventory")
+                            {
+                            item returnItem = user.checkItems(object);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                triggersPresent = false;
+                                }
+                            else
+                                {
+                                commandTrigger.print();
+                                }
+                            }
 
+                        }
+                    }
             }
 
         else if (triggersPresent == false)
