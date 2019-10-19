@@ -78,3 +78,7 @@ string trigger::getAction()
     return action;
 }
 
+condition trigger::getCondition()
+{
+    return triggerCondition;
+}
