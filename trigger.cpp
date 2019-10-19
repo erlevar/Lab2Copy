@@ -6,9 +6,16 @@ trigger::trigger()
 
 }
 
-trigger::trigger(XMLNode node)
+trigger::trigger()
+{
+    command = "dummy";
+    type, action, print = "";
+}
+
+trigger::trigger(XMLNode node, map<string, item> itemMap)
 {
     type, command, action, print = "";
+    activated = false;
 
     XMLNode typeNode = node.getChildNode("type");
     if (!typeNode.isEmpty())
@@ -42,7 +49,42 @@ trigger::trigger(XMLNode node)
 
     cout << "condition information for trigger" << endl;
     XMLNode conditionNode = node.getChildNode("condition");
-    condition tempCondition(conditionNode);
+    condition tempCondition(conditionNode, itemMap);
     triggerCondition = tempCondition;
 }
+
+string::trigger getCommand()
+{
+    return command;
+}
+
+
+string::trigger getPrint()
+{
+    return print;
+}
+
+
+string::trigger getType())
+{
+    return type;
+}
+
+
+string::trigger getAction()
+{
+    return action;
+}
+
+void::trigger checkCondition()
+{
+    bool hasItem = true;
+    if (has == "no")
+        {
+        hasItem = false;
+        }
+
+}
+
+
 
