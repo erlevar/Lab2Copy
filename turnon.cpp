@@ -29,7 +29,7 @@ turnon::turnon(XMLNode node)
         }
 }
 
-string turnon::readPrint()
+void turnon::readPrint()
 {
     cout << print << endl;
 }
