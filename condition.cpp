@@ -38,6 +38,4 @@ condition::condition(XMLNode node)
     cout << "has : " << has << endl;
     cout << "object : " << object << endl;
     cout << "status : " << status << endl;
-    conditionItem = itemMap[object];
-    cout << "conditionItem.getName()" << conditionItem.getName() << endl;
 }
