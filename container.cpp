@@ -28,10 +28,10 @@ container::container(XMLNode node)
     cout << "container accept :" << accept << endl;
 
     cout << "(items in container)" << endl;
-    getItems(node, items);
+    getItems(node);
 
     cout << "(triggers for container)" << endl;
-    getTriggers(node, triggers);
+    getTriggers(node);
 
 }
 
