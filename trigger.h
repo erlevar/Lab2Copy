@@ -13,7 +13,7 @@ class trigger
 public:
     trigger();
     trigger(string s);
-    trigger(XMLNode node, map<string, item> itemMap);
+    trigger(XMLNode node);
     string getCommand();
     string getPrint();
     string getType();
