@@ -7,8 +7,8 @@ turnon::turnon()
 }
 turnon::turnon(XMLNode node)
 {
-    if (!node.isEmpty())
-        {
+    //if (!node.isEmpty())
+        //{
         string print, action = "";
 
         XMLNode turnonPrintNode = node.getChildNode("print");
@@ -26,7 +26,7 @@ turnon::turnon(XMLNode node)
         cout << "(item turnon information)" << endl;
         cout << "Item turnon print : " << print << endl;
         cout << "Item turnon action : " << action << endl;
-        }
+        //}
     cout << "Item turnon action (outside if statement) : " << action << endl;
 }
 
