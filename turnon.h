@@ -13,10 +13,10 @@ public :
     turnon(XMLNode node);
     void readPrint();
     string getAction();
-    string action;
+
 
 private:
+    string action;
     string print;
-    //string action;
 };
 #endif // TURNON_H
