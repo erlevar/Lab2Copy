@@ -27,6 +27,7 @@ public :
     item checkItems(string input);
     void removeItem(string itemName);
     void addItem(item newItem);
+    void getTriggers(XMLNode node);
 
 
 private :
