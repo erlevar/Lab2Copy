@@ -36,6 +36,7 @@ void turnon::readPrint()
 
 string turnon::getAction()
 {
+    cout << "action for this item is " << action;
     return action;
 }
 
