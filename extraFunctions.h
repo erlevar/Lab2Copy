@@ -5,6 +5,7 @@
 #include <vector>
 using namespace std;
 
-void getItems(XMLNode node, vector<item> & items);
+
 void getTriggers(XMLNode node, vector<trigger> & triggers);
+void getItems(XMLNode node, vector<item> & items);
 void separateWords(string s, vector<string> & separated);
