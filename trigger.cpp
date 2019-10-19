@@ -67,7 +67,7 @@ string trigger::getPrint()
 }
 
 
-string trigger::getType())
+string trigger::getType()
 {
     return type;
 }
