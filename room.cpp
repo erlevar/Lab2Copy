@@ -38,6 +38,8 @@ room::room(XMLNode node)
     getItems(node);
     for (int i = 0; i < items.size(); i++)
         {
+        turnon temp = items[i].itemTurnon;
+        cout << "items[i].itemTurnon.action " << temp.action << endl;
         items[i].updateOwner(name);
         }
     getTriggers(node);
@@ -92,8 +94,8 @@ void room::getTriggers(XMLNode node)
             triggers.push_back(newTrigger);
         }
 }
-                
-                
+
+
 void room::getItems(XMLNode node)
 {
     int numberItems = node.nChildNode("item");
