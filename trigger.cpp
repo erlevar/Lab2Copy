@@ -1,5 +1,7 @@
 #include "trigger.h"
+#include <iostream>
 using namespace std;
+
 
 trigger::trigger()
 {
@@ -76,16 +78,4 @@ string::trigger getAction()
 {
     return action;
 }
-
-void::trigger checkCondition()
-{
-    bool hasItem = true;
-    if (has == "no")
-        {
-        hasItem = false;
-        }
-
-}
-
-
 
