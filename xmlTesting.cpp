@@ -187,6 +187,7 @@ int main (int argc, char ** argv) {
                     if ((inputVect[0] == "turn") && (inputVect[1] == "on"))
                         {
                         string turnonItem = inputVect[3];
+                        cout << "turnonItem " << turnonItem << endl;
                         item returnItem = user.checkItems(turnonItem);
                         if (returnItem.getName() == "dummy")
                             {
