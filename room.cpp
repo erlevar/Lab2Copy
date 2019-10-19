@@ -146,7 +146,7 @@ item room::checkItems(string input)
     return emptyItem;
 }
 
-trigger room::checkTriggers(string input)
+trigger room::checkTriggersByCommand(string input)
 {
     for (int i = 0; i<triggers.size(); i++)
         {
@@ -180,7 +180,7 @@ void room::addItem(item newItem)
     items.push_back(newItem);
 }
 
-/*
+
 void room::getRoomTriggerCommands(vector<string> & commands)
 {
     for (int i = 0; i < triggers.size(); i++)
@@ -189,6 +189,7 @@ void room::getRoomTriggerCommands(vector<string> & commands)
         }
 }
 
+/*
 void room::checkTriggerCondition(string command)
 {
 
