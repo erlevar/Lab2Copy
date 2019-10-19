@@ -2,7 +2,6 @@
 #define TRIGGER_H
 
 #include "condition.h"
-#include "item.h"
 #include "xmlParser.h"
 #include <iostream>
 #include <map>
