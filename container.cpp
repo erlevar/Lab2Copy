@@ -35,3 +35,24 @@ container::container(XMLNode node)
 
 }
 
+void container::getItems(XMLNode node)
+{
+    int numberItems = node.nChildNode("item");
+    for (int nItems = 0; nItems < numberItems; nItems++)
+        {
+        XMLNode itemNode = node.getChildNode("item", nItems);
+        item newItem(itemNode);
+        items.push_back(newItem);
+        }
+}
+
+void container::getTriggers(XMLNode node)
+{
+    int numberTriggers = node.nChildNode("trigger");
+    for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
+        {
+            XMLNode triggerNode=node.getChildNode("trigger", nTriggers);
+            trigger newTrigger(triggerNode);
+            triggers.push_back(newTrigger);
+        }
+}
