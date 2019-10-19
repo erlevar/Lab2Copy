@@ -8,6 +8,7 @@
 #include "container.h"
 #include "trigger.h"
 #include "creature.h"
+#include "turnon.h"
 #include <iostream>
 #include <iterator>
 using namespace std;
