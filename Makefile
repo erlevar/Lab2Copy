@@ -32,7 +32,7 @@ attack.o: attack.cpp attack.h xmlParser.h
 border.o: border.cpp border.h xmlParser.h
 	$(CC) $(CFLAGS) border.cpp -c
 
-condition.o: condition.cpp condition.h xmlParser.h
+condition.o: condition.cpp condition.h xmlParser.h item.h
 	$(CC) $(CFLAGS) condition.cpp -c
 	
 trigger.o: trigger.cpp condition.h xmlParser.h item.h
