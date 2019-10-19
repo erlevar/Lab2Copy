@@ -21,13 +21,15 @@ public :
     void getBorders(XMLNode node);
     void getContainers(XMLNode node);
     void getCreatures(XMLNode node);
+    void getTriggers(XMLNode node);
+    void getItems(XMLNode node);
     string getName();
     void readDescription();
     string checkBorders(string input);
     item checkItems(string input);
     void removeItem(string itemName);
     void addItem(item newItem);
-    void getTriggers(XMLNode node);
+
 
 
 private :
