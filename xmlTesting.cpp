@@ -48,6 +48,8 @@ int main (int argc, char ** argv) {
     while (foundExit == false)
         {
         room current = user.currentLocation();
+        cout << "current.readItems()" << endl;
+        current.readItems();
         current.readDescription();
         string userinput;
         getline(cin, userinput);
