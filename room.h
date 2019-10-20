@@ -37,6 +37,7 @@ public :
     string getRoomType();
     void readItems();
     room& operator = (const room & r);
+    void readBorders();
     //void checkTriggerConditionss(string command);
 
 
