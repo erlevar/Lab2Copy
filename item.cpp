@@ -73,22 +73,13 @@ void item::readWriting()
 
 void item::activateTurnon()
 {
-    cout << "inside item.activateTurnon" << endl;
     if (on == false)
         {
         string action;
         action = itemTurnon.getAction();
-        cout << "turn on action: " << action << endl;
         itemTurnon.readPrint();
         vector<string> actionVect;
-
         separateWords(action, actionVect);
-        cout << "action separated by words " << endl;
-        for (int i = 0; i <actionVect.size(); i++)
-            {
-            cout << actionVect[i] << endl;
-            }
-        cout << "actionVect[actionVect.size() - 1] " << actionVect[actionVect.size() - 1] << endl;
         status = actionVect[actionVect.size() - 1];
         on = true;
         //cout << "Updated status for item " << status << endl;
