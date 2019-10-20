@@ -220,3 +220,14 @@ void room::readItems()
             cout << items[i].getName() << endl;
         }
 }
+
+/*
+room& room::operator=(room& r)
+{
+    room newRoom;
+    newRoom.name = r.name;
+    newRoom.description = r.description;
+    newRoom.type = r.type;
+    for (int i = 0; i <)
+}
+*/
