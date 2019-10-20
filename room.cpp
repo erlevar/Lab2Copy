@@ -225,6 +225,11 @@ room& room::operator=(const room& r)
     name = r.name;
     type = r.type;
     description = r.description;
+    items.clear();
+    triggers.clear();
+    borders.clear();
+    creatures.clear();
+    containers.clear();
     for (int i = 0; i < r.items.size(); i++)
         {
         items.push_back(r.items[i]);
