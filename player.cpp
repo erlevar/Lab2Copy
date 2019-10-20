@@ -17,8 +17,6 @@ void player::updateLocation(room newLocation)
 
 void player::readInventory()
 {
-    cout << "FUCK C++" << endl;
-    cout << "inventory.size() " << inventory.size() << endl;
     if (inventory.size() == 0)
         {
         cout << "Inventory : empty" << endl;
@@ -27,22 +25,14 @@ void player::readInventory()
     for (int i = 0; i < inventory.size(); i ++)
         {
         inventory[i].readName();
-        return;
-        }
 
+        }
+    return;
 }
 
 void player::takeItem(item newItem)
 {
-    cout << "takeItem testing !!" << endl;
-    cout << "newItem.getName() " << endl;
-    cout << newItem.getName() << endl;
     inventory.push_back(newItem);
-    cout << "Inventory after adding item" << endl;
-    for (int i = 0; i < inventory.size(); i++)
-        {
-        cout << inventory[i].getName() <<endl;
-        }
 }
 
 item player::checkItems(string input)
