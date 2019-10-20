@@ -241,7 +241,7 @@ int main (int argc, char ** argv) {
                                 }
                             else
                                 {
-                                container returnContainer = current.checkItems(secondWord);
+                                container returnContainer = current.checkContainers(secondWord);
                                 if (returnContainer.getName() == "dummy")
                                     {
                                     cout << "No such container in the room to open" << endl;
