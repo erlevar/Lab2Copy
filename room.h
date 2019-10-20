@@ -35,6 +35,7 @@ public :
     void addItem(item newItem);
     void getRoomTriggerCommands(vector<string> & commands);
     string getRoomType();
+    void readItems();
     //void checkTriggerConditionss(string command);
 
 
