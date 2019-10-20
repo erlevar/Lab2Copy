@@ -254,7 +254,10 @@ int main (int argc, char ** argv) {
                                 {
                                 cout << "You dropped the " << returnItem.getName() << endl;
                                 returnItem.updateOwner(current.getName());
+
                                 current.addItem(returnItem);
+                                cout << "After dropping the item, " <<endl;
+                                current.readItems();
                                 user.dropItem(returnItem.getName());
                                 }
 
