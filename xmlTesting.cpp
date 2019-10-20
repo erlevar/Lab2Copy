@@ -138,7 +138,6 @@ int main (int argc, char ** argv) {
                         passDirection = "west";
                         }
                     string returnRoomName = current.checkBorders(passDirection);
-                    cout << "returnRoomName is " << returnRoomName << endl;
                     if (returnRoomName == "dummy")
                         {
                         cout << "No room to that direction"<<endl;
