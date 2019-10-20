@@ -45,11 +45,15 @@ int main (int argc, char ** argv) {
     room entrance = roomMap["Entrance"];
     player user(entrance);
     bool foundExit = false;
+    bool changedRooms = false;
     while (foundExit == false)
         {
-        room current = user.currentLocation();
-        cout << "current.readItems()" << endl;
-        current.readItems();
+        room current;
+        if (changedRooms == false)
+            {
+            current = user.currentLocation();
+            }
+
         current.readDescription();
         string userinput;
         getline(cin, userinput);
@@ -126,6 +130,7 @@ int main (int argc, char ** argv) {
                     if (userinput == "n")
                         {
                         passDirection = "north";
+
                         }
                     else if (userinput == "s")
                         {
@@ -148,6 +153,7 @@ int main (int argc, char ** argv) {
                         {
                         cout << "The name of the room to that direction is " << returnRoomName << endl;
                         cout << "You enter this room" << endl;
+                        changedRooms = true;
                         room newLocation = roomMap[returnRoomName];
                         user.updateLocation(newLocation);
                         }
