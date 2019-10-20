@@ -13,9 +13,11 @@ class container
 {
 public:
     container();
+    container(string s);
     container(XMLNode node);
     void getTriggers(XMLNode node);
     void getItems(XMLNode node);
+    string getName();
 
 private :
     string name;
