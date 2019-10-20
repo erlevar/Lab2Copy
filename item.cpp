@@ -69,6 +69,11 @@ void item::updateOwner(string newOwner)
 
 void item::readWriting()
 {
+    if (writing == "")
+        {
+        cout << "Nothing written" << endl;
+        return;
+        }
     cout << "Writing on the item : " << writing << endl;
 }
 
