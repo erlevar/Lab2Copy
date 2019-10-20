@@ -16,9 +16,6 @@ border::border(XMLNode node)
         name = borderNameNode.getText();
         }
 
-    cout << "(border information)"<<endl;
-    cout << "direction : " << direction << endl;
-    cout << "name : " << name << endl;
 }
 
 string border::getDirection()
