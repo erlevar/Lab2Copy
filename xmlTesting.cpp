@@ -1,263 +1,284 @@
+#include <string>
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+#define XML_USE_STL
+#include "xmlParser.h"
 #include "room.h"
+#include "creature.h"
+#include "attack.h"
+#include "container.h"
+#include "border.h"
+#include "item.h"
+#include "trigger.h"
+#include "turnon.h"
+#include "condition.h"
+#include "player.h"
+#include <map>
+#include <iostream>
+#include <string>
+#include <iterator>
 
-room::room()
-{
-    name, description, type = "";
-}
+using namespace std;
 
-room::room(XMLNode node)
-{
-    name, description, type = "";
-    //room information
-    //room type
-    XMLNode roomTypeNode = node.getChildNode("type");
-    if (!roomTypeNode.isEmpty())
+int main (int argc, char ** argv) {
+
+    string gameFile = "testGame.xml";
+
+    // this opens and parses the correct XML file:
+    XMLNode xMainNode=XMLNode::openFileHelper(gameFile.c_str(),"map");
+    int i = 0;
+    // get the first room node
+    XMLNode roomNode=xMainNode.getChildNode(i++);
+    map<string, room> roomMap;
+
+    do {
+
+    //make map of rooms indexed by room name
+    room newRoom(roomNode);
+    string roomName = newRoom.getName();
+    roomMap[roomName] = newRoom;
+    roomNode=xMainNode.getChildNode(i++);
+    } while (!roomNode.isEmpty());
+
+    room entrance = roomMap["Entrance"];
+    player user(entrance);
+    bool foundExit = false;
+    room current;
+    while (foundExit == false)
         {
-        type = roomTypeNode.getText();
-        }
+        current = user.currentLocation();
+        current.readDescription();
+        string userinput;
+        getline(cin, userinput);
+        vector<string> inputVect;
+        separateWords(userinput, inputVect);
+        vector<string> roomTriggerCommands;
+        bool triggersPresent = false;
+        current.getRoomTriggerCommands(roomTriggerCommands);
 
-    // Get the room name
-    XMLNode nameNode = node.getChildNode("name");
-    if (!nameNode.isEmpty())
-        {
-        name = nameNode.getText();
-        }
-
-    //Get the room description
-    XMLNode descriptionNode = node.getChildNode("description");
-    if (!descriptionNode.isEmpty())
-        {
-        description = descriptionNode.getText();
-        }
-
-    cout << "(room information)" << endl;
-    cout << "Name of the room is : " << name << endl;
-    cout << "Description of the room is : " << description << endl;
-    cout << "Type of the room is : " <<  type << endl;
-
-    getItems(node);
-    for (int i = 0; i < items.size(); i++)
-        {
-        items[i].updateOwner(name);
-        //itemMap[items[i].getName()] = items[i];
-        }
-    getTriggers(node);
-    getBorders(node);
-    getContainers(node);
-    getCreatures(node);
-
-}
-
-void room::getBorders (XMLNode node)
-{
-    int numberBorders = node.nChildNode("border");
-    for (int nBorders = 0; nBorders < numberBorders; nBorders++)
-        {
-            XMLNode borderNode = node.getChildNode("border", nBorders);
-            border newBorder(borderNode);
-            borders.push_back(newBorder);
-        }
-}
-
-
-void room::getContainers(XMLNode node)
-{
-    int numberContainers = node.nChildNode("container");
-    for (int nContainers = 0; nContainers < numberContainers; nContainers++)
-        {
-        XMLNode containerNode = node.getChildNode("container", nContainers);
-        container newContainer(containerNode);
-        containers.push_back(newContainer);
-        }
-}
-
-
-void room::getCreatures(XMLNode node)
-{
-    int numberCreatures = node.nChildNode("creature");
-    for (int nCreatures = 0; nCreatures < numberCreatures; nCreatures++)
-        {
-        XMLNode creatureNode = node.getChildNode("creature", nCreatures);
-        creature newCreature(creatureNode);
-        creatures.push_back(newCreature);
-        }
-}
-
-void room::getTriggers(XMLNode node)
-{
-    int numberTriggers = node.nChildNode("trigger");
-    for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
-        {
-            XMLNode triggerNode=node.getChildNode("trigger", nTriggers);
-            trigger newTrigger(triggerNode);
-            triggers.push_back(newTrigger);
-        }
-}
-
-
-void room::getItems(XMLNode node)
-{
-    int numberItems = node.nChildNode("item");
-    for (int nItems = 0; nItems < numberItems; nItems++)
-        {
-        XMLNode itemNode = node.getChildNode("item", nItems);
-        item newItem(itemNode);
-        items.push_back(newItem);
-        }
-}
-
-string room::getName()
-{
-    return name;
-}
-
-void room::readDescription()
-{
-    cout << description << endl;
-    return;
-}
-
-string room::checkBorders(string input)
-{
-    for (int i = 0; i<borders.size(); i++)
-        {
-        string direction = borders[i].getDirection();
-        if (input == direction)
+        for (int t = 0; t < roomTriggerCommands.size(); t++)
             {
-            return borders[i].getName();
+            if (userinput == roomTriggerCommands[t])
+                {
+                triggersPresent = true;
+                }
             }
-        }
-    string noBorder = "dummy";
-    return noBorder;
-}
-
-item room::checkItems(string input)
-{
-    for (int i = 0; i<items.size(); i++)
-        {
-        string itemName = items[i].getName();
-        if (input == itemName)
+        if (triggersPresent)
             {
-            return items[i];
-            }
-        }
-    string dummy = "dummy";
-    item emptyItem(dummy);
-    return emptyItem;
-}
+                trigger commandTrigger = current.checkTriggersByCommand(userinput);
+                condition triggerCondition = commandTrigger.getCondition();
+                string has, object, owner;
+                has = triggerCondition.getHas();
+                object = triggerCondition.getObject();
+                owner = triggerCondition.getOwner();
+                if (has == "") //one kind of room trigger
+                    {
 
-container room::checkContainers(string input)
-{
-    for (int i = 0; i < containers.size(); i++)
-        {
-        string containerName = containers[i].getName();
-        if (input == containerName)
+                    }
+                else if (has!= "") //other kind of room trigger. checks user inventory
+                    {
+                    if (has == "no")
+                        {
+                        if (owner == "inventory")
+                            {
+                            item returnItem = user.checkItems(object);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                commandTrigger.executePrint();
+                                }
+                            else
+                                {
+                                triggersPresent = false;
+                                }
+                            }
+                        }
+                    else
+                        {
+                        if (owner == "inventory")
+                            {
+                            item returnItem = user.checkItems(object);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                triggersPresent = false;
+                                }
+                            else
+                                {
+                                commandTrigger.executePrint();
+                                }
+                            }
+
+                        }
+                    }
+            }
+
+        if (triggersPresent == false)
             {
-            return containers[i];
-            }
+                if (inputVect.size() == 1)
+                {
+                    userinput = inputVect[0];
+                    if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w"))
+                    {
+                    string passDirection;
+                    if (userinput == "n")
+                        {
+                        passDirection = "north";
+                        }
+                    else if (userinput == "s")
+                        {
+                        passDirection = "south";
+                        }
+                    else if (userinput == "e")
+                        {
+                        passDirection = "east";
+                        }
+                    else if (userinput == "w")
+                        {
+                        passDirection = "west";
+                        }
+                    string returnRoomName = current.checkBorders(passDirection);
+                    if (returnRoomName == "dummy")
+                        {
+                        cout << "Can't go that way"<<endl;
+                        }
+                    else
+                        {
+                        cout << "The name of the room to that direction is " << returnRoomName << endl;
+                        cout << "You enter this room" << endl;
+                        room newLocation = roomMap[returnRoomName];
+                        user.updateLocation(newLocation);
+                        }
+                    }
+
+                    else if (userinput == "i")
+                        {
+                        user.readInventory();
+                        }
+                    else if (userinput == "quit")
+                        {
+                        foundExit = true;
+                        }
+                }
+                else if (inputVect.size() == 2)
+                    {
+                        if (inputVect[0] == "take")
+                            {
+                            string passItemName = inputVect[1];
+                            item returnItem = current.checkItems(passItemName);
+                            item checkInventory = user.checkItems(passItemName);
+                            if (checkInventory.getName() == "dummy")
+                                {
+                                if (returnItem.getName() == "dummy")
+                                    {
+                                    cout << "No such item in the room " << endl;
+                                    }
+                                else
+                                    {
+                                    cout << returnItem.getName() << " added to inventory " << endl;
+                                    //cout << "Your current inventory is : " << endl;
+                                    returnItem.updateOwner("inventory");
+                                    current.removeItem(returnItem.getName());
+                                    user.takeItem(returnItem);
+                                    //user.readInventory();
+                                    }
+                               }
+                            else
+                                {
+                                cout << "You already have that item " << endl;
+                                }
+                            }
+
+                        else if (inputVect[0] == "read")
+                            {
+                            string passItemName = inputVect[1];
+                            item returnItem = user.checkItems(passItemName);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                cout << "No such item in your inventory to be read " << endl;
+                                }
+                            else
+                                {
+                                returnItem.readWriting();
+                                }
+                            }
+
+                        else if (inputVect[0] == "drop")
+                            {
+                            string dropItemName = inputVect[1];
+                            item returnItem = user.checkItems(dropItemName);
+                            if (returnItem.getName() == "dummy")
+                                {
+                                cout << "No such item in your inventory to drop" << endl;
+                                }
+                            else
+                                {
+                                cout << "You dropped the " << returnItem.getName() << endl;
+                                //cout << "Your current inventory is : "<< endl;
+                                returnItem.updateOwner(current.getName());
+                                current.addItem(returnItem);
+                                user.dropItem(returnItem.getName());
+                                //user.readInventory();
+                                }
+
+                            }
+                        else if (inputVect[0] == "open")
+                            {
+                            string secondWord = inputVect[1];
+                            if (secondWord == "exit")
+                                {
+                                string roomType = current.getRoomType();
+                                if (roomType == "exit")
+                                    {
+                                    cout << "VICTORY!!!"<<endl;
+                                    foundExit = true;
+                                    }
+                                else
+                                    {
+                                    cout << "You have not made it to the exit yet " << endl;
+                                    }
+                                }
+                            else
+                                {
+                                container returnContainer = current.checkContainers(secondWord);
+                                if (returnContainer.getName() == "dummy")
+                                    {
+                                    cout << "No such container in the room to open" << endl;
+                                    }
+                                else
+                                    {
+                                    cout << "You open the " << returnContainer.getName() <<endl;
+                                    returnContainer.readItems();
+                                    }
+                                }
+
+                            }
+                        }
+                    else if (inputVect.size() == 3)
+                        {
+                            if ((inputVect[0] == "turn") && (inputVect[1] == "on"))
+                                {
+                                string turnonItem = inputVect[2];
+                                item returnItem = user.checkItems(turnonItem);
+                                if (returnItem.getName() == "dummy")
+                                    {
+                                    cout << "No such item in your inventory to turn on " << endl;
+                                    }
+                                else
+                                    {
+                                    cout << "You turn on the " << returnItem.getName() << endl;
+                                    returnItem.activateTurnon();
+                                    }
+                                }
+                        }
+                }
+
         }
-    string dummy = "dummy";
-    container emptyContainer(dummy);
-    return emptyContainer;
+    return 0;
 }
 
-trigger room::checkTriggersByCommand(string input)
-{
-    for (int i = 0; i<triggers.size(); i++)
-        {
-        string triggerName = triggers[i].getCommand();
-        if (input == triggerName)
-            {
-            return triggers[i];
-            }
-        }
-    string dummy = "dummy";
-    trigger emptyTrigger(dummy);
-    return emptyTrigger;
-}
 
 
-void room::removeItem(string itemName)
-{
-    std::vector<item>::iterator iter;
-    for(iter = items.begin(); iter != items.end(); ++iter )
-    {
-        if((*iter).getName() == itemName)
-        {
-            items.erase(iter);
-            break;
-        }
-    }
-}
-
-void room::addItem(item newItem)
-{
-    items.push_back(newItem);
-}
 
 
-void room::getRoomTriggerCommands(vector<string> & commands)
-{
-    for (int i = 0; i < triggers.size(); i++)
-        {
-        commands.push_back(triggers[i].getCommand());
-        }
-}
 
-string room::getRoomType()
-{
-    return type;
-}
-
-void room::readItems()
-{
-    cout << "Names of items in the room : " << endl;
-    for (int i = 0; i<items.size(); i++)
-        {
-            cout << items[i].getName() << endl;
-        }
-}
-
-
-room& room::operator=(const room& r)
-{
-    room newRoom;
-    name = r.name;
-    type = r.type;
-    description = r.description;
-    items.clear();
-    triggers.clear();
-    borders.clear();
-    creatures.clear();
-    containers.clear();
-    for (int i = 0; i < r.items.size(); i++)
-        {
-        items.push_back(r.items[i]);
-        }
-    for (int i = 0; i < r.triggers.size(); i++)
-        {
-        triggers.push_back(r.triggers[i]);
-        }
-    for (int i = 0; i < r.borders.size(); i++)
-        {
-        borders.push_back(r.borders[i]);
-        }
-    for (int i = 0; i < r.creatures.size(); i++)
-        {
-        creatures.push_back(r.creatures[i]);
-        }
-    for (int i = 0; i <containers.size(); i++)
-        {
-        containers.push_back(r.containers[i]);
-        }
-    return *this;
-}
-
-void room::readBorders()
-{
-    for (int i = 0; i<borders.size(); i++)
-        {
-            cout << "Border.name " << borders[i].getName() << endl;
-            cout << "Border.direction " << borders[i].getDirection() << endl;
-        }
-}
