@@ -36,12 +36,6 @@ item::item(XMLNode node)
         status = itemStatusNode.getText();
         }
 
-    cout << "(item information)" << endl;
-    cout << "Item name : " << name<< endl;
-    cout << "Item writing : " << writing << endl;
-    cout << "Item status : " << status  << endl;
-    cout << "Item owner : " << owner << endl;
-
     //turnon information for the item
     XMLNode turnonNode = node.getChildNode("turnon");
     if (!turnonNode.isEmpty())
