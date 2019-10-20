@@ -48,6 +48,7 @@ int main (int argc, char ** argv) {
     room current;
     while (foundExit == false)
         {
+        cout << "we are now fucking calling the assignment operator fuck jim skon " << endl;
         current = user.currentLocation();
         current.readDescription();
         cout << "At the onset, " << endl;
