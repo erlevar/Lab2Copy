@@ -32,12 +32,6 @@ condition::condition(XMLNode node)
         {
         status = statusNode.getText();
         }
-
-    cout << "(condition information)"<<endl;
-    cout << "owner : " << owner << endl;
-    cout << "has : " << has << endl;
-    cout << "object : " << object << endl;
-    cout << "status : " << status << endl;
 }
 
 string condition::getHas()
