@@ -173,6 +173,7 @@ int main (int argc, char ** argv) {
                             bool itemInRoom = false;
                             bool itemInContainer = false;
                             container presentContainer;
+                            item presentItem;
                             for (int i =0; i < roomContainers.size(); i++)
                                 {
                                 vector<item> itemsInContainer;
@@ -184,6 +185,7 @@ int main (int argc, char ** argv) {
                                         {
                                         itemInContainer = true;
                                         presentContainer = roomContainers[i];
+                                        presentItem = itemsInContainer[j];
                                         break;
                                         }
                                     }
@@ -212,10 +214,10 @@ int main (int argc, char ** argv) {
                                     }
                                 else if (itemInContainer == true)
                                     {
-                                    cout << returnItem.getName() << " added to inventory " << endl;
-                                    returnItem.updateOwner("inventory");
-                                    presentContainer.removeItem(returnItem.getName());
-                                    user.takeItem(returnItem);
+                                    cout << passItemName << " added to inventory " << endl;
+                                    presentItem.updateOwner("inventory");
+                                    presentContainer.removeItem(presentItem.getName());
+                                    user.takeItem(presentItem);
                                     }
                                }
                             else
