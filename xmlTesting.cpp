@@ -48,6 +48,7 @@ int main (int argc, char ** argv) {
     while (foundExit == false)
         {
         room current = user.currentLocation();
+        cout << "current.name is : " << current.getName();
         current.readDescription();
         string userinput;
         getline(cin, userinput);
