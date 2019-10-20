@@ -19,7 +19,7 @@ void player::readInventory()
 {
     if (inventory.size() == 0)
         {
-        cout << "No items in inventory" << endl;
+        cout << "Inventory : empty" << endl;
         return;
         }
     for (int i = 0; i < inventory.size(); i ++)
