@@ -193,8 +193,6 @@ void room::removeItem(string itemName)
 void room::addItem(item newItem)
 {
     items.push_back(newItem);
-    cout << "adding item with name " << newItem.getName() << "to the room"<<endl;
-    cout << "items.size() after adding item " << items.size() << endl;
 }
 
 
@@ -250,3 +248,11 @@ room& room::operator=(const room& r)
     return *this;
 }
 
+void room::readBorders()
+{
+    for (int i = 0; i<borders.size(); i++)
+        {
+            cout << "Border.name " << borders[i].getName() << endl;
+            cout << "Border.direction " << borders[i].getDirection() << endl;
+        }
+}
