@@ -231,7 +231,7 @@ int main (int argc, char ** argv) {
                                 string roomType = current.getRoomType();
                                 if (roomType == "exit")
                                     {
-                                    cout "VICTORY!!!"<<endl;
+                                    cout << "VICTORY!!!"<<endl;
                                     foundExit = true;
                                     }
                                 else
