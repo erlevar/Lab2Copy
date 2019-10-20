@@ -36,7 +36,7 @@ public :
     void getRoomTriggerCommands(vector<string> & commands);
     string getRoomType();
     void readItems();
-    //room& operator = (const room & r);
+    room& operator = (const room & r);
     //void checkTriggerConditionss(string command);
 
 
