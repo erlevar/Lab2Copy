@@ -314,7 +314,7 @@ int main (int argc, char ** argv) {
                                 }
                         }
                 }
-
+        roomMap[current.getName()] = current;
         }
     return 0;
 }
