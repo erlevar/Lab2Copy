@@ -88,7 +88,7 @@ void item::activateTurnon()
             {
             cout << actionVect[i] << endl;
             }
-        cout << "actionVect[actionVect.size() - 1" << actionVect[actionVect.size() - 1] << endl;
+        cout << "actionVect[actionVect.size() - 1] " << actionVect[actionVect.size() - 1] << endl;
         status = actionVect[actionVect.size() - 1];
         on = true;
         //cout << "Updated status for item " << status << endl;
@@ -106,5 +106,6 @@ item& item::operator=(const item& i)
     owner = i.owner;
     writing = i.writing;
     on = i.on;
+    itemTurnon = i.itemTurnon;
     return *this;
 }
