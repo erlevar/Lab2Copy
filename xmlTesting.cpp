@@ -47,6 +47,7 @@ int main (int argc, char ** argv) {
     bool foundExit = false;
     while (foundExit == false)
         {
+        bool changedRooms = false;
         room current = user.currentLocation();
         current.readDescription();
         cout << "At the onset, items are " << endl;
@@ -147,6 +148,7 @@ int main (int argc, char ** argv) {
                         {
                         cout << "The name of the room to that direction is " << returnRoomName << endl;
                         cout << "You enter this room" << endl;
+                        changedRooms = true;
                         room newLocation = roomMap[returnRoomName];
                         user.updateLocation(newLocation);
                         }
@@ -314,8 +316,11 @@ int main (int argc, char ** argv) {
                                 }
                         }
                 }
-        roomMap[current.getName()] = current;
-        user.updateLocation(current);
+        if (changedRooms == false)
+            {
+            user.updateLocation(current);
+            }
+
         }
     return 0;
 }
