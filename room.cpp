@@ -240,7 +240,7 @@ room& room::operator=(const room& r)
         {
         creatures.push_back(r.creatures[i]);
         }
-    for (int i = 0; i <containers.size(); i++)
+    for (int i = 0; i < r.containers.size(); i++)
         {
         containers.push_back(r.containers[i]);
         }
