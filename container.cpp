@@ -1,5 +1,16 @@
 #include "container.h"
 
+container::container()
+{
+    name, status, accept = "";
+}
+
+container::container(string s)
+{
+    name = s;
+    status, accept = "";
+}
+
 container::container(XMLNode node)
 {
     name, status, accept = "";
@@ -60,4 +71,23 @@ void container::getTriggers(XMLNode node)
             trigger newTrigger(triggerNode);
             triggers.push_back(newTrigger);
         }
+}
+
+string container::getName()
+{
+    return name;
+}
+
+void container::readItems()
+{
+    cout << "Contents of the container " << endl;
+    if (items[i].size() == 0)
+        {
+        cout << "Container is empty " << endl;
+        }
+    for (int i =0; i < items.size(); i++)
+        {
+        items[i].readName();
+        }
+    return;
 }
