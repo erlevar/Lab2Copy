@@ -29,10 +29,12 @@ public :
     void readDescription();
     string checkBorders(string input);
     item checkItems(string input);
+    item checkContainers(string input);
     trigger checkTriggersByCommand(string input);
     void removeItem(string itemName);
     void addItem(item newItem);
     void getRoomTriggerCommands(vector<string> & commands);
+    string getRoomType();
     //void checkTriggerConditionss(string command);
 
 
