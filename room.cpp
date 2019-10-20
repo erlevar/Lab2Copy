@@ -221,13 +221,16 @@ void room::readItems()
         }
 }
 
-/*
+
 room& room::operator=(room& r)
 {
     room newRoom;
     newRoom.name = r.name;
     newRoom.description = r.description;
     newRoom.type = r.type;
-    for (int i = 0; i <)
+    for (int i = 0; i <items.size(); i++)
+        {
+        newRoom.items.push_back(items[i]);
+        }
 }
-*/
+
