@@ -29,6 +29,11 @@ container::container(XMLNode node)
 
     cout << "(items in container)" << endl;
     getItems(node);
+    for (int i =0; i<items.size(); i++)
+        {
+            items[i].updateOwner(name);
+        }
+
 
     cout << "(triggers for container)" << endl;
     getTriggers(node);
