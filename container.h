@@ -6,6 +6,7 @@
 #include "trigger.h"
 #include "extraFunctions.h"
 #include <vector>
+#include <iterator>
 using namespace std;
 
 
@@ -15,10 +16,14 @@ public:
     container();
     container(string s);
     container(XMLNode node);
-    void getTriggers(XMLNode node);
-    void getItems(XMLNode node);
+    void setTriggers(XMLNode node);
+    void setItems(XMLNode node);
     string getName();
     void readItems();
+    container& operator = (const container& c);
+    item checkItems(string input);
+    void getItems(vector<item> & returnItems);
+    void removeItem(string itemName);
 
 private :
     string name;
