@@ -29,7 +29,7 @@ public :
     void readDescription();
     string checkBorders(string input);
     item checkItems(string input);
-    item checkContainers(string input);
+    container checkContainers(string input);
     trigger checkTriggersByCommand(string input);
     void removeItem(string itemName);
     void addItem(item newItem);
