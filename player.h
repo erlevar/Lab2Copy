@@ -16,6 +16,7 @@ public:
     void takeItem(item newItem);
     item checkItems(string s);
     void dropItem(string s);
+    player& operator=(const player & p);
 
 private :
     room current;
