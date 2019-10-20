@@ -165,6 +165,7 @@ int main (int argc, char ** argv) {
                         if (inputVect[0] == "take")
                             {
                             string passItemName = inputVect[1];
+                            cout << "Executing current.checkItems" << endl;
                             item returnItem = current.checkItems(passItemName);
                             item checkInventory = user.checkItems(passItemName);
                             if (checkInventory.getName() == "dummy")
