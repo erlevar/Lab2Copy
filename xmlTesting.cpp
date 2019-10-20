@@ -190,7 +190,7 @@ int main (int argc, char ** argv) {
                                 }
                             }
 
-                        if (inputVect[0] == "read")
+                        else if (inputVect[0] == "read")
                             {
                             string passItemName = inputVect[1];
                             item returnItem = user.checkItems(passItemName);
@@ -204,7 +204,7 @@ int main (int argc, char ** argv) {
                                 }
                             }
 
-                        if (inputVect[0] == "drop")
+                        else if (inputVect[0] == "drop")
                             {
                             string dropItemName = inputVect[1];
                             item returnItem = user.checkItems(dropItemName);
@@ -220,6 +220,36 @@ int main (int argc, char ** argv) {
                                 current.addItem(returnItem);
                                 user.dropItem(returnItem.getName());
                                 user.readInventory();
+                                }
+
+                            }
+                        else if (inputVect[0] == "open")
+                            {
+                            string secondWord = inputVect[1];
+                            if (secondWord == "exit")
+                                {
+                                string roomType = current.getRoomType();
+                                if (roomType == "exit")
+                                    {
+                                    cout "VICTORY!!!"<<endl;
+                                    foundExit = true;
+                                    }
+                                else
+                                    {
+                                    cout << "You have not made it to the exit yet " << endl;
+                                    }
+                                }
+                            else
+                                {
+                                container returnContainer = current.checkItems(secondWord);
+                                if (returnContainer.getName() == "dummy")
+                                    {
+                                    cout << "No such container in the room to open" << endl;
+                                    }
+                                else
+                                    {
+                                    cout << "You open the " << returnContainer.getName() <<endl;
+                                    }
                                 }
 
                             }
