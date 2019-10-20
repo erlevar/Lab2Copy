@@ -166,6 +166,8 @@ int main (int argc, char ** argv) {
                             {
                             string passItemName = inputVect[1];
                             item returnItem = current.checkItems(passItemName);
+                            cout << "current.readItems fuck jim skon"<<endl;
+                            current.readItems();
                             vector<container> roomContainers;
                             current.getContainers(roomContainers);
 
@@ -191,7 +193,7 @@ int main (int argc, char ** argv) {
                                     }
                                 }
 
-                            if (returnItem.getName() != "dummy")
+                            if (returnItem.getName() == passItemName)
                                 {
                                 itemInRoom = true;
                                 }
