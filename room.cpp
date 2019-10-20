@@ -232,5 +232,22 @@ room& room::operator=(const room& r)
         {
         newRoom.items.push_back(items[i]);
         }
+    for (int i = 0; i <triggers.size(); i++)
+        {
+        newRoom.triggers.push_back(triggers[i]);
+        }
+    for (int i = 0; i <borders.size(); i++)
+        {
+        newRoom.borders.push_back(borders[i]);
+        }
+    for (int i = 0; i <creatures.size(); i++)
+        {
+        newRoom.creatures.push_back(creatures[i]);
+        }
+    for (int i = 0; i <containers.size(); i++)
+        {
+        newRoom.containers.push_back(containers[i]);
+        }
+    return newRoom;
 }
 
