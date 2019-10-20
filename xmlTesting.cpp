@@ -265,7 +265,7 @@ int main (int argc, char ** argv) {
                                     }
                                 else
                                     {
-                                    cout << "You turn on the " << returnItem.getName();
+                                    cout << "You turn on the " << returnItem.getName() << endl;
                                     returnItem.activateTurnon();
                                     }
                                 }
