@@ -47,7 +47,7 @@ int main (int argc, char ** argv) {
     bool foundExit = false;
     while (foundExit == false)
         {
-        current = user.currentLocation();
+        room current = user.currentLocation();
         current.readDescription();
         string userinput;
         getline(cin, userinput);
