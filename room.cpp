@@ -222,7 +222,7 @@ void room::readItems()
 }
 
 
-room& room::operator=(room& r)
+room& room::operator=(const room& r)
 {
     room newRoom;
     newRoom.name = r.name;
