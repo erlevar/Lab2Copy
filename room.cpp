@@ -136,7 +136,6 @@ item room::checkItems(string input)
     for (int i = 0; i<items.size(); i++)
         {
         string itemName = items[i].getName();
-        cout << "itemName is : " << itemName << endl;
         if (input == itemName)
             {
             return items[i];
