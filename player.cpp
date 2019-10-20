@@ -33,12 +33,12 @@ void player::takeItem(item newItem)
 {
     cout << "takeItem testing !!" << endl;
     cout << "newItem.getName() " << endl;
-    cout << newItem.getName();
+    cout << newItem.getName() << endl;
     inventory.push_back(newItem);
     cout << "Inventory after adding item" << endl;
     for (int i = 0; i < inventory.size(); i++)
         {
-        cout << inventory[i].getName();
+        cout << inventory[i].getName() ,<endl;
         }
 }
 
@@ -68,4 +68,14 @@ void player::dropItem(string itemName)
             break;
         }
     }
+}
+
+player& player::operator=(const player & p)
+{
+    current = p.current;
+    for (int i =0; i < p.inventory.size(); i++)
+        {
+        inventory.push_back(p.inventory[i]);
+        }
+    return *this;
 }
