@@ -38,7 +38,7 @@ void player::takeItem(item newItem)
     cout << "Inventory after adding item" << endl;
     for (int i = 0; i < inventory.size(); i++)
         {
-        cout << inventory[i].getName() ,<endl;
+        cout << inventory[i].getName() <<endl;
         }
 }
 
