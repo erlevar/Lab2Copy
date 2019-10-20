@@ -31,7 +31,15 @@ void player::readInventory()
 
 void player::takeItem(item newItem)
 {
+    cout << "takeItem testing !!" << endl;
+    cout << "newItem.getName() " << endl;
+    newItem.getName();
     inventory.push_back(newItem);
+    cout << "Inventory after adding item" << endl;
+    for (int i = 0; i < inventory.size(); i++)
+        {
+        cout << inventory[i].getName();
+        }
 }
 
 item player::checkItems(string input)
