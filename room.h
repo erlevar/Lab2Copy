@@ -25,7 +25,7 @@ public :
     void getCreatures(XMLNode node);
     void getTriggers(XMLNode node);
     void getItems(XMLNode node);
-    string getName();+
+    string getName();
     void readDescription();
     string checkBorders(string input);
     item checkItems(string input);
