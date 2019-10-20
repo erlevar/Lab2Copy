@@ -226,6 +226,7 @@ room& room::operator=(const room& r)
     for (int i = 0; i < r.items.size(); i++)
         {
         items.push_back(r.items[i]);
+        cout << "r.items[i] " << r.items[i].getName() << endl;
         }
     for (int i = 0; i < r.triggers.size(); i++)
         {
