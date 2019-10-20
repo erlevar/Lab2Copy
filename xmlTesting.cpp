@@ -45,15 +45,12 @@ int main (int argc, char ** argv) {
     room entrance = roomMap["Entrance"];
     player user(entrance);
     bool foundExit = false;
-    room current;
     while (foundExit == false)
         {
-        cout << "we are now fucking calling the assignment operator fuck jim skon " << endl;
-        current = user.currentLocation();
+        room current = user.currentLocation();
         current.readDescription();
-        cout << "At the onset, " << endl;
+        cout << "At the onset, items are " << endl;
         current.readItems();
-        current.readBorders();
         string userinput;
         getline(cin, userinput);
         vector<string> inputVect;
