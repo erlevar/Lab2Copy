@@ -225,29 +225,29 @@ void room::readItems()
 room& room::operator=(const room& r)
 {
     room newRoom;
-    newRoom.name = r.name;
-    newRoom.description = r.description;
-    newRoom.type = r.type;
-    for (int i = 0; i <items.size(); i++)
+    name = r.name;
+    type = r.type;
+    description = r.description;
+    for (int i = 0; i < r.items.size(); i++)
         {
-        newRoom.items.push_back(items[i]);
+        items.push_back(r.items[i]);
         }
-    for (int i = 0; i <triggers.size(); i++)
+    for (int i = 0; i < r.triggers.size(); i++)
         {
-        newRoom.triggers.push_back(triggers[i]);
+        triggers.push_back(r.triggers[i]);
         }
-    for (int i = 0; i <borders.size(); i++)
+    for (int i = 0; i < r.borders.size(); i++)
         {
-        newRoom.borders.push_back(borders[i]);
+        borders.push_back(r.borders[i]);
         }
-    for (int i = 0; i <creatures.size(); i++)
+    for (int i = 0; i < r.creatures.size(); i++)
         {
-        newRoom.creatures.push_back(creatures[i]);
+        creatures.push_back(r.creatures[i]);
         }
     for (int i = 0; i <containers.size(); i++)
         {
-        newRoom.containers.push_back(containers[i]);
+        containers.push_back(r.containers[i]);
         }
-    return newRoom;
+    return *this;
 }
 
