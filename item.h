@@ -20,6 +20,7 @@ public:
     void updateOwner(string newOwner);
     void readWriting();
     void activateTurnon();
+    item& operator=(const item& i);
 
 
     //void putInContainer(); //probably should pass the current owner and new owner (e.g. user to container)
