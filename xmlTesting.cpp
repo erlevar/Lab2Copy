@@ -53,7 +53,6 @@ int main (int argc, char ** argv) {
         getline(cin, userinput);
         vector<string> inputVect;
         separateWords(userinput, inputVect);
-
         vector<string> roomTriggerCommands;
         bool triggersPresent = false;
         current.getRoomTriggerCommands(roomTriggerCommands);
@@ -165,10 +164,6 @@ int main (int argc, char ** argv) {
                         if (inputVect[0] == "take")
                             {
                             string passItemName = inputVect[1];
-                            cout << "Executing current.checkItems" << endl;
-                            cout << "current room is " << current.getName() << endl;
-                            cout << "Executing current.readItems" << endl;
-                            current.readItems();
                             item returnItem = current.checkItems(passItemName);
                             item checkInventory = user.checkItems(passItemName);
                             if (checkInventory.getName() == "dummy")
@@ -221,7 +216,6 @@ int main (int argc, char ** argv) {
                                 //cout << "Your current inventory is : "<< endl;
                                 returnItem.updateOwner(current.getName());
                                 current.addItem(returnItem);
-                                current.readItems();
                                 user.dropItem(returnItem.getName());
                                 //user.readInventory();
                                 }
