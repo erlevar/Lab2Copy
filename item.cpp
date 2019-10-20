@@ -97,5 +97,5 @@ item& item::operator=(const item& i)
     owner = i.owner;
     writing = i.writing;
     on = i.on;
-    return *this
+    return *this;
 }
