@@ -18,6 +18,7 @@ public:
     void getTriggers(XMLNode node);
     void getItems(XMLNode node);
     string getName();
+    void readItems();
 
 private :
     string name;
