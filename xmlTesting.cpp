@@ -315,6 +315,7 @@ int main (int argc, char ** argv) {
                         }
                 }
         roomMap[current.getName()] = current;
+        user.updateLocation(current);
         }
     return 0;
 }
