@@ -186,7 +186,13 @@ void room::removeItem(string itemName)
 
 void room::addItem(item newItem)
 {
+    cout << "calling room.additem" << endl;
     items.push_back(newItem);
+    cout << "contents of item after this fucking bullshit happens " << endl;
+    for (int i =0; i < items.size(); i++)
+        {
+        cout << items[i].getNme() << endl;
+        }
 }
 
 
