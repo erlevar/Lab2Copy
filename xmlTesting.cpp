@@ -45,9 +45,10 @@ int main (int argc, char ** argv) {
     room entrance = roomMap["Entrance"];
     player user(entrance);
     bool foundExit = false;
+    room current;
     while (foundExit == false)
         {
-        room current = user.currentLocation();
+        current = user.currentLocation();
         cout << "current.name is : " << current.getName();
         current.readDescription();
         string userinput;
