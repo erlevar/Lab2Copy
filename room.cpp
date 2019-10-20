@@ -29,20 +29,20 @@ room::room(XMLNode node)
         {
         description = descriptionNode.getText();
         }
-    getItems(node);
+    setItems(node);
     for (int i = 0; i < items.size(); i++)
         {
         items[i].updateOwner(name);
         //itemMap[items[i].getName()] = items[i];
         }
-    getTriggers(node);
-    getBorders(node);
-    getContainers(node);
-    getCreatures(node);
+    setTriggers(node);
+    setBorders(node);
+    setContainers(node);
+    setCreatures(node);
 
 }
 
-void room::getBorders (XMLNode node)
+void room::setBorders (XMLNode node)
 {
     int numberBorders = node.nChildNode("border");
     for (int nBorders = 0; nBorders < numberBorders; nBorders++)
@@ -54,7 +54,7 @@ void room::getBorders (XMLNode node)
 }
 
 
-void room::getContainers(XMLNode node)
+void room::setContainers(XMLNode node)
 {
     int numberContainers = node.nChildNode("container");
     for (int nContainers = 0; nContainers < numberContainers; nContainers++)
@@ -66,7 +66,7 @@ void room::getContainers(XMLNode node)
 }
 
 
-void room::getCreatures(XMLNode node)
+void room::setCreatures(XMLNode node)
 {
     int numberCreatures = node.nChildNode("creature");
     for (int nCreatures = 0; nCreatures < numberCreatures; nCreatures++)
@@ -77,7 +77,7 @@ void room::getCreatures(XMLNode node)
         }
 }
 
-void room::getTriggers(XMLNode node)
+void room::setTriggers(XMLNode node)
 {
     int numberTriggers = node.nChildNode("trigger");
     for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
@@ -89,7 +89,7 @@ void room::getTriggers(XMLNode node)
 }
 
 
-void room::getItems(XMLNode node)
+void room::setItems(XMLNode node)
 {
     int numberItems = node.nChildNode("item");
     for (int nItems = 0; nItems < numberItems; nItems++)
@@ -173,7 +173,7 @@ trigger room::checkTriggersByCommand(string input)
 
 void room::removeItem(string itemName)
 {
-    std::vector<item>::iterator iter;
+    vector<item>::iterator iter;
     for(iter = items.begin(); iter != items.end(); ++iter )
     {
         if((*iter).getName() == itemName)
@@ -215,7 +215,6 @@ void room::readItems()
 
 room& room::operator=(const room& r)
 {
-    room newRoom;
     name = r.name;
     type = r.type;
     description = r.description;
@@ -254,4 +253,13 @@ void room::readBorders()
             cout << "Border.name " << borders[i].getName() << endl;
             cout << "Border.direction " << borders[i].getDirection() << endl;
         }
+}
+
+void room::getContainers(vector<container> & returnContainers)
+{
+    for (int i = 0; i<containers.size(); i++)
+        {
+        returnContainers.push_back(containers[i]);
+        }
+    return;
 }
