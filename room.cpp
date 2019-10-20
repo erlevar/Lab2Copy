@@ -225,6 +225,7 @@ room& room::operator=(const room& r)
     containers.clear();
     for (int i = 0; i < r.items.size(); i++)
         {
+        cout << "item being pushed back fuck you skon I hate you " << endl;
         items.push_back(r.items[i]);
         }
     for (int i = 0; i < r.triggers.size(); i++)
