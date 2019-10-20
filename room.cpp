@@ -29,12 +29,6 @@ room::room(XMLNode node)
         {
         description = descriptionNode.getText();
         }
-
-    cout << "(room information)" << endl;
-    cout << "Name of the room is : " << name << endl;
-    cout << "Description of the room is : " << description << endl;
-    cout << "Type of the room is : " <<  type << endl;
-
     getItems(node);
     for (int i = 0; i < items.size(); i++)
         {
