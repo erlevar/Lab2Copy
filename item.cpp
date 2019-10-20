@@ -88,6 +88,14 @@ void item::activateTurnon()
         {
         cout << "Item has already been turned on " << endl;
         }
+}
 
-
+item& item::operator=(const item& i)
+{
+    name = i.name;
+    status = i.status;
+    owner = i.owner;
+    writing = i.writing;
+    on = i.on;
+    return *this
 }
