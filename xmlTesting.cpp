@@ -53,6 +53,7 @@ int main (int argc, char ** argv) {
         current.readDescription();
         cout << "At the onset, " << endl;
         current.readItems();
+        current.readBorders();
         string userinput;
         getline(cin, userinput);
         vector<string> inputVect;
