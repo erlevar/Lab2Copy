@@ -214,7 +214,7 @@ int main (int argc, char ** argv) {
                                     }
                                 else if (itemInContainer == true)
                                     {
-                                    cout << passItemName << " added to inventory " << endl;
+                                    cout << presentItem.getName() << " added to inventory " << endl;
                                     presentItem.updateOwner("inventory");
                                     presentContainer.removeItem(presentItem.getName());
                                     user.takeItem(presentItem);
