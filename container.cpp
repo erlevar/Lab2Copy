@@ -117,7 +117,7 @@ item container::checkItems(string input)
     return emptyItem;
 }
 
-void contianer::getItems(vector<item> &  returnItems)
+void container::getItems(vector<item> &  returnItems)
 {
     for (int i =0; i<items.size(); i++)
         {
