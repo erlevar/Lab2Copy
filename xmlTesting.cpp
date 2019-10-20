@@ -182,7 +182,7 @@ int main (int argc, char ** argv) {
                                     {
                                     if (itemsInContainer[j].getName() == passItemName)
                                         {
-                                        itemsInContainer = true;
+                                        itemInContainer = true;
                                         presentContainer = roomContainers[i];
                                         break;
                                         }
