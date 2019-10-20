@@ -140,7 +140,7 @@ int main (int argc, char ** argv) {
                     string returnRoomName = current.checkBorders(passDirection);
                     if (returnRoomName == "dummy")
                         {
-                        cout << "No room to that direction"<<endl;
+                        cout << "Can't go that way"<<endl;
                         }
                     else
                         {
@@ -154,7 +154,6 @@ int main (int argc, char ** argv) {
                     else if (userinput == "i")
                         {
                         user.readInventory();
-
                         }
                     else if (userinput == "quit")
                         {
@@ -176,12 +175,12 @@ int main (int argc, char ** argv) {
                                     }
                                 else
                                     {
-                                    cout << "You picked up the " << returnItem.getName() << endl;
-                                    cout << "Your current inventory is : " << endl;
+                                    cout << returnItem.getName() << " added to inventory " << endl;
+                                    //cout << "Your current inventory is : " << endl;
                                     returnItem.updateOwner("inventory");
                                     current.removeItem(returnItem.getName());
                                     user.takeItem(returnItem);
-                                    user.readInventory();
+                                    //user.readInventory();
                                     }
                                }
                             else
@@ -215,11 +214,11 @@ int main (int argc, char ** argv) {
                             else
                                 {
                                 cout << "You dropped the " << returnItem.getName() << endl;
-                                cout << "Your current inventory is : "<< endl;
+                                //cout << "Your current inventory is : "<< endl;
                                 returnItem.updateOwner(current.getName());
                                 current.addItem(returnItem);
                                 user.dropItem(returnItem.getName());
-                                user.readInventory();
+                                //user.readInventory();
                                 }
 
                             }
@@ -249,6 +248,7 @@ int main (int argc, char ** argv) {
                                 else
                                     {
                                     cout << "You open the " << returnContainer.getName() <<endl;
+                                    returnContainer.readItems();
                                     }
                                 }
 
@@ -266,6 +266,7 @@ int main (int argc, char ** argv) {
                                     }
                                 else
                                     {
+                                    cout << "You turn on the " << returnItem.getName();
                                     returnItem.activateTurnon();
                                     }
                                 }
