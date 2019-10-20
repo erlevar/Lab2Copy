@@ -50,6 +50,8 @@ int main (int argc, char ** argv) {
         {
         current = user.currentLocation();
         current.readDescription();
+        cout << "At the onset, " << endl;
+        current.readItems();
         string userinput;
         getline(cin, userinput);
         vector<string> inputVect;
