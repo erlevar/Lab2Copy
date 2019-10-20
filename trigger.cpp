@@ -43,13 +43,6 @@ trigger::trigger(XMLNode node)
         action = actionNode.getText();
         }
 
-    cout << "(trigger information)" << endl;
-    cout << "type : " << type << endl;
-    cout << "command : " << command << endl;
-    cout << "print : " << print << endl;
-    cout << "action : " << action << endl;
-
-    cout << "condition information for trigger" << endl;
     XMLNode conditionNode = node.getChildNode("condition");
     condition tempCondition(conditionNode);
     triggerCondition = tempCondition;
