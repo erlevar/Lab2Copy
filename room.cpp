@@ -191,7 +191,7 @@ void room::addItem(item newItem)
     cout << "contents of item after this fucking bullshit happens " << endl;
     for (int i =0; i < items.size(); i++)
         {
-        cout << items[i].getNme() << endl;
+        cout << items[i].getName() << endl;
         }
 }
 
