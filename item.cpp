@@ -81,6 +81,7 @@ void item::activateTurnon()
         vector<string> actionVect;
         separateWords(action, actionVect);
         status = actionVect[actionVect.size() - 1];
+        on = true;
         //cout << "Updated status for item " << status << endl;
         }
     else
