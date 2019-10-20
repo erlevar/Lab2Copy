@@ -208,3 +208,12 @@ string room::getRoomType()
 {
     return type;
 }
+
+void room::readItems()
+{
+    cout << "Names of items in the room : " << endl;
+    for (int i = 0; i<items.size(); i++)
+        {
+            cout << items[i].getName();
+        }
+}
