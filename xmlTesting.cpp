@@ -172,7 +172,7 @@ int main (int argc, char ** argv) {
                             bool itemPresent = false;
                             bool itemInRoom = false;
                             bool itemInContainer = false;
-                            contianer presentContainer;
+                            container presentContainer;
                             for (int i =0; i < roomContainers.size(); i++)
                                 {
                                 vector<item> itemsInContainer;
