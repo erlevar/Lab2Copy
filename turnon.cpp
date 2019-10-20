@@ -20,10 +20,6 @@ turnon::turnon(XMLNode node)
         {
         action = turnonActionNode.getText();
         }
-
-    cout << "(item turnon information)" << endl;
-    cout << "Item turnon print : " << print << endl;
-    cout << "Item turnon action : " << action << endl;
 }
 
 void turnon::readPrint()
