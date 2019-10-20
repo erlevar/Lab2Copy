@@ -195,7 +195,7 @@ int main (int argc, char ** argv) {
                                 {
                                 itemInRoom = true;
                                 }
-
+                            cout << "returnItem.getName() is equal to FUCK C++ I HATE SKON SO FUCKING MUCH "  << returnItem.getName() << endl;
                             item checkInventory = user.checkItems(passItemName);
                             if (checkInventory.getName() == "dummy")
                                 {
