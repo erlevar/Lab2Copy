@@ -49,7 +49,9 @@ int main (int argc, char ** argv) {
     while (foundExit == false)
         {
         current = user.currentLocation();
-        cout << "current.name is : " << current.getName();
+        cout << "current.name is : " << current.getName() << endl;
+        cout << "current.readBorders : " << endl;
+        current.readBorders();
         current.readDescription();
         string userinput;
         getline(cin, userinput);
