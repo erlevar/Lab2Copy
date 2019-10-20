@@ -33,20 +33,12 @@ container::container(XMLNode node)
         accept = containerAcceptNode.getText();
         }
 
-    cout << "(container information)"<<endl;
-    cout << "container name : " << name << endl;
-    cout << "container status : " << status << endl;
-    cout << "container accept :" << accept << endl;
-
-    cout << "(items in container)" << endl;
     getItems(node);
     for (int i =0; i<items.size(); i++)
         {
             items[i].updateOwner(name);
         }
 
-
-    cout << "(triggers for container)" << endl;
     getTriggers(node);
 
 }
