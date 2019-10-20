@@ -81,7 +81,7 @@ string container::getName()
 void container::readItems()
 {
     cout << "Contents of the container " << endl;
-    if (items[i].size() == 0)
+    if (items.size() == 0)
         {
         cout << "Container is empty " << endl;
         }
