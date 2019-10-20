@@ -146,6 +146,21 @@ item room::checkItems(string input)
     return emptyItem;
 }
 
+container room::checkContainers(string input)
+{
+    for (int i = 0; i < containers.size(); i++)
+        {
+        string containerName = containers[i].getName();
+        if (input == containerName)
+            {
+            return containers[i];
+            }
+        }
+    string dummy = "dummy"
+    container emptyContainer(dummy);
+    return emptyContainer;
+}
+
 trigger room::checkTriggersByCommand(string input)
 {
     for (int i = 0; i<triggers.size(); i++)
@@ -189,12 +204,7 @@ void room::getRoomTriggerCommands(vector<string> & commands)
         }
 }
 
-/*
-void room::checkTriggerCondition(string command)
+string room::getRoomType()
 {
-
-
+    return type;
 }
-*/
-
-
