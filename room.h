@@ -20,11 +20,11 @@ class room
 public :
     room();
     room(XMLNode node);
-    void getBorders(XMLNode node);
-    void getContainers(XMLNode node);
-    void getCreatures(XMLNode node);
-    void getTriggers(XMLNode node);
-    void getItems(XMLNode node);
+    void setBorders(XMLNode node);
+    void setContainers(XMLNode node);
+    void setCreatures(XMLNode node);
+    void setTriggers(XMLNode node);
+    void setItems(XMLNode node);
     string getName();
     void readDescription();
     string checkBorders(string input);
@@ -38,6 +38,7 @@ public :
     void readItems();
     room& operator = (const room & r);
     void readBorders();
+    void getContainers(vector<container> & returnContainers);
     //void checkTriggerConditionss(string command);
 
 
