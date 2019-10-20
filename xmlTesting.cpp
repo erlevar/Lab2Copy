@@ -217,6 +217,7 @@ int main (int argc, char ** argv) {
                                 //cout << "Your current inventory is : "<< endl;
                                 returnItem.updateOwner(current.getName());
                                 current.addItem(returnItem);
+                                current.readIems();
                                 user.dropItem(returnItem.getName());
                                 //user.readInventory();
                                 }
