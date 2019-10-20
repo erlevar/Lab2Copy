@@ -166,14 +166,42 @@ int main (int argc, char ** argv) {
                             {
                             string passItemName = inputVect[1];
                             item returnItem = current.checkItems(passItemName);
+                            vector<container> roomContainers;
+                            current.getContainers(roomContainers);
+
+                            bool itemPresent = false;
+                            bool itemInRoom = false;
+                            bool itemInContainer = false;
+                            contianer presentContainer;
+                            for (int i =0; i < roomContainers.size(); i++)
+                                {
+                                vector<item> itemsInContainer;
+                                roomContainers[i].getItems(itemsInContainer);
+
+                                for (int j = 0; j < itemsInContainer.size(); j++)
+                                    {
+                                    if (itemsInContainer[j].getName() == passItemName)
+                                        {
+                                        itemsInContainer = true;
+                                        presentContainer = roomContainers[i];
+                                        break;
+                                        }
+                                    }
+                                }
+
+                            if (returnItem.getName() != "dummy")
+                                {
+                                itemInRoom = true;
+                                }
+
                             item checkInventory = user.checkItems(passItemName);
                             if (checkInventory.getName() == "dummy")
                                 {
-                                if (returnItem.getName() == "dummy")
+                                if ((itemInContainer == false) && (itemInRoom == false))
                                     {
-                                    cout << "No such item in the room " << endl;
+                                    cout << "No such item to pick up" << endl;
                                     }
-                                else
+                                else if (itemInRoom == true)
                                     {
                                     cout << returnItem.getName() << " added to inventory " << endl;
                                     //cout << "Your current inventory is : " << endl;
@@ -181,6 +209,13 @@ int main (int argc, char ** argv) {
                                     current.removeItem(returnItem.getName());
                                     user.takeItem(returnItem);
                                     //user.readInventory();
+                                    }
+                                else if (itemInContainer == true)
+                                    {
+                                    cout << returnItem.getName() << " added to inventory " << endl;
+                                    returnItem.updateOwner("inventory");
+                                    presentContainer.removeItem(returnItem.getName());
+                                    user.takeItem(returnItem);
                                     }
                                }
                             else
@@ -214,11 +249,9 @@ int main (int argc, char ** argv) {
                             else
                                 {
                                 cout << "You dropped the " << returnItem.getName() << endl;
-                                //cout << "Your current inventory is : "<< endl;
                                 returnItem.updateOwner(current.getName());
                                 current.addItem(returnItem);
                                 user.dropItem(returnItem.getName());
-                                //user.readInventory();
                                 }
 
                             }
