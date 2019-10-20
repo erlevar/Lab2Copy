@@ -156,7 +156,7 @@ container room::checkContainers(string input)
             return containers[i];
             }
         }
-    string dummy = "dummy"
+    string dummy = "dummy";
     container emptyContainer(dummy);
     return emptyContainer;
 }
