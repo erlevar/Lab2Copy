@@ -33,17 +33,17 @@ container::container(XMLNode node)
         accept = containerAcceptNode.getText();
         }
 
-    getItems(node);
+    setItems(node);
     for (int i =0; i<items.size(); i++)
         {
             items[i].updateOwner(name);
         }
 
-    getTriggers(node);
+    setTriggers(node);
 
 }
 
-void container::getItems(XMLNode node)
+void container::setItems(XMLNode node)
 {
     int numberItems = node.nChildNode("item");
     for (int nItems = 0; nItems < numberItems; nItems++)
@@ -54,7 +54,7 @@ void container::getItems(XMLNode node)
         }
 }
 
-void container::getTriggers(XMLNode node)
+void container::setTriggers(XMLNode node)
 {
     int numberTriggers = node.nChildNode("trigger");
     for (int nTriggers = 0; nTriggers < numberTriggers; nTriggers++)
@@ -82,4 +82,60 @@ void container::readItems()
         items[i].readName();
         }
     return;
+}
+
+container& container::operator=(const container& c)
+{
+    name = c.name;
+    status = c.name;
+    accept = c.accept;
+    items.clear();
+    triggers.clear();
+    for (int i = 0; i < c.items.size(); i++)
+        {
+            items.push_back(c.items[i]);
+        }
+    for (int i = 0; i < c.triggers.size(); i++)
+        {
+            triggers.push_back(c.triggers[i]);
+        }
+    return *this;
+}
+
+item container::checkItems(string input)
+{
+    for (int i = 0; i<items.size(); i++)
+        {
+        string itemName = items[i].getName();
+        if (input == itemName)
+            {
+            return items[i];
+            }
+        }
+    string dummy = "dummy";
+    item emptyItem(dummy);
+    return emptyItem;
+}
+
+void contianer::getItems(vector<item> &  returnItems)
+{
+    for (int i =0; i<items.size(); i++)
+        {
+        returnItems.push_back(items[i]);
+        }
+    return;
+}
+
+
+void container::removeItem(string itemName)
+{
+    vector<item>::iterator iter;
+    for(iter = items.begin(); iter != items.end(); ++iter )
+    {
+        if((*iter).getName() == itemName)
+        {
+            items.erase(iter);
+            break;
+        }
+    }
 }
