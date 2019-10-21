@@ -57,7 +57,7 @@ string trigger::getCommand()
     else
         {
         string emptyS = "empty";
-        return empty;
+        return emptyS;
         }
 
 }
