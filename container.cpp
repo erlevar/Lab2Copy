@@ -176,3 +176,19 @@ string container::getStatus()
 {
     return status;
 }
+
+container& container::operator = (const container & c)
+{
+    name = c.name;
+    accept = c.accept;
+    status = c.status;
+    for (int i = 0; i < c.items.size(); i++)
+        {
+        items.push_back(c[i]);
+        }
+    for (int i = 0; i < c.triggers.size(); i++)
+        {
+        triggers.push_back(c[i]);
+        }
+    return *this;
+}
