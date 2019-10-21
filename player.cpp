@@ -73,7 +73,7 @@ player& player::operator=(const player & p)
     return *this;
 }
 
-void player::moveToBorder(bool & changedRooms, string input)
+void player::moveToBorder(map<string, room> roomMap, bool & changedRooms, string input)
 {
     string passDirection;
     if (input == "n")
