@@ -50,6 +50,7 @@ trigger::trigger(XMLNode node)
 
 string trigger::getCommand()
 {
+    cout << "calling trigger.getCommand()" << endl;
     if (command != " " )
         {
         return command;
