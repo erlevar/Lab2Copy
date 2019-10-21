@@ -2,6 +2,7 @@
 #define CONDITION_H
 
 #include "xmlParser.h"
+#include "player.h"
 #include <iostream>
 #include <map>
 using namespace std;
