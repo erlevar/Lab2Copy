@@ -77,6 +77,7 @@ int main (int argc, char ** argv) {
         for (int t = 0; t < roomContainers.size(); t++)
             {
                 containerTriggerCommands.clear();
+                cout << " roomContainers[i].getContainerTriggerComamnds occuring " << endl;
                 roomContainers[i].getContainerTriggerComands(containerTriggerCommands);
                 for (int j = 0; j<containerTriggerCommands.size(); j++)
                     {
@@ -84,7 +85,7 @@ int main (int argc, char ** argv) {
                             {
                             triggerPresentContainer = roomContainers[t];
                             triggersPresentInContainers = true;
-                            break;
+                            //break;
                             }
                     }
             }
