@@ -54,7 +54,7 @@ string trigger::getCommand()
     //if (command != " " )
       //  {
      //   cout << "returning command " << endl;
-        return command;
+        //return command;
       //  }
    // else
      //   {
