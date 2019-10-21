@@ -183,7 +183,7 @@ int main (int argc, char ** argv) {
                                 {
                                 string itemName = inputVect[1];
                                 string containerName = inputVect[3];
-                                user.userPutItemInContainer(current, itemName, containerName)
+                                user.userPutItemInContainer(current, itemName, containerName);
                                 }
                         }
                 }
