@@ -187,7 +187,7 @@ void room::removeItem(string itemName)
 void room::removeContainer(string containerName)
 {
     vector<item>::iterator iter;
-    for (iter = containers.begin(); iter!= container.end(); ++iter)
+    for (iter = containers.begin(); iter!= containers.end(); ++iter)
         {
         if ((*iter).getName() == containerName)
             {
