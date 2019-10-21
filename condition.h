@@ -15,6 +15,7 @@ public:
     string getObject();
     string getStatus();
     string getOwner();
+    bool checkCondition(player user);
 
 private:
     string object;
