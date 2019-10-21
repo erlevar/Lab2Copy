@@ -90,8 +90,9 @@ int main (int argc, char ** argv) {
             }
 
 
-        if ((triggersPresentInRoom) && (!triggersPresentInContainers))
+        if ((triggersPresentInRoom) && !(triggersPresentInContainers))
             {
+                cout << "triggersPresentInRoom true " << endl;
                 trigger commandTrigger = current.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
                 string has, object, owner;
@@ -141,6 +142,7 @@ int main (int argc, char ** argv) {
 
         else if ((triggersPresentInContainers) && !(triggersPresentInRoom))
             {
+                cout << "triggersPresentInContainers true " << endl;
                 trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
                 string status = triggerCondition.getStatus();
