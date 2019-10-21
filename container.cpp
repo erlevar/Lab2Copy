@@ -147,6 +147,7 @@ void container::addItem(item newItem)
 
 void container::getContainerTriggerComands(vector<string> & commands )
 {
+    cout << "at the beginning of getContainerTriggerCommands" << endl;
     for (int i = 0; i < triggers.size(); i++)
         {
             //if (triggers[i].getCommand() != "")
