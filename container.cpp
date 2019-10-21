@@ -144,3 +144,35 @@ void container::addItem(item newItem)
 {
     items.push_back(newItem);
 }
+
+void container::getContainerTriggerComands(vector<string> & commands )
+{
+    for (int i = 0; i < triggers.size(); i++)
+        {
+            //if (triggers[i].getCommand() != "")
+                //{
+                commands.push_back(triggers[i].getCommand());
+                //}
+        }
+
+}
+
+trigger container::checkTriggersByCommand(string input)
+{
+    for (int i = 0; i<triggers.size(); i++)
+        {
+        string triggerName = triggers[i].getCommand();
+        if (input == triggerName)
+            {
+            return triggers[i];
+            }
+        }
+    string dummy = "dummy";
+    trigger emptyTrigger(dummy);
+    return emptyTrigger;
+}
+
+string container::getStatus()
+{
+    return status;
+}
