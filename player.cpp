@@ -244,7 +244,29 @@ void player::userTurnonItem(string input)
         removeItem(returnItem.getName());
         addItem(returnItem);
         }
+}
 
+void player::userPutItemInContainer(room & current, string itemName, string containerName)
+{
+    item returnItem = checkItems(itemName);
+    container returnContainer = current.checkContainers(containerName);
+    if (returnItem.getName() == "dummy")
+        {
+        cout << "No such item in your inventory to be placed in the container " << endl;
+        return;
+        }
+
+    if (returnContainer.getName() == "dummy")
+        {
+        cout << "No such container in the room to place the item in " << endl;
+        return;
+        }
+
+    cout << "You put the " << returnItem.getName() << " in the " << returnContainer.getName() << endl;
+    removeItem(itemName);
+    returnContainer.addItem(returnItem);
+    current.removeContainer(returnContainer.getName());
+    current.addContainer(returnContainer);
 
 }
 
