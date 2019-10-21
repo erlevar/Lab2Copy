@@ -213,7 +213,10 @@ void room::getRoomTriggerCommands(vector<string> & commands)
 {
     for (int i = 0; i < triggers.size(); i++)
         {
-        commands.push_back(triggers[i].getCommand());
+        //if (triggers[i].getCommand() != "")
+            //{
+            commands.push_back(triggers[i].getCommand());
+            //}
         }
 }
 
