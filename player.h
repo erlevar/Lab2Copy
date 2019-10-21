@@ -28,6 +28,7 @@ public:
     void isAtExit(bool & foundExit); //used for open exit commands
     void userOpenContainer(string input); //used for open container commands
     void userTurnonItem (string input); //used for turn on (item) commands
+    void userPutItemInContainer(room & current, string itemName, string containerName); //user for put (item) in (container) commands
 
 private :
     room current;
