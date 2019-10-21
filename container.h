@@ -25,6 +25,9 @@ public:
     void getItems(vector<item> & returnItems);
     void removeItem(string itemName);
     void addItem(item newItem);
+    void getContainerTriggerComands(vector<string> & commands);
+    trigger checkTriggersByCommand(string input);
+    string getStatus();
 
 private :
     string name;
