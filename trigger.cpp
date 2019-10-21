@@ -53,6 +53,7 @@ string trigger::getCommand()
     cout << "calling trigger.getCommand()" << endl;
     if (command != " " )
         {
+        cout << "returning command " << endl;
         return command;
         }
     else
