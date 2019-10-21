@@ -19,7 +19,7 @@ public:
 
     //all for executing user commands
     void readInventory(); //i commands
-    void moveToBorder(string input);  //n, s, e, w commands
+    void moveToBorder(bool & changedRooms, string input);  //n, s, e, w commands
     void userTakeItem(room & current, string input); //take (item) commands
     void userReadItem(string input); //read (item) commands
     void userDropItem(room & current, string input); //drop (item) commands
