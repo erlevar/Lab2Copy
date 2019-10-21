@@ -50,7 +50,16 @@ trigger::trigger(XMLNode node)
 
 string trigger::getCommand()
 {
-    return command;
+    if (command != " " )
+        {
+        return command;
+        }
+    else
+        {
+        string emptyS = "empty";
+        return empty;
+        }
+
 }
 
 
