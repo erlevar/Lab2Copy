@@ -59,18 +59,38 @@ int main (int argc, char ** argv) {
         separateWords(userinput, inputVect);
 
         vector<string> roomTriggerCommands;
-        bool triggersPresent = false;
+        bool triggersPresentInRoom = false;
         current.getRoomTriggerCommands(roomTriggerCommands);
-
         for (int t = 0; t < roomTriggerCommands.size(); t++)
             {
             if (userinput == roomTriggerCommands[t])
                 {
-                triggersPresent = true;
+                triggersPresentInRoom = true;
                 }
             }
 
-        if (triggersPresent)
+        bool triggersPresentInContainers = false;
+        vector<container> roomContainers;
+        current.getContainers(roomContainers);
+        vector<string> containerTriggerCommands;
+        container triggerPresentContainer;
+        for (int t = 0; t < roomContainers.size(); t++)
+            {
+                containerTriggerCommands.clear();
+                roomContainers[i].getContainerTriggerComands(containerTriggerCommands);
+                for (int j = 0; j<containerTriggerCommands.size(); j++)
+                    {
+                        if(userinput == containerTriggerCommands[j])
+                            {
+                            triggerPresentContainer = roomContainers[t];
+                            triggersPresentInContainers = true;
+                            break;
+                            }
+                    }
+            }
+
+
+        if ((triggersPresentInRoom) && (!triggersPresentInContainers))
             {
                 trigger commandTrigger = current.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
@@ -95,7 +115,8 @@ int main (int argc, char ** argv) {
                                 }
                             else
                                 {
-                                triggersPresent = false;
+                                triggersPresentInContainers = false;
+                                triggersPresentInRoom = false;
                                 }
                             }
                         }
@@ -106,19 +127,32 @@ int main (int argc, char ** argv) {
                             item returnItem = user.checkItems(object);
                             if (returnItem.getName() == "dummy")
                                 {
-                                triggersPresent = false;
+                                triggersPresentInContainers = false;
+                                triggersPresentInRoom = false;
                                 }
                             else
                                 {
                                 commandTrigger.executePrint();
                                 }
                             }
-
                         }
                     }
             }
 
-        if (triggersPresent == false)
+        else if ((triggersPresentInContainers) && !(triggersPresentInRoom)
+            {
+                trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
+                condition triggerCondition = commandTrigger.getCondition();
+                string status = triggerCondition.getStatus();
+                if (triggerPresentContainer.getStatus() == status)
+                    {
+                    commandTrigger.executePrint();
+                    triggersPresentInContainers = false;
+                    triggersPresentInRoom = false;
+                    }
+            }
+
+        else if ( (!triggersPresentInContainers) && (!triggersPresentInRoom))
             {
                 if (inputVect.size() == 1)
                 {
