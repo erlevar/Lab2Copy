@@ -62,7 +62,9 @@ string trigger::getCommand()
         cout << "returning emptyS" << endl;
         return emptyS;
         }
-
+    string fucked = "whatthehell";
+    cout << "returning " << fucked << endl;
+    return fucked;
 }
 
 
