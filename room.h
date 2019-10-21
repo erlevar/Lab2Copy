@@ -32,7 +32,9 @@ public :
     container checkContainers(string input);
     trigger checkTriggersByCommand(string input);
     void removeItem(string itemName);
+    void removeContainer(string containerName);
     void addItem(item newItem);
+    void addContainer(container newContainer);
     void getRoomTriggerCommands(vector<string> & commands);
     string getRoomType();
     void readItems();
