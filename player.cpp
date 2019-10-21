@@ -154,8 +154,6 @@ void player::userTakeItem(room & current, string input)
             cout << returnItem.getName() << " added to inventory " << endl;
             returnItem.updateOwner("inventory");
             current.removeItem(returnItem.getName());
-            cout << "after removing item from room, contents are " << endl;
-            current.readItems();
             addItem(returnItem);
             }
         else if (itemInContainer == true)
