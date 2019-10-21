@@ -42,7 +42,7 @@ trigger::trigger(XMLNode node)
         {
         action = actionNode.getText();
         }
-
+    cout << "Command after being initalized: " << command << endl;
     XMLNode conditionNode = node.getChildNode("condition");
     condition tempCondition(conditionNode);
     triggerCondition = tempCondition;
