@@ -151,6 +151,7 @@ void container::getContainerTriggerComands(vector<string> & commands )
         {
             //if (triggers[i].getCommand() != "")
                 //{
+                cout << "triggers[i].getCommand() " << triggers[i].getCommand() << endl;
                 commands.push_back(triggers[i].getCommand());
                 //}
         }
@@ -176,5 +177,6 @@ string container::getStatus()
 {
     return status;
 }
+
 
 
