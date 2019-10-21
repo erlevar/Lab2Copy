@@ -51,17 +51,17 @@ trigger::trigger(XMLNode node)
 string trigger::getCommand()
 {
     cout << "calling trigger.getCommand()" << endl;
-    if (command != " " )
-        {
-        cout << "returning command " << endl;
+    //if (command != " " )
+      //  {
+     //   cout << "returning command " << endl;
         return command;
-        }
-    else
-        {
-        string emptyS = "empty";
-        cout << "returning emptyS" << endl;
-        return emptyS;
-        }
+      //  }
+   // else
+     //   {
+     //   string emptyS = "empty";
+     //   cout << "returning emptyS" << endl;
+     //   return emptyS;
+      //  }
     string fucked = "whatthehell";
     cout << "returning " << fucked << endl;
     return fucked;
