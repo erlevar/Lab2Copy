@@ -63,7 +63,6 @@
         <command>n</command>
         <type>permanent</type>
         <condition>
-          <object>lock</object>
           <status>locked</status>
         </condition>
         <print>lock needs a key... not to mention you don't want to get too close to that side of the room... there's something in that corner...</print>
