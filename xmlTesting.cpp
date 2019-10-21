@@ -161,7 +161,7 @@ int main (int argc, char ** argv) {
                             string secondWord = inputVect[1];
                             if (secondWord == "exit")
                                 {
-                                user.isAtExit(bool & foundExit); //terminates the game if the user has made it to the exit
+                                user.isAtExit (foundExit); //terminates the game if the user has made it to the exit
                                 }
                             else
                                 {
