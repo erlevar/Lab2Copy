@@ -116,6 +116,7 @@ int main (int argc, char ** argv) {
                                 }
                             else
                                 {
+                                cout << "MADE IT HERE " << endl;
                                 triggersPresentInContainers = false;
                                 triggersPresentInRoom = false;
                                 }
