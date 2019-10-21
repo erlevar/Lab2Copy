@@ -152,6 +152,7 @@ void container::getContainerTriggerComands(vector<string> & commands )
         {
             //if (triggers[i].getCommand() != "")
                 //{
+                cout << "what the fuck is wrong ???? " << endl;
                 cout << "triggers[i].getCommand() " << triggers[i].getCommand() << endl;
                 commands.push_back(triggers[i].getCommand());
                 //}
