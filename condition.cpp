@@ -54,22 +54,3 @@ string condition::getStatus()
     return status;
 }
 
-bool condition::checkCondition(player user)
-{
-    if (has == "no")
-        {
-        if (owner == "inventory")
-            {
-                item returnItem = user.checkItems(object);
-                if (returnItem.getName() == "dummy")
-                    {
-                    commandTrigger.executePrint();
-                    }
-                else
-                    {
-                    triggersPresent = false;
-                    }
-            }
-
-        }
-}
