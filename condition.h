@@ -2,7 +2,6 @@
 #define CONDITION_H
 
 #include "xmlParser.h"
-#include "player.h"
 #include <iostream>
 #include <map>
 using namespace std;
@@ -16,7 +15,7 @@ public:
     string getObject();
     string getStatus();
     string getOwner();
-    bool checkCondition(player user);
+    bool checkCondition();
 
 private:
     string object;
