@@ -125,7 +125,7 @@ int main (int argc, char ** argv) {
                     userinput = inputVect[0];
                     if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w")) //change user's current location to n, s ,e, w if there are rooms in those directions
                         {
-                        user.moveToBorder(changedRooms, userinput);
+                        user.moveToBorder(roomMap, changedRooms, userinput);
                         }
                     else if (userinput == "i")
                         {
