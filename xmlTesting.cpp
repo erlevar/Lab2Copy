@@ -142,6 +142,7 @@ int main (int argc, char ** argv) {
         else if ((triggersPresentInContainers) && !(triggersPresentInRoom))
             {
                 cout << "initialize commandTrigger" << endl;
+                cout << "triggerPresentContainer.getName()    " << triggerPresentContainer.getName() << endl;
                 trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
                 cout << "initialize triggerCondition " << endl;
                 condition triggerCondition = commandTrigger.getCondition();
