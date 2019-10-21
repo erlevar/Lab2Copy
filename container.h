@@ -28,7 +28,6 @@ public:
     void getContainerTriggerComands(vector<string> & commands);
     trigger checkTriggersByCommand(string input);
     string getStatus();
-    container& operator = (const container & c);
 
 private :
     string name;
