@@ -139,7 +139,7 @@ int main (int argc, char ** argv) {
                     }
             }
 
-        else if ((triggersPresentInContainers) && !(triggersPresentInRoom)
+        else if ((triggersPresentInContainers) && !(triggersPresentInRoom))
             {
                 trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
