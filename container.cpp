@@ -148,15 +148,16 @@ void container::addItem(item newItem)
 void container::getContainerTriggerComands(vector<string> & commands )
 {
     cout << "at the beginning of getContainerTriggerCommands" << endl;
-    for (int i = 0; i < triggers.size(); i++)
-        {
+    cout << "triggers.size() is equal to " << triggers.size() << endl;
+    //for (int i = 0; i < triggers.size(); i++)
+    //    {
             //if (triggers[i].getCommand() != "")
                 //{
-                cout << "what the fuck is wrong ???? " << endl;
-                cout << "triggers[i].getCommand() " << triggers[i].getCommand() << endl;
-                commands.push_back(triggers[i].getCommand());
+     //           cout << "what the fuck is wrong ???? " << endl;
+     //           cout << "triggers[i].getCommand() " << triggers[i].getCommand() << endl;
+      //          commands.push_back(triggers[i].getCommand());
                 //}
-        }
+      //  }
 
 }
 
