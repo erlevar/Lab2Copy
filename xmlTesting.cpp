@@ -152,7 +152,7 @@ int main (int argc, char ** argv) {
                     }
             }
 
-        else if ( (!triggersPresentInContainers) && (!triggersPresentInRoom))
+        else if ( !(triggersPresentInContainers) && !(triggersPresentInRoom))
             {
                 if (inputVect.size() == 1)
                 {
