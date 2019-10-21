@@ -177,6 +177,15 @@ int main (int argc, char ** argv) {
                                 user.userTurnonItem(turnonItem);
                                 }
                         }
+                    else if (inputVect.size() == 4)
+                        {
+                            if ((inputVect[0] == "put") && (inputVect[2] == "in"))
+                                {
+                                string itemName = inputVect[1];
+                                string containerName = inputVect[3];
+                                user.userPutItemInContainer(current, itemName, containerName)
+                                }
+                        }
                 }
         if (changedRooms == false)
             {
