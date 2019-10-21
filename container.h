@@ -24,6 +24,7 @@ public:
     item checkItems(string input);
     void getItems(vector<item> & returnItems);
     void removeItem(string itemName);
+    void addItem(item newItem);
 
 private :
     string name;
