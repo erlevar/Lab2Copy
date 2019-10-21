@@ -22,7 +22,7 @@
 
 using namespace std;
 
-void userTakeItem(player & user, )
+
 
 int main (int argc, char ** argv) {
 
