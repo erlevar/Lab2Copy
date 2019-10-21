@@ -139,3 +139,8 @@ void container::removeItem(string itemName)
         }
     }
 }
+
+void container::addItem(item newItem)
+{
+    items.push_back(newItem);
+}
