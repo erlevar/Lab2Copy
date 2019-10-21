@@ -4,19 +4,19 @@
 
 trigger::trigger()
 {
-    type, command, action, print = "";
+    type, command, action, print = " ";
 
 }
 
 trigger::trigger(string s)
 {
     command = s;
-    type, action, print = "";
+    type, action, print = " ";
 }
 
 trigger::trigger(XMLNode node)
 {
-    type, command, action, print = "";
+    type, command, action, print = " ";
     activated = false;
 
     XMLNode typeNode = node.getChildNode("type");
