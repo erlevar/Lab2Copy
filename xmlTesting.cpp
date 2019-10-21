@@ -89,6 +89,7 @@ int main (int argc, char ** argv) {
                             }
                     }
             }
+        cout << "end of roomContainers for loop " << endl;
 
 
         if ((triggersPresentInRoom) && !(triggersPresentInContainers))
