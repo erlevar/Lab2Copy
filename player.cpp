@@ -73,8 +73,9 @@ player& player::operator=(const player & p)
     return *this;
 }
 
-void player::moveToBorder(string input)
+void player::moveToBorder(bool & changedRooms, string input)
 {
+    string passDirection;
     if (input == "n")
         {
         passDirection = "north";
@@ -110,7 +111,7 @@ void player::moveToBorder(string input)
 
 void player::userTakeItem(room & current, string input)
 {
-    item returnItem = current.checkItems(passItemName);
+    item returnItem = current.checkItems(input);
     vector<container> roomContainers;
     current.getContainers(roomContainers);
 
@@ -126,7 +127,7 @@ void player::userTakeItem(room & current, string input)
         roomContainers[i].getItems(itemsInContainer);
         for (int j = 0; j < itemsInContainer.size(); j++)
             {
-            if (itemsInContainer[j].getName() == passItemName)
+            if (itemsInContainer[j].getName() == input)
                 {
                 itemInContainer = true;
                 presentContainer = roomContainers[i];
@@ -136,12 +137,12 @@ void player::userTakeItem(room & current, string input)
             }
         }
 
-    if (returnItem.getName() == passItemName)
+    if (returnItem.getName() == input)
         {
         itemInRoom = true;
         }
 
-    item checkInventory = checkItems(passItemName);
+    item checkInventory = checkItems(input);
     if (checkInventory.getName() == "dummy")
         {
         if ((itemInContainer == false) && (itemInRoom == false))
@@ -176,7 +177,7 @@ void player::userTakeItem(room & current, string input)
 void player::userReadItem(string input)
 {
     room currnet = currentLocation();
-    item returnItem = checkItems(passItemName);
+    item returnItem = checkItems(input);
     if (returnItem.getName() == "dummy")
         {
         cout << "No such item in your inventory to be read " << endl;
@@ -189,7 +190,7 @@ void player::userReadItem(string input)
 
 void player::userDropItem(room & current, string input)
 {
-    item returnItem = checkItems(dropItemName);
+    item returnItem = checkItems(input);
     if (returnItem.getName() == "dummy")
         {
         cout << "No such item in your inventory to drop" << endl;
@@ -219,7 +220,7 @@ void player::isAtExit(bool & foundExit)
 
 void player::userOpenContainer(string input)
 {
-    container returnContainer = current.checkContainers(secondWord);
+    container returnContainer = current.checkContainers(input);
     if (returnContainer.getName() == "dummy")
         {
         cout << "No such container in the room to open" << endl;
@@ -233,7 +234,7 @@ void player::userOpenContainer(string input)
 
 void player::userTurnonItem(string input)
 {
-    item returnItem = checkItems(turnonItem);
+    item returnItem = checkItems(input);
     if (returnItem.getName() == "dummy")
         {
         cout << "No such item in your inventory to turn on " << endl;
