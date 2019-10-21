@@ -184,9 +184,28 @@ void room::removeItem(string itemName)
     }
 }
 
+void room::removeContainer(string containerName)
+{
+    vector<item>::iterator iter;
+    for (iter = containers.begin(); iter!= container.end(); ++iter)
+        {
+        if ((*iter).getName() == containerName)
+            {
+                containers.erase(iter);
+                break;
+            }
+        }
+}
+
+
 void room::addItem(item newItem)
 {
     items.push_back(newItem);
+}
+
+void room::addContainer(container newContainer)
+{
+    containers.push_back(newContainer);
 }
 
 
