@@ -81,6 +81,7 @@ int main (int argc, char ** argv) {
                 roomContainers[i].getContainerTriggerComands(containerTriggerCommands);
                 for (int j = 0; j<containerTriggerCommands.size(); j++)
                     {
+                        cout << "containerTriggerCommands[j]: " << containerTriggerCommands[j] << endl;
                         if(userinput == containerTriggerCommands[j])
                             {
                             triggerPresentContainer = roomContainers[t];
