@@ -19,6 +19,7 @@ public :
     attack getAttack();
     item getItem();
     void removeItem();
+    void updateTrigger(trigger newTrigger);
 private :
     string name;
     string vulnerability;
