@@ -70,7 +70,8 @@ int main (int argc, char ** argv) {
             }
 
         bool triggersPresentInContainers = false;
-        vector<container> roomContainers = current.containers;
+        //vector<container> roomContainers = current.containers;
+        container firstFuckingContainer = current.containers[1];
         //current.getContainers(roomContainers);
         vector<string> containerTriggerCommands;
         container triggerPresentContainer;
@@ -78,7 +79,7 @@ int main (int argc, char ** argv) {
             {
                 containerTriggerCommands.clear();
                 cout << " roomContainers[i].getContainerTriggerComamnds occuring " << endl;
-                roomContainers[i].getContainerTriggerComands(containerTriggerCommands);
+                firstFuckingContainer.getContainerTriggerComands(containerTriggerCommands);
                 for (int j = 0; j<containerTriggerCommands.size(); j++)
                     {
                         cout << "containerTriggerCommands[j]: " << containerTriggerCommands[j] << endl;
