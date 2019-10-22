@@ -13,6 +13,7 @@ public :
     creature();
     creature(XMLNode node);
     void getAttack(XMLNode node);
+    trigger getTrigger();
 
 private :
     string name;
