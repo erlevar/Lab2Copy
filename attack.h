@@ -11,6 +11,9 @@ class attack
 public:
     attack();
     attack(XMLNode node);
+    condition getCondition();
+    string getAction();
+
 
 private:
     condition attackCondition;
