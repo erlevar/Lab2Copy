@@ -143,6 +143,8 @@ int main (int argc, char ** argv) {
                 trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
                 string status = triggerCondition.getStatus();
+                cout << "triggerPresentContainer.getStatus () " << triggerPresentContainer.getStatus() << endl;
+                cout << "status : " << status << endl;
                 if (triggerPresentContainer.getStatus() == status)
                     {
                     commandTrigger.executePrint();
