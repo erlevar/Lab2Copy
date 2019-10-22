@@ -64,3 +64,8 @@ void creature::removeItem()
     item newItem;
     creatureItem = newItem;
 }
+
+void creature::updateTrigger(trigger newTrigger)
+{
+    creatureTrigger = newTrigger;
+}
