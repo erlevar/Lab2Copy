@@ -59,21 +59,26 @@ int main (int argc, char ** argv) {
         for (int i = 0; i < roomCreatures.size(); i++)
             {
                 trigger creatureTrigger = roomCreatures[i].getTrigger();
-                condition creatureTriggerCondition = creatureTrigger.getCondition();
-                string object, status, owner;
-                object = creatureTriggerCondition.getObject();
-                status = creatureTriggerCondition.getStatus();
-                owner = creatureTriggerCondition.getOwner();
-                if (owner == "inventory")
+                if (!creatureTrigger.getActivated())
                     {
-                        item returnItem = user.checkItems(object);
-                        if (returnItem.getName() == object)
-                            {
-                            if (returnItem.getStatus() == status)
+                    condition creatureTriggerCondition = creatureTrigger.getCondition();
+                    string object, status, owner;
+                    object = creatureTriggerCondition.getObject();
+                    status = creatureTriggerCondition.getStatus();
+                    owner = creatureTriggerCondition.getOwner();
+                    if (owner == "inventory")
+                        {
+                            item returnItem = user.checkItems(object);
+                            if (returnItem.getName() == object)
                                 {
-                                creatureTrigger.executePrint();
+                                if (returnItem.getStatus() == status)
+                                    {
+                                    creatureTrigger.executePrint();
+                                    }
                                 }
-                            }
+                        }
+                    creatureTrigger.updateActivated();
+                    roomCreatures[i].updateTrigger(creatureTrigger);
                     }
             }
 
@@ -279,6 +284,7 @@ int main (int argc, char ** argv) {
                                         if (status == returnItem.getStatus())
                                             {
                                             cout << "The attack is successful. You kill the " << creatureName << endl;
+                                            user.removeItem(itemName);
                                             item creatureItem = returnCreature.getItem();
                                             current.addItem(creatureItem);
                                             returnCreature.removeItem();
