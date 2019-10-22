@@ -77,20 +77,16 @@ int main (int argc, char ** argv) {
         for (int t = 0; t < roomContainers.size(); t++)
             {
                 containerTriggerCommands.clear();
-                cout << " roomContainers[t].getContainerTriggerComamnds occuring " << endl;
                 roomContainers[t].getContainerTriggerComands(containerTriggerCommands);
                 for (int j = 0; j<containerTriggerCommands.size(); j++)
                     {
-                        cout << "containerTriggerCommands[j]: " << containerTriggerCommands[j] << endl;
                         if(userinput == containerTriggerCommands[j])
                             {
                             triggerPresentContainer = roomContainers[t];
                             triggersPresentInContainers = true;
-                            //break;
                             }
                     }
             }
-        cout << "end of roomContainers for loop " << endl;
 
 
         if ((triggersPresentInRoom) && !(triggersPresentInContainers))
@@ -144,12 +140,8 @@ int main (int argc, char ** argv) {
 
         else if ((triggersPresentInContainers) && !(triggersPresentInRoom))
             {
-                cout << "initialize commandTrigger" << endl;
-                cout << "triggerPresentContainer.getName()    " << triggerPresentContainer.getName() << endl;
                 trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
-                cout << "initialize triggerCondition " << endl;
                 condition triggerCondition = commandTrigger.getCondition();
-                cout << "initialize status " << endl;
                 string status = triggerCondition.getStatus();
                 if (triggerPresentContainer.getStatus() == status)
                     {
