@@ -281,6 +281,8 @@ void room::readBorders()
 
 void room::getContainers(vector<container> & returnContainers)
 {
+    cout << "inside getContainers function " << endl;
+    cout << "containers.size() : " << containers.size() << endl;
     for (int i = 0; i<containers.size(); i++)
         {
         returnContainers.push_back(containers[i]);
