@@ -35,7 +35,7 @@ creature::creature(XMLNode node)
     XMLNode itemNode = node.getChildNode("item");
     item tempItem(itemNode);
     creatureItem = tempItem;
-    item.updateOwner(name);
+    creatureItem.updateOwner(name);
 
 }
 
