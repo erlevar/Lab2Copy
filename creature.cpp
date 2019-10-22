@@ -1,5 +1,15 @@
 #include "creature.h"
 
+creature::creature()
+{
+    name, vulnerability = "";
+}
+
+creature::creature(string s)
+{
+    name = s;
+    vulnerability = "";
+}
 creature::creature(XMLNode node)
 {
     name, vulnerability ="";
@@ -22,10 +32,35 @@ creature::creature(XMLNode node)
     XMLNode triggerNode = node.getChildNode("trigger");
     trigger tempTrigger(triggerNode);
     creatureTrigger = tempTrigger;
+    XMLNode itemNode = node.getChildNode("item");
+    item tempItem(itemNode);
+    creatureItem = tempItem;
+    item.updateOwner(name);
 
 }
 
 trigger creature::getTrigger()
 {
     return creatureTrigger;
+}
+
+string creature::getName()
+{
+    return name;
+}
+
+attack creature::getAttack()
+{
+    return creatureAttack;
+}
+
+item creature::getItem()
+{
+    return creatureItem;
+}
+
+void creature::removeItem()
+{
+    item newItem;
+    creatureItem = newItem;
 }
