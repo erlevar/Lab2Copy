@@ -70,14 +70,15 @@ int main (int argc, char ** argv) {
             }
 
         bool triggersPresentInContainers = false;
+        container firstFuckingContainer;
         //vector<container> roomContainers = current.containers;
         if (current.containers.size() == 1)
             {
-            container firstFuckingContainer = current.containers[0];
+            firstFuckingContainer = current.containers[0];
             }
         else
             {
-            container firstFuckingContainer = current.containers[1];
+            firstFuckingContainer = current.containers[1];
             }
 
         //current.getContainers(roomContainers);
