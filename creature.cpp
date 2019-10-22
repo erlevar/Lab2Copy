@@ -67,5 +67,9 @@ void creature::removeItem()
 
 void creature::updateTrigger(trigger newTrigger)
 {
+    if (newTrigger.getActivated() == true)
+        {
+        cout << "getActivated is true " << endl;
+        }
     creatureTrigger = newTrigger;
 }
