@@ -97,3 +97,13 @@ void trigger::updateActivated()
         }
 
 }
+
+trigger& trigger::operator=(const trigger & t)
+{
+    activated = t.activated;
+    action = t.action;
+    triggerCondition = t.triggerCondition;
+    type = t.type;
+    command = t.command;
+    print = t.print;
+}
