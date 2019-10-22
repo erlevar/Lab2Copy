@@ -12,10 +12,6 @@
         <action>Update torch to inferno</action>
       </turnon>
     </item>
-    <item>
-      <name>key</name>
-      <writing>Exit</writing>
-    </item>
     <trigger>
       <type>permanent</type>
       <command>n</command>
@@ -89,6 +85,10 @@
         </condition>
         <print>You see a gnome in the dark corner... watching you with its super pointy hat...</print>
       </trigger>
+      <item>
+        <name>key</name>
+        <writing>Exit</writing>
+      </item>
     </creature>
     <border>
       <direction>south</direction>
