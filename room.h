@@ -31,8 +31,10 @@ public :
     item checkItems(string input);
     container checkContainers(string input);
     trigger checkTriggersByCommand(string input);
+    creature checkCreatures(string input);
     void removeItem(string itemName);
     void removeContainer(string containerName);
+    void removeCreature(string creatureName);
     void addItem(item newItem);
     void addContainer(container newContainer);
     void getRoomTriggerCommands(vector<string> & commands);
