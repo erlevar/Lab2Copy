@@ -211,14 +211,10 @@ void room::addContainer(container newContainer)
 
 void room::getRoomTriggerCommands(vector<string> & commands)
 {
-    cout << "Inside the getRoomTriggerCommands function " << endl;
-    cout << "triggers.size() is equal to " << triggers.size() << endl;
     for (int i = 0; i < triggers.size(); i++)
         {
-        //if (triggers[i].getCommand() != "")
-            //{
             commands.push_back(triggers[i].getCommand());
-            //}
+
         }
 }
 
@@ -281,8 +277,6 @@ void room::readBorders()
 
 void room::getContainers(vector<container> & returnContainers)
 {
-    cout << "inside getContainers function " << endl;
-    cout << "containers.size() : " << containers.size() << endl;
     for (int i = 0; i<containers.size(); i++)
         {
         returnContainers.push_back(containers[i]);
