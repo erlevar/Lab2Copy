@@ -158,6 +158,7 @@ void container::getContainerTriggerComands(vector<string> & commands )
                 commands.push_back(triggers[i].getCommand());
                 //}
       //  }
+        }
 
 }
 
