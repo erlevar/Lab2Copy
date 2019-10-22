@@ -170,6 +170,21 @@ trigger room::checkTriggersByCommand(string input)
     return emptyTrigger;
 }
 
+creature room::checkCreatures(string input)
+{
+    for (int i = 0; i < creatures.size(); i++)
+        {
+        string creatureName = creatures[i].getName();
+        if (input == creatureName)
+            {
+            return creatures[i];
+            }
+        }
+    string dummy = "dummy";
+    creature emptyCreature(dummy);
+    return emptyCreature;
+}
+
 
 void room::removeItem(string itemName)
 {
@@ -183,6 +198,21 @@ void room::removeItem(string itemName)
         }
     }
 }
+
+void room::removeCreature(string creatureName)
+{
+    vector<creature>::iterator iter;
+    for (iter = creatures.begin(); iter= creatures.end(); ++iter)
+        {
+        if ((*iter).getName() == creatureName)
+            {
+            creatures.erase(iter);
+            break;
+            }
+        }
+}
+
+
 
 void room::removeContainer(string containerName)
 {
