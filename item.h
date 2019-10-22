@@ -21,6 +21,7 @@ public:
     void readWriting();
     void activateTurnon();
     item& operator=(const item& i);
+    string getStatus();
 
 
     //void putInContainer(); //probably should pass the current owner and new owner (e.g. user to container)
