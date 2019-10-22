@@ -159,30 +159,6 @@ int main (int argc, char ** argv) {
             }
         //end of room and container triggers (activated by user commands)
 
-        vector<creature> roomCreatures;
-        current.getCreatures(roomCreatures);
-        for (int i = 0; i < roomCreatures.size(); i++)
-            {
-                trigger creatureTrigger = roomCreatures[i].getTrigger();
-                condition creatureTriggerCondition = creatureTrigger.getCondition();
-                string object, status, owner;
-                object = creatureTriggerCondition.getObject();
-                status = creatureTriggerCondition.getStatus();
-                owner = creatureTriggerCondition.getOwner();
-                if (owner == "inventory")
-                    {
-                        item returnItem = user.checkItems(object);
-                        if (returnItem.getName() == object)
-                            {
-                            if (returnItem.getStatus() == status)
-                                {
-                                creatureTrigger.executePrint();
-                                }
-                            }
-                    }
-            }
-
-
         if ( !(triggersPresentInContainers) && !(triggersPresentInRoom))
             {
                 if (inputVect.size() == 1)
@@ -256,6 +232,30 @@ int main (int argc, char ** argv) {
             {
             user.updateLocation(current);
             }
+
+        vector<creature> roomCreatures;
+        current.getCreatures(roomCreatures);
+        for (int i = 0; i < roomCreatures.size(); i++)
+            {
+                trigger creatureTrigger = roomCreatures[i].getTrigger();
+                condition creatureTriggerCondition = creatureTrigger.getCondition();
+                string object, status, owner;
+                object = creatureTriggerCondition.getObject();
+                status = creatureTriggerCondition.getStatus();
+                owner = creatureTriggerCondition.getOwner();
+                if (owner == "inventory")
+                    {
+                        item returnItem = user.checkItems(object);
+                        if (returnItem.getName() == object)
+                            {
+                            if (returnItem.getStatus() == status)
+                                {
+                                creatureTrigger.executePrint();
+                                }
+                            }
+                    }
+            }
+
 
         }
     return 0;
