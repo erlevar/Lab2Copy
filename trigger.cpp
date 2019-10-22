@@ -5,6 +5,7 @@
 trigger::trigger()
 {
     type, command, action, print = " ";
+    activated = false;
 
 }
 
@@ -12,6 +13,7 @@ trigger::trigger(string s)
 {
     command = s;
     type, action, print = " ";
+    activated = false;
 }
 
 trigger::trigger(XMLNode node)
@@ -79,4 +81,19 @@ condition trigger::getCondition()
 void trigger::executePrint()
 {
     cout << print << endl;
+}
+
+bool trigger::getActivated()
+{
+    return activated;
+}
+
+void trigger::updateActivated()
+{
+    if (type == "single")
+        {
+        activated = true;
+        return;
+        }
+
 }
