@@ -58,6 +58,10 @@ int main (int argc, char ** argv) {
         vector<string> inputVect;
         separateWords(userinput, inputVect);
 
+
+        //all this is to activate triggers that occur because of user commands.
+        //for the room, we check if the user has a certain item or not
+        //for the containers, we check the status of said container (e.g. locks on a door or whatnot)
         vector<string> roomTriggerCommands;
         bool triggersPresentInRoom = false;
         current.getRoomTriggerCommands(roomTriggerCommands);
@@ -87,7 +91,6 @@ int main (int argc, char ** argv) {
                             }
                     }
             }
-
 
         if ((triggersPresentInRoom) && !(triggersPresentInContainers))
             {
@@ -143,15 +146,42 @@ int main (int argc, char ** argv) {
                 trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
                 string status = triggerCondition.getStatus();
-                cout << "triggerPresentContainer.getStatus () " << triggerPresentContainer.getStatus() << endl;
-                cout << "status : " << status << endl;
                 if (triggerPresentContainer.getStatus() == status)
                     {
                     commandTrigger.executePrint();
+
+                    }
+                else
+                    {
                     triggersPresentInContainers = false;
                     triggersPresentInRoom = false;
                     }
             }
+        //end of room and container triggers (activated by user commands)
+
+        vector<creature> roomCreatures;
+        current.getCreatures(roomCreatures);
+        for (int i = 0; i < roomCreatures.size(); i++)
+            {
+                trigger creatureTrigger = roomCreatures[i].getTrigger();
+                condition creatureTriggerCondition = creatureTrigger.getCondition();
+                string object, status, owner;
+                object = creatureTriggerCondition.getObject();
+                status = creatureTriggerCondition.getStatus();
+                owner = creatureTriggerCondition.getOwner();
+                if (owner == "inventory")
+                    {
+                        item returnItem = user.checkItems(object);
+                        if (returnItem.getName() == object)
+                            {
+                            if (returnItem.getStatus() == status)
+                                {
+                                creatureTrigger.executePrint();
+                                }
+                            }
+                    }
+            }
+
 
         if ( !(triggersPresentInContainers) && !(triggersPresentInRoom))
             {
