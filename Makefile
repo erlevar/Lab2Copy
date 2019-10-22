@@ -44,7 +44,7 @@ extraFunctions.o: extraFunctions.cpp extraFunctions.h xmlParser.h trigger.h item
 container.o: container.cpp container.h xmlParser.h item.h trigger.h extraFunctions.h
 	$(CC) $(CFLAGS) container.cpp -c
 	
-creature.o: creature.cpp xmlParser.h attack.h trigger.h 
+creature.o: creature.cpp xmlParser.h attack.h trigger.h item.h
 	$(CC) $(CFLAGS) creature.cpp -c
 	
 room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creature.h border.h item.h turnon.h
