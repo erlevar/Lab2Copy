@@ -161,6 +161,8 @@ void container::getContainerTriggerComands(vector<string> & commands )
       //  }
         }
         */
+    cout << "Inside the getContainerTriggerCommands function " << endl;
+    cout << "triggers.size() is equal to " << triggers.size() << endl;
     for (int i = 0; i < triggers.size(); i++)
         {
         //if (triggers[i].getCommand() != "")
