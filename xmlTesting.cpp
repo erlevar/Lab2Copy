@@ -251,6 +251,51 @@ int main (int argc, char ** argv) {
                                 string containerName = inputVect[3];
                                 user.userPutItemInContainer(current, itemName, containerName);
                                 }
+                            if ((inputVect[0] == "attack") && (inputVect[2] == "with"))
+                                {
+                                string creatureName = inputVect[1];
+                                string itemName = inputVect[3];
+                                creature returnCreature = current.checkCreatures(creatureName);
+                                if (returnCreature.getName() == "dummy")
+                                    {
+                                    cout << "No such creature to attack" << endl;
+                                    }
+                                item returnItem = user.checkItems(itemName);
+                                else if (returnItem.getName() == "dummy")
+                                    {
+                                    cout << "No such item in your inventory to attack the creature with " << endl;
+                                    }
+                                else
+                                    {
+                                    cout << "You attack the " << creatureName << " with the " << itemName << endl;
+                                    attack creatureAttack = returnCreature.getAttack();
+                                    condition attackCondition = creatureAttack.getCondition();
+                                    string object, status;
+                                    object = attackCondition.getObject();
+                                    status = attackCondition.getStatus();
+                                    if (object == itemName)
+                                        {
+                                        if (status == returnItem.getStatus())
+                                            {
+                                            cout << "The attack is successful. You kill the " << creatureName << endl;
+                                            item creatureItem = returnCreature.getItem();
+                                            current.addItem(creatureItem);
+                                            returnCreature.removeItem();
+                                            current.removeCreature(returnCreature.getName());
+                                            cout << "The " << creatureItem.getName() << " has been added to the " << current.getName() << " " << endl;
+
+                                            }
+                                        else
+                                            {
+                                            cout << itemName << " is not properly activated for attack " << endl;
+                                            }
+                                        }
+                                    else
+                                        {
+                                        cout << "You used the wrong item to attack the " << creatureName << endl;
+                                        }
+                                    }
+                                }
                         }
                 }
         if (changedRooms == false)
