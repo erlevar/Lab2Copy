@@ -21,7 +21,7 @@ public:
     void executePrint();
     bool getActivated();
     void updateActivated();
-    trigger& operator(const trigger & t);
+    trigger& operator=(const trigger & t);
 
 private :
     string type;
