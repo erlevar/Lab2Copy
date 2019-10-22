@@ -122,7 +122,7 @@ int main (int argc, char ** argv) {
                 trigger commandTrigger = current.checkTriggersByCommand(userinput);
                 condition triggerCondition = commandTrigger.getCondition();
                 string has, object, owner;
-                has = triggerCondition.getHas(
+                has = triggerCondition.getHas();
                 object = triggerCondition.getObject();
                 owner = triggerCondition.getOwner();
                 if (has == "") //one kind of room trigger
