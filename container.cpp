@@ -87,7 +87,7 @@ void container::readItems()
 container& container::operator=(const container& c)
 {
     name = c.name;
-    status = c.name;
+    status = c.status;
     accept = c.accept;
     items.clear();
     triggers.clear();
