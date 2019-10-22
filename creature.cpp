@@ -23,6 +23,9 @@ creature::creature(XMLNode node)
     trigger tempTrigger(triggerNode);
     creatureTrigger = tempTrigger;
 
-
 }
 
+trigger creature::getTrigger()
+{
+    return creatureTrigger;
+}
