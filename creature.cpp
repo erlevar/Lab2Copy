@@ -69,11 +69,12 @@ void creature::updateTrigger(trigger newTrigger)
 {
     if (newTrigger.getActivated() == true)
         {
-        cout << "getActivated is true " << endl;
+        //cout << "getActivated is true " << endl;
         }
     creatureTrigger = newTrigger;
     if (creatureTrigger.getActivated() == true)
         {
-        cout << "get activated for the creature trigger is now true !! " << endl;
+        //cout << "get activated for the creature trigger is now true !! " << endl;
         }
 }
+
