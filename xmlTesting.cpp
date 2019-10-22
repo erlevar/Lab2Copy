@@ -85,7 +85,7 @@ int main (int argc, char ** argv) {
                         cout << "containerTriggerCommands[j]: " << containerTriggerCommands[j] << endl;
                         if(userinput == containerTriggerCommands[j])
                             {
-                            triggerPresentContainer = roomContainers[t];
+                            //triggerPresentContainer = roomContainers[t];
                             triggersPresentInContainers = true;
                             //break;
                             }
