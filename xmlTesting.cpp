@@ -75,8 +75,8 @@ int main (int argc, char ** argv) {
         //current.getContainers(roomContainers);
         vector<string> containerTriggerCommands;
         container triggerPresentContainer;
-        for (int t = 0; t < roomContainers.size(); t++)
-            {
+        //for (int t = 0; t < roomContainers.size(); t++)
+          //  {
                 containerTriggerCommands.clear();
                 cout << " roomContainers[i].getContainerTriggerComamnds occuring " << endl;
                 firstFuckingContainer.getContainerTriggerComands(containerTriggerCommands);
@@ -90,7 +90,7 @@ int main (int argc, char ** argv) {
                             //break;
                             }
                     }
-            }
+           // }
         cout << "end of roomContainers for loop " << endl;
 
 
