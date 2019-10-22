@@ -95,7 +95,6 @@ container& container::operator=(const container& c)
         {
             items.push_back(c.items[i]);
         }
-    cout << "c.triggers.size() (located inside the assignment operator for container ) " << c.triggers.size() << endl;
     for (int i = 0; i < c.triggers.size(); i++)
         {
             triggers.push_back(c.triggers[i]);
