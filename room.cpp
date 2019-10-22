@@ -283,3 +283,12 @@ void room::getContainers(vector<container> & returnContainers)
         }
     return;
 }
+
+void room::getCreatures(vector<creature> & returnCreatures)
+{
+    for (int i = 0; i <creatures.size(); i++)
+        {
+        returnCreatures.push_back(creatures[i]):
+        }
+    return;
+}
