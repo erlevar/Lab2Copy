@@ -41,6 +41,7 @@ public :
     room& operator = (const room & r);
     void readBorders();
     void getContainers(vector<container> & returnContainers);
+    vector<container> containers;
     //void checkTriggerConditionss(string command);
 
 
@@ -53,7 +54,7 @@ private :
     vector<item> items;
     vector<trigger> triggers;
     vector<border> borders;
-    vector<container> containers;
+
     vector<creature> creatures;
 };
 
