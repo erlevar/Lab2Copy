@@ -71,7 +71,15 @@ int main (int argc, char ** argv) {
 
         bool triggersPresentInContainers = false;
         //vector<container> roomContainers = current.containers;
-        container firstFuckingContainer = current.containers[1];
+        if (current.containers.size() == 1)
+            {
+            container firstFuckingContainer = current.containers[0];
+            }
+        else
+            {
+            container firstFuckingContainer = current.containers[1];
+            }
+
         //current.getContainers(roomContainers);
         vector<string> containerTriggerCommands;
         container triggerPresentContainer;
