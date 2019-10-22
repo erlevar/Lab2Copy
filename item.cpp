@@ -100,3 +100,8 @@ item& item::operator=(const item& i)
     itemTurnon = i.itemTurnon;
     return *this;
 }
+
+string item::getStatus()
+{
+    return status;
+}
