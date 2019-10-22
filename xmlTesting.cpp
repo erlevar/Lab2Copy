@@ -256,11 +256,12 @@ int main (int argc, char ** argv) {
                                 string creatureName = inputVect[1];
                                 string itemName = inputVect[3];
                                 creature returnCreature = current.checkCreatures(creatureName);
+                                item returnItem = user.checkItems(itemName);
                                 if (returnCreature.getName() == "dummy")
                                     {
                                     cout << "No such creature to attack" << endl;
                                     }
-                                item returnItem = user.checkItems(itemName);
+
                                 else if (returnItem.getName() == "dummy")
                                     {
                                     cout << "No such item in your inventory to attack the creature with " << endl;
