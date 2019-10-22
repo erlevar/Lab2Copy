@@ -26,10 +26,6 @@
       </condition>
       <print>*stumble* need some light...</print>
     </trigger>
-    <trigger>
-      <type> permanent </type>
-      <print> fuck me </print>
-    </trigger>
     <border>
       <direction>north</direction>
       <name>MainCavern</name>
