@@ -77,6 +77,7 @@ int main (int argc, char ** argv) {
                                     }
                                 }
                         }
+                    cout << "we are updating creatureTrigger.updateActivated)" << endl;
                     creatureTrigger.updateActivated();
                     roomCreatures[i].updateTrigger(creatureTrigger);
                     }
