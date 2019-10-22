@@ -19,6 +19,8 @@ public:
     string getAction();
     condition getCondition();
     void executePrint();
+    bool getActivated();
+    void updateActivated();
 
 private :
     string type;
