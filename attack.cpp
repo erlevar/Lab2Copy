@@ -26,3 +26,13 @@ attack::attack(XMLNode node)
     attackCondition = tempCondition;
 
 }
+
+condition attack::getCondition()
+{
+    return attackCondition;
+}
+
+string attack::getAction()
+{
+    return actions[1];
+}
