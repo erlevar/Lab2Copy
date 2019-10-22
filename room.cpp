@@ -202,7 +202,7 @@ void room::removeItem(string itemName)
 void room::removeCreature(string creatureName)
 {
     vector<creature>::iterator iter;
-    for (iter = creatures.begin(); iter= creatures.end(); ++iter)
+    for (iter = creatures.begin(); iter != creatures.end(); ++iter)
         {
         if ((*iter).getName() == creatureName)
             {
