@@ -42,7 +42,6 @@ trigger::trigger(XMLNode node)
         {
         action = actionNode.getText();
         }
-    cout << "Command after being initalized: " << command << endl;
     XMLNode conditionNode = node.getChildNode("condition");
     condition tempCondition(conditionNode);
     triggerCondition = tempCondition;
@@ -51,21 +50,7 @@ trigger::trigger(XMLNode node)
 string trigger::getCommand()
 {
     return command;
-    //cout << "calling trigger.getCommand()" << endl;
-    //if (command != " " )
-      //  {
-     //   cout << "returning command " << endl;
-        //return command;
-      //  }
-   // else
-     //   {
-     //   string emptyS = "empty";
-     //   cout << "returning emptyS" << endl;
-     //   return emptyS;
-      //  }
-    //string fucked = "whatthehell";
-    //cout << "returning " << fucked << endl;
-    //return fucked;
+
 }
 
 
