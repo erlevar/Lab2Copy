@@ -3,7 +3,7 @@
 
 #include "attack.h"
 #include "trigger.h"
-#inclue "item.h"
+#include "item.h"
 #include "xmlParser.h"
 using namespace std;
 
