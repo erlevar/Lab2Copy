@@ -59,7 +59,7 @@ int main (int argc, char ** argv) {
         for (int i = 0; i < roomCreatures.size(); i++)
             {
                 trigger creatureTrigger = roomCreatures[i].getTrigger();
-                if (!creatureTrigger.getActivated())
+                if (creatureTrigger.getActivated() == false)
                     {
                     condition creatureTriggerCondition = creatureTrigger.getCondition();
                     string object, status, owner;
