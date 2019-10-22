@@ -70,8 +70,8 @@ int main (int argc, char ** argv) {
             }
 
         bool triggersPresentInContainers = false;
-        vector<container> roomContainers;
-        current.getContainers(roomContainers);
+        vector<container> roomContainers = current.containers;
+        //current.getContainers(roomContainers);
         vector<string> containerTriggerCommands;
         container triggerPresentContainer;
         for (int t = 0; t < roomContainers.size(); t++)
