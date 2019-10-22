@@ -51,8 +51,9 @@ int main (int argc, char ** argv) {
         bool changedRooms = false;
         room current = user.currentLocation();
         current.readDescription();
-
-        //used to read creature triggers(activated by status of user items)
+        //cout << "At the onset, items are " << endl;
+        //current.readItems();
+        //used to read creature triggers(activated by status i
         vector<creature> roomCreatures;
         current.getCreatures(roomCreatures);
         for (int i = 0; i < roomCreatures.size(); i++)
@@ -75,10 +76,14 @@ int main (int argc, char ** argv) {
                             }
                     }
             }
+
         string userinput;
         getline(cin, userinput);
         vector<string> inputVect;
         separateWords(userinput, inputVect);
+
+
+
         //all this is to activate triggers that occur because of user commands.
         //for the room, we check if the user has a certain item or not
         //for the containers, we check the status of said container (e.g. locks on a door or whatnot)
@@ -118,28 +123,6 @@ int main (int argc, char ** argv) {
                 condition triggerCondition = commandTrigger.getCondition();
                 string has, object, owner;
                 has = triggerCondition.getHas(
-        vector<creature> roomCreatures;
-        current.getCreatures(roomCreatures);
-        for (int i = 0; i < roomCreatures.size(); i++)
-            {
-                trigger creatureTrigger = roomCreatures[i].getTrigger();
-                condition creatureTriggerCondition = creatureTrigger.getCondition();
-                string object, status, owner;
-                object = creatureTriggerCondition.getObject();
-                status = creatureTriggerCondition.getStatus();
-                owner = creatureTriggerCondition.getOwner();
-                if (owner == "inventory")
-                    {
-                        item returnItem = user.checkItems(object);
-                        if (returnItem.getName() == object)
-                            {
-                            if (returnItem.getStatus() == status)
-                                {
-                                creatureTrigger.executePrint();
-                                }
-                            }
-                    }
-            });
                 object = triggerCondition.getObject();
                 owner = triggerCondition.getOwner();
                 if (has == "") //one kind of room trigger
