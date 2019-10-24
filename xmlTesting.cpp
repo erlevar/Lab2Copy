@@ -71,12 +71,13 @@ int main (int argc, char ** argv) {
                                 if (returnItem.getStatus() == status)
                                     {
                                     creatureTrigger.executePrint();
+                                    creatureTrigger.updateActivated();
+                                    roomCreatures[i].updateTrigger(creatureTrigger);
                                     }
                                 }
                         }
 
-                    creatureTrigger.updateActivated();
-                    roomCreatures[i].updateTrigger(creatureTrigger);
+
                     current.removeCreature(roomCreatures[i].getName());
                     current.addCreature(roomCreatures[i]);
                     }
