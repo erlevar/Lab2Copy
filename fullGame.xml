@@ -185,7 +185,7 @@
     <border>
       <name>Generator room</name>
       <direction>west</direction>
-    <border>
+    </border>
     <border>
       <name>Main hallway</name>
       <direction>north</direction>
