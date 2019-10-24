@@ -189,7 +189,7 @@ trigger container::getTriggerWithoutCommand()
     return emptyTrigger;
 }
 
-void trigger:removeTriggerWithoutCommand()
+void trigger::removeTriggerWithoutCommand()
 {
     vector<trigger>::iterator iter;
     for(iter = triggers.begin(); triggers != items.end(); ++iter )
