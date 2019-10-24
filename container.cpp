@@ -189,7 +189,7 @@ trigger container::getTriggerWithoutCommand()
     return emptyTrigger;
 }
 
-void trigger::removeTriggerWithoutCommand()
+void container::removeTriggerWithoutCommand()
 {
     vector<trigger>::iterator iter;
     for(iter = triggers.begin(); triggers != items.end(); ++iter )
@@ -202,7 +202,7 @@ void trigger::removeTriggerWithoutCommand()
     }
 }
 
-void trigger::addTrigger(trigger newTrigger)
+void container::addTrigger(trigger newTrigger)
 {
     triggers.push_back(newTrigger);
 }
