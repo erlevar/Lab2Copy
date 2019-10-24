@@ -47,6 +47,7 @@
       <status>locked</status>
       <accept>key</accept>
       <trigger>
+        <type>single</type>
         <condition>
           <has>yes</has>
           <object>key</object>
