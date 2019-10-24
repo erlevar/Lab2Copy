@@ -175,5 +175,35 @@ string container::getStatus()
     return status;
 }
 
+trigger container::getTriggerWithoutCommand()
+{
+    for (int i = 0; i < triggers.size(); i++)
+        {
+        if (triggers[i].getCommand() == "")
+            {
+            return triggers[i];
+            }
+        }
+    string emptyS = "dummy";
+    trigger emptyTrigger(emptyS);
+    return emptyTrigger;
+}
 
+void trigger:removeTriggerWithoutCommand()
+{
+    vector<trigger>::iterator iter;
+    for(iter = triggers.begin(); triggers != items.end(); ++iter )
+    {
+        if((*iter).getCommand() == "")
+        {
+            items.erase(iter);
+            break;
+        }
+    }
+}
+
+void trigger::addTrigger(trigger newTrigger)
+{
+    triggers.push_back(newTrigger);
+}
 
