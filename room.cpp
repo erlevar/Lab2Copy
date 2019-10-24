@@ -238,6 +238,11 @@ void room::addContainer(container newContainer)
     containers.push_back(newContainer);
 }
 
+void room::addCreature(creature newCreature)
+{
+    creatures.push_back(newCreature);
+}
+
 
 void room::getRoomTriggerCommands(vector<string> & commands)
 {
