@@ -32,6 +32,7 @@ public:
     trigger getTriggerWithoutCommand();
     void removeTriggerWithoutCommand();
     void addTrigger(trigger newTrigger);
+    void updateStatus(string newStatus);
 
 private :
     string name;
