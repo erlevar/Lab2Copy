@@ -98,7 +98,7 @@
     </border>
   </room>
   <room>
-    <name>Generator room </name>
+    <name>Generator room</name>
     <description>You find yourself in the main generator for the Death Star. You see that there is a chest in the room. </description>
     <container>
       <name>chest</name>
