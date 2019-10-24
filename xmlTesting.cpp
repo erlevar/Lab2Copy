@@ -137,7 +137,7 @@ int main (int argc, char ** argv) {
             }
 
         bool triggersPresentInContainers = false;
-        vector<container> roomContainers;
+        roomContainers.clear();
         current.getContainers(roomContainers);
         vector<string> containerTriggerCommands;
         container triggerPresentContainer;
