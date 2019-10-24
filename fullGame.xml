@@ -298,8 +298,8 @@
           <condition>
             <object>blaster</object>
           </condition>
-          <print>You have killed the Emperor's guard! Now all that remains is to confront the Emperor.</print>
-          <action>Delete guard</action>
+          <print>You have killed the Emperor's guard! You now are in battle with the Emperor! Try using your lightsaber</print>
+        <action>Delete guard</action>
       </attack>
     </creature>
     <creature>
@@ -319,7 +319,7 @@
             <object>lightsaber</object>
             <owner>inventory</owner>
           </condition>
-          <print>You now are in battle with the Emperor! Try using your lightsaber.</print>
+          
       </trigger>
       <item>
         <name>key</name>
