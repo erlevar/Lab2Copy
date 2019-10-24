@@ -138,11 +138,11 @@
     <border>
       <name>Trash Compactor</name>
       <direction>east</name>
-    <border>
+    </border>
     <border>
       <name>Main Hangar</name>
       <direction>south</name>
-    <border>
+    </border>
   </room>
   <room>
       <name>TrashCompactor</name>
