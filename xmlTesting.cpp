@@ -51,9 +51,6 @@ int main (int argc, char ** argv) {
         bool changedRooms = false;
         room current = user.currentLocation();
         current.readDescription();
-        //cout << "At the onset, items are " << endl;
-        //current.readItems();
-        //used to read creature triggers(activated by status i
         vector<creature> roomCreatures;
         current.getCreatures(roomCreatures);
         for (int i = 0; i < roomCreatures.size(); i++)
@@ -80,6 +77,8 @@ int main (int argc, char ** argv) {
 
                     creatureTrigger.updateActivated();
                     roomCreatures[i].updateTrigger(creatureTrigger);
+                    current.removeCreature(roomCreatures[i].getName());
+                    current.addCreature(roomCreatures[i]);
                     }
             }
 
