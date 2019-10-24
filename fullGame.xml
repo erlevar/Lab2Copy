@@ -137,11 +137,11 @@
     </container>
     <border>
       <name>Trash Compactor</name>
-      <direction>east</name>
+      <direction>east</direction>
     </border>
     <border>
       <name>Main Hangar</name>
-      <direction>south</name>
+      <direction>south</direction>
     </border>
   </room>
   <room>
@@ -183,7 +183,7 @@
     </trigger>
     <border>
       <name>Generator room</name>
-      <direction>West</name>
+      <direction>West</direction>
     </border>
   </room>
   <room>
