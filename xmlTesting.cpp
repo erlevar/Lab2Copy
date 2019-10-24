@@ -321,7 +321,7 @@ int main (int argc, char ** argv) {
                                         if (status == returnItem.getStatus())
                                             {
                                             cout << "The attack is successful. You kill the " << creatureName << endl;
-                                            user.removeItem(itemName);
+                                            //user.removeItem(itemName);
                                             item creatureItem = returnCreature.getItem();
                                             current.addItem(creatureItem);
                                             returnCreature.removeItem();
