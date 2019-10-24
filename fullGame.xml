@@ -118,7 +118,7 @@
         <turnon>
             <print>The grenade has been activated! Don't blow yourself up!</print>
             <action>Update grenade to activated</action>
-        <turnon>
+        </turnon>
       </item>
     </container>
     <container>
