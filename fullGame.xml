@@ -183,6 +183,10 @@
           <print>You need the ladder to escape!</print>
     </trigger>
     <border>
+      <name>Generator room</name>
+      <direction>west</direction>
+    <border>
+    <border>
       <name>Main hallway</name>
       <direction>north</direction>
     </border>
@@ -193,6 +197,10 @@
     <border>
       <name>Conference Room</name>
       <direction>west</direction>
+    </border>
+    <border>
+      <name>Trash Compactor</name>
+      <direction>south</name>
     </border>
   </room>
   <room>
@@ -257,14 +265,104 @@
   </room>
   <room>
     <name>Equipment Room</name>
-    <description>You are in the main equipment room! You see that there is a wardrobe and a chest in the center of the room!</description>
-  </room>  
+    <description>You are in the main equipment room! You see that there is a wardrobe and a chest in the center of the room. You see that The Emperor's room is located to the north. You might want to take some of the items in here before proceeding.</description>
+    <container>
+      <name>wardrobe</name>
+      <item>
+        <name>costume</name>
+        <writing>This is a stormtrooper outfit! You might need it to proceed</writing>
+      </item>
+    </container>
+    <container>
+      <name>chest</name>
+      <item>
+        <name>blaster</name>
+        <writing>This may come in handy when dealing with the emperor's guards</writing>
+      </item>
+    </container>
+    <border>
+      <name>The Emperor's room</name>
+      <direction>north</direction>
+    </border>
+    <border>
+      <name>Conference Room</name>
+      <direction>south</name>
+    </border>
+  </room>
+  <room>
+    <name>The Emperor's room</name>
+    <description>You find yourself in the Emperor's room. Before you do battle with the Emperor, you must defeat his guard.</description>
+    <creature>
+      <name>guard</name>
+      <attack>
+          <condition>
+            <object>blaster</object>
+          </condition>
+          <print>You have killed the Emperor's guard! Now all that remains is to confront the Emperor.</print>
+          <action>Delete guard</action>
+      </attack>
+    </creature>
+    <creature>
+      <name>Emperor</name>
+      <attack>
+          <condition>
+            <object>lightsaber</object>
+            <status>lit</lit>
+          </condition>
+          <print>You have killed the Emperor. He has dropped a key with which you can escape from the Death Star on an escape pod!</print>
+          <action>Delete Emperor</action>
+      </attack>
+      <trigger>
+          <type>single</type>
+          <condition>
+            <status>lit</status>
+            <object>lightsaber</object>
+            <owner>inventory</owner>
+          </condition>
+          <print>You now are in battle with the Emperor! Try using your lightsaber.</print>
+      </trigger>
+      <item>
+        <name>key</name>
+        <writing>Put me in the escape to activate an escape pod and leave</writing>
+      </item>
+    </creature>
+    <container>
+        <status>closed</status>
+        <name>escape</name>
+        <trigger>
+            <type>single</type>
+            <condition>
+              <has>yes</has>
+              <object>escape</object>
+              <owner>key</owner>
+            </condition>
+            <print>The escape pod is now open! You can escape from the Death Star by proceeding to the north</print>
+            <action>Update escape to open</action>
+      </trigger>
+      <trigger>
+        <command>n</command>
+        <type>permanent</type>
+        <condition>
+          <status>closed</status>
+        </condition>
+        <print>You need to put the key in escape to get away on an escape pod.</print>
+    </trigger>
+    </container>
+    <border>
+      <name>Equipment Room</name>
+      <direction>south</direction>
+    </border>
+    <border>
+      <name>Escape pod</name>
+      <direction>north</name>
+    </border>
+  </room>
   <room>
     <type>exit</type>
-    <name>Staircase</name>
-    <description>You found the exit!</description>
+    <name>Escape pod</name>
+    <description>You have made it off on an escape pod!</description>
     <border>
-      <name>MainCavern</name>
+      <name>The Emperor's room</name>
       <direction>south</direction>
     </border>
   </room>
