@@ -83,6 +83,38 @@ int main (int argc, char ** argv) {
                     }
             }
 
+        vector<container> roomContainers;
+        current.getContainers(roomContainers);
+        for (int i = 0; i < roomContainers.size(); i++)
+            {
+                trigger containerTrigger = roomContainers[i].getTriggerWithoutCommand();
+                if (containerTrigger.getActivated() == false)
+                    {
+                    condition containerTriggerCondition = containerTrigger.getCondition();
+                    string object, status, owner, has;
+                    object = containerTriggerCondition.getObject();
+                    status = containerTriggerCondition.getStatus();
+                    owner = containerTriggerCondition.getOwner();
+                    has = containerTriggerCondition.getHas();
+                    if (has == "yes")
+                        {
+                        if (owner == roomContainers[i].getName())
+                            {
+                            item returnItem = roomContainers[i].checkItems(object);
+                            if (returnItem.getName() == object)
+                                {
+                                containerTrigger.executePrint();
+                                containerTrigger.updateActivated();
+                                roomContainers[i].removeTriggerWithoutCommand();
+                                roomContainers[i].addTrigger(containerTrigger);
+                                }
+                            }
+                        }
+                    current.removeContainer(roomContainers[i].getName());
+                    current.addContainer(roomContainers[i]);
+                    }
+            }
+
         string userinput;
         getline(cin, userinput);
         vector<string> inputVect;
