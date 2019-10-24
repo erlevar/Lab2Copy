@@ -162,6 +162,7 @@
         <trigger>
           <type>single</type>
           <condition>
+            <status>idle</status>
             <object>grenade</object>
             <owner>inventory</owner>
           </condition>
