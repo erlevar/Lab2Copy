@@ -192,7 +192,7 @@ trigger container::getTriggerWithoutCommand()
 void container::removeTriggerWithoutCommand()
 {
     vector<trigger>::iterator iter;
-    for(iter = triggers.begin(); triggers != items.end(); ++iter )
+    for(iter = triggers.begin(); iter != triggers.end(); ++iter )
     {
         if((*iter).getCommand() == "")
         {
