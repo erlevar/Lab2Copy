@@ -182,10 +182,13 @@
           <print>You need the ladder to escape!</print>
     </trigger>
     <border>
-      <name>Generator room</name>
-      <direction>West</direction>
+      <name>Main hallway</name>
+      <direction>north</direction>
     </border>
   </room>
+  <room>
+    <name>Main hallway</name>
+    <description>You have found the main hallway to the death star. Further down the hallway, to the west, you see the main conference room.</description>
   <room>
     <type>exit</type>
     <name>Staircase</name>
