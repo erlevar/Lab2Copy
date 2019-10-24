@@ -193,7 +193,7 @@
     <border>
       <name>Conference Room</name>
       <direction>west</direction>
-    <border>
+    </border>
   </room>
   <room>
       <name>Conference Room</name>
