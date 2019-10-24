@@ -291,9 +291,17 @@
   </room>
   <room>
     <name>The Emperor's room</name>
-    <description>You find yourself in the Emperor's room. Before you do battle with the Emperor, you must defeat his guard.</description>
+    <description>You find yourself in the Emperor's room.</description>
     <creature>
       <name>guard</name>
+      <trigger>
+        <type>single</type>
+        <condition>
+            <object>blaster</object>
+            <owner>inventory</owner>
+        </condition>
+        <print>You must do battle with the guard before the Emperor!</print>
+      </trigger>
       <attack>
           <condition>
             <object>blaster</object>
@@ -323,7 +331,7 @@
       </trigger>
       <item>
         <name>key</name>
-        <writing>Put me in the escape to activate an escape pod and leave</writing>
+        <writing>Put me in "escape" to activate an escape pod and leave</writing>
       </item>
     </creature>
     <container>
@@ -333,8 +341,8 @@
             <type>single</type>
             <condition>
               <has>yes</has>
-              <object>escape</object>
-              <owner>key</owner>
+              <object>key</object>
+              <owner>escape</owner>
             </condition>
             <print>The escape pod is now open! You can escape from the Death Star by proceeding to the north</print>
             <action>Update escape to open</action>
