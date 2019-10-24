@@ -196,7 +196,7 @@ void container::removeTriggerWithoutCommand()
     {
         if((*iter).getCommand() == "")
         {
-            items.erase(iter);
+            triggers.erase(iter);
             break;
         }
     }
