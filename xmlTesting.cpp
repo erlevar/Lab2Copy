@@ -26,7 +26,7 @@ using namespace std;
 
 int main (int argc, char ** argv) {
 
-    string gameFile = "testGame.xml";
+    string gameFile = "fullGame.xml";
 
     // this opens and parses the correct XML file:
     XMLNode xMainNode=XMLNode::openFileHelper(gameFile.c_str(),"map");
