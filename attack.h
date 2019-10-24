@@ -13,6 +13,7 @@ public:
     attack(XMLNode node);
     condition getCondition();
     string getAction();
+    void executePrint();
 
 
 private:
