@@ -207,3 +207,8 @@ void container::addTrigger(trigger newTrigger)
     triggers.push_back(newTrigger);
 }
 
+void container::updateStatus(string newStatus)
+{
+    status = newStatus;
+}
+
