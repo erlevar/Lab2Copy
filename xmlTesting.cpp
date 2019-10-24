@@ -110,7 +110,7 @@ int main (int argc, char ** argv) {
                                 string action = containerTrigger.getAction();
                                 vector<string> actionVect;
                                 separateWords(action, actionVect);
-                                roomContainers[i].updateStatus(actionVect[actionVect[actionVect.length()-1]);
+                                roomContainers[i].updateStatus(actionVect[actionVect[actionVect.size()-1]);
                                 }
                             }
                         }
