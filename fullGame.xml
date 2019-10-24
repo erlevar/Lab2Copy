@@ -286,7 +286,7 @@
     </border>
     <border>
       <name>Conference Room</name>
-      <direction>south</name>
+      <direction>south</direction>
     </border>
   </room>
   <room>
@@ -354,7 +354,7 @@
     </border>
     <border>
       <name>Escape pod</name>
-      <direction>north</name>
+      <direction>north</direction>
     </border>
   </room>
   <room>
