@@ -307,7 +307,7 @@
       <attack>
           <condition>
             <object>lightsaber</object>
-            <status>lit</lit>
+            <status>lit</status>
           </condition>
           <print>You have killed the Emperor. He has dropped a key with which you can escape from the Death Star on an escape pod!</print>
           <action>Delete Emperor</action>
