@@ -190,7 +190,75 @@
   <room>
     <name>Main hallway</name>
     <description>You have found the main hallway to the death star. Further down the hallway, to the west, you see the main conference room.</description>
+    <border>
+      <name>Conference Room</name>
+      <direction>west</direction>
+    <border>
   </room>
+  <room>
+      <name>Conference Room</name>
+      <description>You find yourself in the main conference room of the Death Star!</description>
+      <creature>
+        <name>Tarkin</name>
+        <vulnerability>lightsaber</vulnerability>
+        <attack>
+          <condition>
+            <object>lightsaber</object>
+            <status>lit</status>
+          </condition>
+          <print>You have killed Tarkin! He dropped a card that allows you to proceed to the north.</print>
+          <action>Add card to Conference Room</action>
+          <action>Delete Tarkin</action>
+        </attack>
+        <trigger>
+          <type>single</type>
+          <condition>
+            <status>lit</status>
+            <object>lightsaber</object>
+            <owner>inventory</owner>
+          </condition>
+          <print>You see Tarkin in the conference room! Luckily for you, you still have the lightsaber form earlier.</print>
+        </trigger>
+        <item>
+          <name>card</name>
+          <read>Put me in the cardreader to proceed to the north</read>
+        </item>
+      </creature>
+      <container>
+        <status>closed</status>
+        <name>cardreader</name>
+        <trigger>
+            <type>single</type>
+            <condition>
+              <has>yes</has>
+              <object>cardreader</object>
+              <owner>card</owner>
+            </condition>
+            <print>The cardreader has the card now, you can now proceed!</print>
+            <action>Update cardreader to open</action>
+        </trigger>
+      </container>
+      <trigger>
+        <command>w</command>
+        <type>permanent</type>
+        <condition>
+          <status>closed</status>
+        </condition>
+        <print>cardreader needs Tarkin's card to be open!</print>
+      </trigger>
+      <border>
+        <name>Equipment Room</name>
+        <direction>north</direction>
+      </border>
+      <border>
+        <name>Main hallway</name>
+        <direction>east</direction>
+      <border>
+  </room>
+  <room>
+    <name>Equipment Room</name>
+    <description>You are in the main equipment room! You see that there is a wardrobe and a chest in the center of the room!</description>
+    
   <room>
     <type>exit</type>
     <name>Staircase</name>
