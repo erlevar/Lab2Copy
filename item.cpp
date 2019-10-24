@@ -75,13 +75,21 @@ void item::activateTurnon()
 {
     if (on == false)
         {
-        string action;
-        action = itemTurnon.getAction();
-        itemTurnon.readPrint();
-        vector<string> actionVect;
-        separateWords(action, actionVect);
-        status = actionVect[actionVect.size() - 1];
-        on = true;
+        if (action != "")
+            {
+            string action;
+            action = itemTurnon.getAction();
+            itemTurnon.readPrint();
+            vector<string> actionVect;
+            separateWords(action, actionVect);
+            status = actionVect[actionVect.size() - 1];
+            on = true;
+            }
+        else
+            {
+            cout << "Item can't be turned on "<<endl;
+            }
+
         //cout << "Updated status for item " << status << endl;
         }
     else
