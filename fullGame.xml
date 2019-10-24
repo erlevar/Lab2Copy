@@ -134,7 +134,7 @@
         <print>The generator has been successfuly deactivated!</print>
         <action>Update generator to off</action>
       </trigger>
-    </contianer>
+    </container>
   </room>
     
   <room>
