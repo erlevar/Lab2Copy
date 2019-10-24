@@ -253,7 +253,7 @@
       <border>
         <name>Main hallway</name>
         <direction>east</direction>
-      <border>
+      </border>
   </room>
   <room>
     <name>Equipment Room</name>
