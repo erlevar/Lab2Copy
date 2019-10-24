@@ -75,10 +75,10 @@ void item::activateTurnon()
 {
     if (on == false)
         {
+        string action;
+        action = itemTurnon.getAction();
         if (action != "")
             {
-            string action;
-            action = itemTurnon.getAction();
             itemTurnon.readPrint();
             vector<string> actionVect;
             separateWords(action, actionVect);
