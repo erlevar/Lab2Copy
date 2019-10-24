@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<map>
+  <room>
+    <name>Entrance</name>
+    <description>You find yourself onboard the Death Star. There is a room to the north. There is no light in the room, but luckily for you there is a flashlight lying on the floor. </description>
+    <item>
+      <name>flashlight</name>
+      <writing>next to a small button it reads "turn on for light!"</writing>
+      <turnon>
+        <print>The flashlight has been turned on</print>
+        <action>Update flashlight to lit</action>
+      </turnon>
+    </item>
+    <trigger>
+      <type>permanent</type>
+      <command>n</command>
+      <condition>
+        <has>no</has>
+        <object>flashlight</object>
+        <owner>inventory</owner>
+      </condition>
+      <print>*stumble* need some light...</print>
+    </trigger>
+    <border>
+      <direction>north</direction>
+      <name>Main Hangar</name>
+    </border>
+  </room>
+  <room>
+    <name>Main Hangar</name>
+    <description>You are in the middle of the main hangar of the death star. There is a door locked to the north. You see a chest in the middle of the room. </description>
+    <container>
+      <name>chest</name>
+      <item>
+          <name>lightsaber</name>
+          <writing>turn on to actiavte the lightsaber</writing>
+          <status>idle</status>
+          <turnon>
+            <print>Your lightsaber is lit</print>
+            <action>Update lightsaber to lit</action>
+          </turnon>
+      </item>
+    </container>
+    <container>
+      <name>lock</name>
+      <status>locked</status>
+      <trigger>
+        <type>single</type>
+        <condition>
+          <has>yes</has>
+          <object>key</object>
+          <owner>lock</owner>
+        </condition>
+        <print>The lock drops off and the door opens</print>
+        <action>Update lock to unlocked</action>
+      </trigger>
+      <trigger>
+        <command>n</command>
+        <type>permanent</type>
+        <condition>
+          <status>locked</status>
+        </condition>
+        <print>lock needs a key!</print>
+      </trigger>
+    </container>
+    <creature>
+      <name>stormtrooper</name>
+      <vulnerability>lightsaber</vulnerability>
+      <attack>
+        <condition>
+          <object>lightsaber</object>
+          <status>lit</status>
+        </condition>
+        <print>You have killed the stormtrooper, and they have dropped a key in the room!</print>
+        <action>Add key to Main Hangar</action>
+        <action>Delete stormtrooper</action>
+      </attack>
+      <trigger>
+        <type>single</type>
+        <condition>
+          <object>flashlight</object>
+          <status>lit</status>
+          <owner>inventory</owner>
+        </condition>
+        <print>You see a stormtrooper in the middle of the room. He walks toward you threateningly. </print>
+      </trigger>
+      <item>
+        <name>key</name>
+      </item>
+    </creature>
+    <border>
+      <direction>south</direction>
+      <name>Entrance</name>
+    </border>
+    <border>
+      <direction>north</direction>
+      <name>Generator room</name>
+    </border>
+  </room>
+  <room>
+    <name>Generator room </name>
+    <description>You find yourself in the main generator for the Death Star. You see that there is a chest in the room. </description>
+    <container>
+      <name>chest</name>
+      <item>
+        <name>jammer</name>
+        <status>Idle</status>
+        <writing>Put me in the generator to jam it and turn off the power!</writing>
+        <turnon>
+            <print>The jammer has been turned on</print>
+            <action>Update jammer to on</action>
+        </turnon>
+      </item>
+      <item>
+        <name>Grenade</name>
+        <status>Idle</status>
+        <writing>Turn me on to explode!</writing>
+        <turnon>
+            <print>The grenade has been activated! Don't blow yourself up!</print>
+            <action>Update grenade to activated</action>
+        <turnon>
+      </item>
+    </container>
+    <container>
+      <name>generator</name>
+      <status>on</status>
+      <trigger>
+        <type>single</type>
+        <condition>
+          <has>yes</has>
+          <object>jammer</object>
+          <owner>generator</owner>
+        </condition>
+        <print>The generator has been successfuly deactivated!</print>
+        <action>Update generator to off</action>
+      </trigger>
+    </contianer>
+  </room>
+    
+  <room>
+    <type>exit</type>
+    <name>Staircase</name>
+    <description>You found the exit!</description>
+    <border>
+      <name>MainCavern</name>
+      <direction>south</direction>
+    </border>
+  </room>
+
+
+</map>
