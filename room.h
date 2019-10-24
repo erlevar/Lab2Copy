@@ -37,6 +37,7 @@ public :
     void removeCreature(string creatureName);
     void addItem(item newItem);
     void addContainer(container newContainer);
+    void addCreature(creature newCreature);
     void getRoomTriggerCommands(vector<string> & commands);
     string getRoomType();
     void readItems();
