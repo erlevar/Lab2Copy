@@ -200,7 +200,7 @@
     </border>
     <border>
       <name>Trash Compactor</name>
-      <direction>south</name>
+      <direction>south</direction>
     </border>
   </room>
   <room>
