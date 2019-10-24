@@ -258,7 +258,7 @@
   <room>
     <name>Equipment Room</name>
     <description>You are in the main equipment room! You see that there is a wardrobe and a chest in the center of the room!</description>
-    
+  </room>  
   <room>
     <type>exit</type>
     <name>Staircase</name>
