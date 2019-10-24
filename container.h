@@ -28,6 +28,10 @@ public:
     void getContainerTriggerComands(vector<string> & commands);
     trigger checkTriggersByCommand(string input);
     string getStatus();
+    void updateTrigger(trigger newTrigger);
+    trigger getTriggerWithoutCommand();
+    void removeTriggerWithoutCommand();
+    void addTrigger(trigger newTrigger);
 
 private :
     string name;
