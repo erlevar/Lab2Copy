@@ -107,6 +107,10 @@ int main (int argc, char ** argv) {
                                 containerTrigger.updateActivated();
                                 roomContainers[i].removeTriggerWithoutCommand();
                                 roomContainers[i].addTrigger(containerTrigger);
+                                string action = containerTrigger.getAction();
+                                vector<string> actionVect;
+                                separateWords(action, actionVect);
+                                roomContainers[i].updateStatus(actionVect[actionVect[actionVect.length()-1]);
                                 }
                             }
                         }
