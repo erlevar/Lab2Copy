@@ -145,7 +145,7 @@
     </border>
   </room>
   <room>
-      <name>TrashCompactor</name>
+      <name>Trash Compactor</name>
       <description>Oh no! You find yourself in the trash compactor for the Death Star. </description>
       <creature>
         <name>dianoga</name>
