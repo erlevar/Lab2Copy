@@ -77,8 +77,8 @@ int main (int argc, char ** argv) {
 
                     creatureTrigger.updateActivated();
                     roomCreatures[i].updateTrigger(creatureTrigger);
-                    //current.removeCreature(roomCreatures[i].getName());
-                    //current.addCreature(roomCreatures[i]);
+                    current.removeCreature(roomCreatures[i].getName());
+                    current.addCreature(roomCreatures[i]);
                     }
             }
 
