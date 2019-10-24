@@ -326,7 +326,16 @@ int main (int argc, char ** argv) {
                                             current.addItem(creatureItem);
                                             returnCreature.removeItem();
                                             current.removeCreature(returnCreature.getName());
-                                            cout << "The " << creatureItem.getName() << " has been added to the " << current.getName() << " " << endl;
+                                            creatureAttack.executePrint();
+                                            //if (creatureItem.getName() != "")
+                                            //    {
+                                            //    cout << "The " << creatureItem.getName() << " has been added to the " << current.getName() << " " << endl;
+                                            //    }
+                                            //else
+                                            //    {
+
+                                            //    }
+
 
                                             }
                                         else
