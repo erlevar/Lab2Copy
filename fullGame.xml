@@ -229,7 +229,7 @@
         </trigger>
         <item>
           <name>card</name>
-          <read>Put me in the cardreader to proceed to the north</read>
+          <writing>Put me in the cardreader to proceed to the north</writing>
         </item>
       </creature>
       <container>
