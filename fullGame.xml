@@ -189,6 +189,7 @@
   <room>
     <name>Main hallway</name>
     <description>You have found the main hallway to the death star. Further down the hallway, to the west, you see the main conference room.</description>
+  </room>
   <room>
     <type>exit</type>
     <name>Staircase</name>
