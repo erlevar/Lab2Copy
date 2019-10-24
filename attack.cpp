@@ -36,3 +36,8 @@ string attack::getAction()
 {
     return actions[1];
 }
+
+void attack::executePrint()
+{
+    cout << print << endl;
+}
