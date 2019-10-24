@@ -2,7 +2,7 @@
 <map>
   <room>
     <name>Entrance</name>
-    <description>You find yourself onboard the Death Star. There is a room to the north. There is no light in the room, but luckily for you there is a flashlight lying on the floor. </description>
+    <description>You find yourself onboard the Death Star! There is a room to the north. There is very little light in the entrance, but luckily for you there is a flashlight lying on the floor. </description>
     <item>
       <name>flashlight</name>
       <writing>next to a small button it reads "turn on for light!"</writing>
@@ -28,7 +28,7 @@
   </room>
   <room>
     <name>Main Hangar</name>
-    <description>You are in the middle of the main hangar of the death star. There is a door locked to the north. You see a chest in the middle of the room. </description>
+    <description>You are in the middle of the main hangar of the Death Star. There is a door locked to the north. You see a chest in the middle of the room. </description>
     <container>
       <name>chest</name>
       <item>
@@ -112,8 +112,8 @@
         </turnon>
       </item>
       <item>
-        <name>Grenade</name>
-        <status>Idle</status>
+        <name>grenade</name>
+        <status>idle</status>
         <writing>Turn me on to explode!</writing>
         <turnon>
             <print>The grenade has been activated! Don't blow yourself up!</print>
@@ -135,8 +135,57 @@
         <action>Update generator to off</action>
       </trigger>
     </container>
+    <border>
+      <name>Trash Compactor</name>
+      <direction>east</name>
+    <border>
+    <border>
+      <name>Main Hangar</name>
+      <direction>south</name>
+    <border>
   </room>
-    
+  <room>
+      <name>TrashCompactor</name>
+      <description>Oh no! You find yourself in the trash compactor for the Death Star. </description>
+      <creature>
+        <name>dianoga</name>
+        <vulnerability>grenade</vulnerability>
+        <attack>
+          <condition>
+            <object>grenade</object>
+            <status>activated</status>
+          </condition>
+          <print>You have killed the dianoga, and they have dropped a ladder so that you can escape the room to the north!</print>
+          <action>Add ladder to TrashCompactor</action>
+          <action>Delete dianoga</action>
+        </attack>
+        <trigger>
+          <type>single</type>
+          <condition>
+            <object>grenade</object>
+            <owner>inventory</owner>
+          </condition>
+          <print>You see a menacing looking dianoga in the garbage compactor. Fortunately for you, you still have the grenade in your inventory.</print>
+        </trigger>
+        <item>
+          <name>ladder</name>
+        </item>
+    </creature>
+    <trigger>
+          <type>permanent</type>
+          <command>n</command>
+          <condition>
+            <has>no</has>
+            <object>ladder</object>
+            <owner>inventory</owner>
+          </condition>
+          <print>You need the ladder to escape!</print>
+    </trigger>
+    <border>
+      <name>Generator room</name>
+      <direction>West</name>
+    </border>
+  </room>
   <room>
     <type>exit</type>
     <name>Staircase</name>
