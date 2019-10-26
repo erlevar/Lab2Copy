@@ -57,7 +57,7 @@ main.o: main.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.
 	$(CC) -c $(CFLAGS) main.cpp 
 	
 main: main.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o 
-	$(CC) $(CFLAGS) main.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o -o xmlTesting -L/usr/local/lib
+	$(CC) $(CFLAGS) main.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o -o main -L/usr/local/lib
 	
 
 clean:
