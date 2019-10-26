@@ -10,7 +10,9 @@ class turnon
 {
 public :
     turnon();
+    //constructor that takes infromation from file.
     turnon(XMLNode node);
+    //accessors
     void readPrint();
     string getAction();
 
