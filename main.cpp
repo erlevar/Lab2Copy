@@ -28,7 +28,7 @@ void activateContainerTriggers(room & current, player user);
 bool triggersInRoom(room current, string userinput);
 bool triggersInContainers(room current, string userinput, container & triggerPresentContainer);
 void activateRoomCommandTriggers(room current, string userinput, player user, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
-void activateContainerCommandTriggers(container triggerPresentContainer, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
+void activateContainerCommandTriggers(container triggerPresentContainer, string userinput, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
 
 
 int main (int argc, char ** argv) {
@@ -319,7 +319,7 @@ void activateRoomCommandTriggers(room current, string userinput, player user, bo
         }
 }
 
-void activateContainerCommandTriggers(container triggerPresentContainer, bool & triggersPresentInContainers, bool & triggersPresentInRoom)
+void activateContainerCommandTriggers(container triggerPresentContainer, string userinput, bool & triggersPresentInContainers, bool & triggersPresentInRoom)
 {
     trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
     condition triggerCondition = commandTrigger.getCondition();
