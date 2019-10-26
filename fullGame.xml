@@ -309,7 +309,7 @@
     </container>
     <border>
       <name>Equipment Room</name>
-      <direction>West</direction>
+      <direction>west</direction>
     </border>
   </room>
   <room>
