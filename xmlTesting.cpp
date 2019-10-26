@@ -23,6 +23,13 @@
 using namespace std;
 
 
+void activateCreatureTriggers(room & current, player user);
+void activateContainerTriggers(room & current, player user);
+bool triggersInRoom(room current, string userinput);
+bool triggersInContainers(room current, string userinput, container & triggerPresentContainer);
+void activateRoomCommandTriggers(room current, string userinput, player user, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
+void activateContainerCommandTriggers(container triggerPresentContainer, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
+
 
 int main (int argc, char ** argv) {
 
@@ -51,73 +58,8 @@ int main (int argc, char ** argv) {
         bool changedRooms = false;
         room current = user.currentLocation();
         current.readDescription();
-        vector<creature> roomCreatures;
-        current.getCreatures(roomCreatures);
-        for (int i = 0; i < roomCreatures.size(); i++)
-            {
-                trigger creatureTrigger = roomCreatures[i].getTrigger();
-                if (creatureTrigger.getActivated() == false)
-                    {
-                    condition creatureTriggerCondition = creatureTrigger.getCondition();
-                    string object, status, owner;
-                    object = creatureTriggerCondition.getObject();
-                    status = creatureTriggerCondition.getStatus();
-                    owner = creatureTriggerCondition.getOwner();
-                    if (owner == "inventory")
-                        {
-                            item returnItem = user.checkItems(object);
-                            if (returnItem.getName() == object)
-                                {
-                                if (returnItem.getStatus() == status)
-                                    {
-                                    creatureTrigger.executePrint();
-                                    creatureTrigger.updateActivated();
-                                    roomCreatures[i].updateTrigger(creatureTrigger);
-                                    }
-                                }
-                        }
-
-
-                    current.removeCreature(roomCreatures[i].getName());
-                    current.addCreature(roomCreatures[i]);
-                    }
-            }
-
-        vector<container> roomContainers;
-        current.getContainers(roomContainers);
-        for (int i = 0; i < roomContainers.size(); i++)
-            {
-                trigger containerTrigger = roomContainers[i].getTriggerWithoutCommand();
-                if (containerTrigger.getActivated() == false)
-                    {
-                    condition containerTriggerCondition = containerTrigger.getCondition();
-                    string object, status, owner, has;
-                    object = containerTriggerCondition.getObject();
-                    status = containerTriggerCondition.getStatus();
-                    owner = containerTriggerCondition.getOwner();
-                    has = containerTriggerCondition.getHas();
-                    if (has == "yes")
-                        {
-                        if (owner == roomContainers[i].getName())
-                            {
-                            item returnItem = roomContainers[i].checkItems(object);
-                            if (returnItem.getName() == object)
-                                {
-                                containerTrigger.executePrint();
-                                containerTrigger.updateActivated();
-                                roomContainers[i].removeTriggerWithoutCommand();
-                                roomContainers[i].addTrigger(containerTrigger);
-                                string action = containerTrigger.getAction();
-                                vector<string> actionVect;
-                                separateWords(action, actionVect);
-                                roomContainers[i].updateStatus(actionVect[actionVect.size()-1]);
-                                }
-                            }
-                        }
-                    current.removeContainer(roomContainers[i].getName());
-                    current.addContainer(roomContainers[i]);
-                    }
-            }
+        activateCreatureTriggers(current, user);
+        activateContainerTriggers(current, user);
 
         string userinput;
         getline(cin, userinput);
@@ -125,108 +67,25 @@ int main (int argc, char ** argv) {
         separateWords(userinput, inputVect);
 
 
-
         //all this is to activate triggers that occur because of user commands.
         //for the room, we check if the user has a certain item or not
         //for the containers, we check the status of said container (e.g. locks on a door or whatnot)
-        vector<string> roomTriggerCommands;
-        bool triggersPresentInRoom = false;
-        current.getRoomTriggerCommands(roomTriggerCommands);
-        for (int t = 0; t < roomTriggerCommands.size(); t++)
-            {
-            if (userinput == roomTriggerCommands[t])
-                {
-                triggersPresentInRoom = true;
-                }
-            }
-
-        bool triggersPresentInContainers = false;
-        roomContainers.clear();
-        current.getContainers(roomContainers);
-        vector<string> containerTriggerCommands;
+        bool triggersPresentInRoom = triggersInRoom(current, userinput);
         container triggerPresentContainer;
-        for (int t = 0; t < roomContainers.size(); t++)
-            {
-                containerTriggerCommands.clear();
-                roomContainers[t].getContainerTriggerComands(containerTriggerCommands);
-                for (int j = 0; j<containerTriggerCommands.size(); j++)
-                    {
-                        if(userinput == containerTriggerCommands[j])
-                            {
-                            triggerPresentContainer = roomContainers[t];
-                            triggersPresentInContainers = true;
-                            }
-                    }
-            }
+        bool triggersPresentInContainers = triggersInContainers(current, userinput, triggerPresentContainer);
 
         if ((triggersPresentInRoom) && !(triggersPresentInContainers))
             {
-                trigger commandTrigger = current.checkTriggersByCommand(userinput);
-                condition triggerCondition = commandTrigger.getCondition();
-                string has, object, owner;
-                has = triggerCondition.getHas();
-                object = triggerCondition.getObject();
-                owner = triggerCondition.getOwner();
-                if (has == "") //one kind of room trigger
-                    {
-
-                    }
-                else if (has!= "") //other kind of room trigger. checks user inventory
-                    {
-                    if (has == "no")
-                        {
-                        if (owner == "inventory")
-                            {
-                            item returnItem = user.checkItems(object);
-                            if (returnItem.getName() == "dummy")
-                                {
-                                commandTrigger.executePrint();
-                                }
-                            else
-                                {
-                                triggersPresentInContainers = false;
-                                triggersPresentInRoom = false;
-                                }
-                            }
-                        }
-                    else
-                        {
-                        if (owner == "inventory")
-                            {
-                            item returnItem = user.checkItems(object);
-                            if (returnItem.getName() == "dummy")
-                                {
-                                triggersPresentInContainers = false;
-                                triggersPresentInRoom = false;
-                                }
-                            else
-                                {
-                                commandTrigger.executePrint();
-                                }
-                            }
-                        }
-                    }
+            activateRoomCommandTriggers(current, userinput, user, triggersPresentInContainers, triggersPresentInRoom);
             }
 
         else if ((triggersPresentInContainers) && !(triggersPresentInRoom))
             {
-                trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
-                condition triggerCondition = commandTrigger.getCondition();
-                string status = triggerCondition.getStatus();
-                if (triggerPresentContainer.getStatus() == status)
-                    {
-                    commandTrigger.executePrint();
-
-                    }
-                else
-                    {
-                    triggersPresentInContainers = false;
-                    triggersPresentInRoom = false;
-                    }
+            activateContainerCommandTriggers(triggerPresentContainer, triggersPresentInContainers, triggersPresentInRoom);
             }
         //end of room and container triggers (activated by user commands)
 
-        if ( !(triggersPresentInContainers) && !(triggersPresentInRoom))
+        if (!(triggersPresentInContainers) && !(triggersPresentInRoom))
             {
                 if (inputVect.size() == 1)
                 {
@@ -297,57 +156,7 @@ int main (int argc, char ** argv) {
                                 {
                                 string creatureName = inputVect[1];
                                 string itemName = inputVect[3];
-                                creature returnCreature = current.checkCreatures(creatureName);
-                                item returnItem = user.checkItems(itemName);
-                                if (returnCreature.getName() == "dummy")
-                                    {
-                                    cout << "No such creature to attack" << endl;
-                                    }
-
-                                else if (returnItem.getName() == "dummy")
-                                    {
-                                    cout << "No such item in your inventory to attack the creature with " << endl;
-                                    }
-                                else
-                                    {
-                                    cout << "You attack the " << creatureName << " with the " << itemName << endl;
-                                    attack creatureAttack = returnCreature.getAttack();
-                                    condition attackCondition = creatureAttack.getCondition();
-                                    string object, status;
-                                    object = attackCondition.getObject();
-                                    status = attackCondition.getStatus();
-                                    if (object == itemName)
-                                        {
-                                        if (status == returnItem.getStatus())
-                                            {
-                                            cout << "The attack is successful. You kill the " << creatureName << endl;
-                                            //user.removeItem(itemName);
-                                            item creatureItem = returnCreature.getItem();
-                                            current.addItem(creatureItem);
-                                            returnCreature.removeItem();
-                                            current.removeCreature(returnCreature.getName());
-                                            creatureAttack.executePrint();
-                                            //if (creatureItem.getName() != "")
-                                            //    {
-                                            //    cout << "The " << creatureItem.getName() << " has been added to the " << current.getName() << " " << endl;
-                                            //    }
-                                            //else
-                                            //    {
-
-                                            //    }
-
-
-                                            }
-                                        else
-                                            {
-                                            cout << itemName << " is not properly activated for attack " << endl;
-                                            }
-                                        }
-                                    else
-                                        {
-                                        cout << "You used the wrong item to attack the " << creatureName << endl;
-                                        }
-                                    }
+                                user.userAttackCreature(creatureName, itemName, current);
                                 }
                         }
                 }
@@ -355,12 +164,175 @@ int main (int argc, char ** argv) {
             {
             user.updateLocation(current);
             }
-
-
-
         }
     return 0;
 }
 
 
+void activateCreatureTriggers(room & current, player user)
+{
+    vector<creature> roomCreatures;
+    current.getCreatures(roomCreatures);
+    for (int i = 0; i < roomCreatures.size(); i++)
+        {
+            trigger creatureTrigger = roomCreatures[i].getTrigger();
+            if (creatureTrigger.getActivated() == false)
+                {
+                condition creatureTriggerCondition = creatureTrigger.getCondition();
+                string object, status, owner;
+                object = creatureTriggerCondition.getObject();
+                status = creatureTriggerCondition.getStatus();
+                owner = creatureTriggerCondition.getOwner();
+                if (owner == "inventory")
+                    {
+                        item returnItem = user.checkItems(object);
+                        if (returnItem.getName() == object)
+                            {
+                            if (returnItem.getStatus() == status)
+                                {
+                                creatureTrigger.executePrint();
+                                creatureTrigger.updateActivated();
+                                roomCreatures[i].updateTrigger(creatureTrigger);
+                                }
+                            }
+                    }
+                current.removeCreature(roomCreatures[i].getName());
+                current.addCreature(roomCreatures[i]);
+                }
+        }
+}
 
+void activateContainerTriggers(room & current, player user)
+{
+    vector<container> roomContainers;
+    current.getContainers(roomContainers);
+    for (int i = 0; i < roomContainers.size(); i++)
+        {
+            trigger containerTrigger = roomContainers[i].getTriggerWithoutCommand();
+            if (containerTrigger.getActivated() == false)
+                {
+                condition containerTriggerCondition = containerTrigger.getCondition();
+                string object, status, owner, has;
+                object = containerTriggerCondition.getObject();
+                status = containerTriggerCondition.getStatus();
+                owner = containerTriggerCondition.getOwner();
+                has = containerTriggerCondition.getHas();
+                if (has == "yes")
+                    {
+                    if (owner == roomContainers[i].getName())
+                        {
+                        item returnItem = roomContainers[i].checkItems(object);
+                        if (returnItem.getName() == object)
+                            {
+                            containerTrigger.executePrint();
+                            containerTrigger.updateActivated();
+                            roomContainers[i].removeTriggerWithoutCommand();
+                            roomContainers[i].addTrigger(containerTrigger);
+                            string action = containerTrigger.getAction();
+                            vector<string> actionVect;
+                            separateWords(action, actionVect);
+                            roomContainers[i].updateStatus(actionVect[actionVect.size()-1]);
+                            }
+                        }
+                    }
+                current.removeContainer(roomContainers[i].getName());
+                current.addContainer(roomContainers[i]);
+                }
+        }
+}
+
+bool triggersInRoom(room current, string userinput)
+{
+    vector<string> roomTriggerCommands;
+    current.getRoomTriggerCommands(roomTriggerCommands);
+    for (int t = 0; t < roomTriggerCommands.size(); t++)
+        {
+        if (userinput == roomTriggerCommands[t])
+            {
+            return true;
+            }
+        }
+    return false;
+}
+
+bool triggersInContainers(room current, string userinput, container & triggerPresentContainer)
+{
+    vector<container> roomContainers;
+    current.getContainers(roomContainers);
+    vector<string> containerTriggerCommands;
+    container triggerPresentContainer;
+    for (int t = 0; t < roomContainers.size(); t++)
+        {
+            containerTriggerCommands.clear();
+            roomContainers[t].getContainerTriggerComands(containerTriggerCommands);
+            for (int j = 0; j<containerTriggerCommands.size(); j++)
+                {
+                    if(userinput == containerTriggerCommands[j])
+                        {
+                        triggerPresentContainer = roomContainers[t];
+                        return true;
+                        }
+                }
+        }
+    return false;
+
+}
+
+void activateRoomCommandTriggers(room current, string userinput, player user, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
+{
+    trigger commandTrigger = current.checkTriggersByCommand(userinput);
+    condition triggerCondition = commandTrigger.getCondition();
+    string has, object, owner;
+    has = triggerCondition.getHas();
+    object = triggerCondition.getObject();
+    owner = triggerCondition.getOwner();
+    if (has == "no")
+        {
+        if (owner == "inventory")
+            {
+            item returnItem = user.checkItems(object);
+            if (returnItem.getName() == "dummy")
+                {
+                commandTrigger.executePrint();
+                }
+            else
+                {
+                triggersPresentInContainers = false;
+                triggersPresentInRoom = false;
+                }
+            }
+        }
+    else
+        {
+        if (owner == "inventory")
+            {
+            item returnItem = user.checkItems(object);
+            if (returnItem.getName() == "dummy")
+                {
+                triggersPresentInContainers = false;
+                triggersPresentInRoom = false;
+                }
+            else
+                {
+                commandTrigger.executePrint();
+                }
+            }
+        }
+}
+
+void activateContainerCommandTriggers(container triggerPresentContainer, bool & triggersPresentInContainers, bool & triggersPresentInRoom)
+{
+    trigger commandTrigger = triggerPresentContainer.checkTriggersByCommand(userinput);
+    condition triggerCondition = commandTrigger.getCondition();
+    string status = triggerCondition.getStatus();
+    if (triggerPresentContainer.getStatus() == status)
+        {
+        commandTrigger.executePrint();
+
+        }
+    else
+        {
+        triggersPresentInContainers = false;
+        triggersPresentInRoom = false;
+        }
+}
