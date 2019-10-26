@@ -5,7 +5,5 @@
 #include <vector>
 using namespace std;
 
-
-//void getTriggers(XMLNode node, vector<trigger> & triggers);
-//void getItems(XMLNode node, vector<item> & items);
+//this function just separates a string by spaces. 
 void separateWords(string s, vector<string> & separated);
