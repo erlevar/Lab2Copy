@@ -9,7 +9,9 @@ class border
 {
 public:
     border();
+    //constructor that takes information from XMLNode
     border(XMLNode node);
+    //accessor functions
     string getDirection();
     string getName();
 
