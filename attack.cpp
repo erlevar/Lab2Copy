@@ -5,6 +5,7 @@ attack::attack()
     print = "";
 }
 
+//initializer using XMLNode to access XML file. 
 attack::attack(XMLNode node)
 {
 
@@ -26,7 +27,7 @@ attack::attack(XMLNode node)
     attackCondition = tempCondition;
 
 }
-
+ //accessor functions
 condition attack::getCondition()
 {
     return attackCondition;
