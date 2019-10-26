@@ -56,7 +56,7 @@ player.o: player.cpp player.h xmlParser.h item.h room.h
 main.o: main.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h player.h
 	$(CC) -c $(CFLAGS) main.cpp 
 	
-main: xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o 
+main: main.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o 
 	$(CC) $(CFLAGS) main.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o -o xmlTesting -L/usr/local/lib
 	
 
