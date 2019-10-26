@@ -81,7 +81,7 @@ int main (int argc, char ** argv) {
 
         else if ((triggersPresentInContainers) && !(triggersPresentInRoom))
             {
-            activateContainerCommandTriggers(triggerPresentContainer, triggersPresentInContainers, triggersPresentInRoom);
+            activateContainerCommandTriggers(triggerPresentContainer, userinput, triggersPresentInContainers, triggersPresentInRoom);
             }
         //end of room and container triggers (activated by user commands)
 
