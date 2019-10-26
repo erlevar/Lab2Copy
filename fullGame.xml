@@ -288,6 +288,29 @@
       <name>Conference Room</name>
       <direction>south</direction>
     </border>
+    <border>
+      <name>Dining Hall</name>
+      <direction>east</direction>
+    </border>
+  </room>
+  <room>
+    <name>Dining Hall</name>
+    <description>You find yourself in the dining hall on board the Death Star. Maybe you will want to take some food for later? (try "open food")</description>
+    <container>
+      <name>food</name>
+      <item>
+        <name>milk</name>
+        <writing>Enjoy this milk</writing>
+      </item>
+      <item>
+        <name>cookie</name>
+        <writing>Enjoy this cookie</writing>
+      </item>
+    </container>
+    <border>
+      <name>Equipment Room</name>
+      <direction>West</direction>
+    </border>
   </room>
   <room>
     <name>The Emperor's room</name>
