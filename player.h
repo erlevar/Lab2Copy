@@ -29,6 +29,7 @@ public:
     void userOpenContainer(string input); //used for open container commands
     void userTurnonItem (string input); //used for turn on (item) commands
     void userPutItemInContainer(room & current, string itemName, string containerName); //user for put (item) in (container) commands
+    void userAttackCreature(string creatureName, string itemName, room & current);
 
 private :
     room current;
