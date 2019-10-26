@@ -10,7 +10,9 @@ class attack
 {
 public:
     attack();
+    //initializer reads from XMLNode
     attack(XMLNode node);
+    //accessors
     condition getCondition();
     string getAction();
     void executePrint();
