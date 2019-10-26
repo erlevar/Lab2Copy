@@ -260,7 +260,6 @@ bool triggersInContainers(room current, string userinput, container & triggerPre
     vector<container> roomContainers;
     current.getContainers(roomContainers);
     vector<string> containerTriggerCommands;
-    container triggerPresentContainer;
     for (int t = 0; t < roomContainers.size(); t++)
         {
             containerTriggerCommands.clear();
@@ -278,7 +277,7 @@ bool triggersInContainers(room current, string userinput, container & triggerPre
 
 }
 
-void activateRoomCommandTriggers(room current, string userinput, player user, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
+void activateRoomCommandTriggers(room current, string userinput, player user, bool & triggersPresentInContainers, bool & triggersPresentInRoom)
 {
     trigger commandTrigger = current.checkTriggersByCommand(userinput);
     condition triggerCondition = commandTrigger.getCondition();
