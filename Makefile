@@ -15,7 +15,7 @@ CFLAGS= -std=c++14
 
 RM= /bin/rm -f
 
-all:  xmlTesting 
+all:  main
 
 xmlParser.o: xmlParser.cpp xmlParser.h
 	$(CC) $(CFLAGS) xmlParser.cpp -c
@@ -53,12 +53,12 @@ room.o: room.cpp room.h xmlParser.h extraFunctions.h trigger.h container.h creat
 player.o: player.cpp player.h xmlParser.h item.h room.h
 	$(CC) $(CFLAGS) player.cpp -c
 
-xmlTesting.o: xmlTesting.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h player.h
-	$(CC) -c $(CFLAGS) xmlTesting.cpp 
+main.o: main.cpp xmlParser.h room.h container.h extraFunctions.h item.h trigger.h condition.h border.h attack.h turnon.h player.h
+	$(CC) -c $(CFLAGS) main.cpp 
 	
-xmlTesting: xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o 
-	$(CC) $(CFLAGS) xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o -o xmlTesting -L/usr/local/lib
+main: xmlTesting.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o 
+	$(CC) $(CFLAGS) main.o xmlParser.o room.o container.o extraFunctions.o item.o trigger.o condition.o border.o attack.o turnon.o creature.o player.o -o xmlTesting -L/usr/local/lib
 	
 
 clean:
-	rm -f *.o  xmlTesting
+	rm -f *.o  main
