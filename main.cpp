@@ -102,6 +102,10 @@ int main (int argc, char ** argv) {
                         {
                         foundExit = true;
                         }
+                    else
+                        {
+                        cout << "Invalid input " << endl;
+                        }
                 }
                 else if (inputVect.size() == 2)
                     {
@@ -135,13 +139,21 @@ int main (int argc, char ** argv) {
                                 user.userOpenContainer(secondWord); //user opens a container
                                 }
                             }
-                        }
+                        else
+                            {
+                            cout << "Invalid input " <<endl;
+                            }
+                    }
                     else if (inputVect.size() == 3)
                         {
                             if ((inputVect[0] == "turn") && (inputVect[1] == "on")) //user turns on an item
                                 {
                                 string turnonItem = inputVect[2];
                                 user.userTurnonItem(turnonItem);
+                                }
+                            else
+                                {
+                                cout << "Invalid input " << endl;
                                 }
                         }
                     else if (inputVect.size() == 4)
@@ -152,12 +164,20 @@ int main (int argc, char ** argv) {
                                 string containerName = inputVect[3];
                                 user.userPutItemInContainer(current, itemName, containerName);
                                 }
-                            if ((inputVect[0] == "attack") && (inputVect[2] == "with"))
+                            else if ((inputVect[0] == "attack") && (inputVect[2] == "with"))
                                 {
                                 string creatureName = inputVect[1];
                                 string itemName = inputVect[3];
                                 user.userAttackCreature(creatureName, itemName, current);
                                 }
+                            else
+                                {
+                                cout << "Invalid input " << endl;
+                                }
+                        }
+                    else
+                        {
+                        cout << "Invalid input " << endl;
                         }
                 }
         if (changedRooms == false)
