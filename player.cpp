@@ -270,4 +270,48 @@ void player::userPutItemInContainer(room & current, string itemName, string cont
 
 }
 
+void player::userAttackCreature(string creatureName, string itemName, room & current)
+{
+    creature returnCreature = current.checkCreatures(creatureName);
+    item returnItem = checkItems(itemName);
+    if (returnCreature.getName() == "dummy")
+        {
+        cout << "No such creature to attack" << endl;
+        }
+
+    else if (returnItem.getName() == "dummy")
+        {
+        cout << "No such item in your inventory to attack the creature with " << endl;
+        }
+    else
+        {
+        cout << "You attack the " << creatureName << " with the " << itemName << endl;
+        attack creatureAttack = returnCreature.getAttack();
+        condition attackCondition = creatureAttack.getCondition();
+        string object, status;
+        object = attackCondition.getObject();
+        status = attackCondition.getStatus();
+        if (object == itemName)
+            {
+            if (status == returnItem.getStatus())
+                {
+                cout << "The attack is successful. You kill the " << creatureName << endl;
+                item creatureItem = returnCreature.getItem();
+                current.addItem(creatureItem);
+                returnCreature.removeItem();
+                current.removeCreature(returnCreature.getName());
+                creatureAttack.executePrint();
+                }
+            else
+                {
+                cout << itemName << " is not properly activated for attack " << endl;
+                }
+            }
+        else
+            {
+            cout << "You used the wrong item to attack the " << creatureName << endl;
+            }
+        }
+}
+
 
