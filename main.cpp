@@ -22,11 +22,21 @@
 
 using namespace std;
 
-
+//this function will activate all creature triggers that are based on the status of the user's inventory
+//e.g. if the user has a flashlight that is turned on, they will see a certain creature as a result if that
+//creature has such a trigger
 void activateCreatureTriggers(room & current, player user);
+//this function will activate all container triggers that are based on the status of the container.
+//e.g. if the we have a container called "lock" that is locked we will activate a trigger that can say 
+//"lock needs a key"
+//once we give the lock the key then we will print "lock drops off" for example.
 void activateContainerTriggers(room & current, player user);
+//checks to see if there are any triggers present in the room. this is for the triggers activated by a user command. 
+//return true if the user's input will activate a command
 bool triggersInRoom(room current, string userinput);
+//this does the same thing as above but for containers. 
 bool triggersInContainers(room current, string userinput, container & triggerPresentContainer);
+//both of these activate functions will activate room triggers and container triggers that are activated by user input commands. 
 void activateRoomCommandTriggers(room current, string userinput, player user, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
 void activateContainerCommandTriggers(container triggerPresentContainer, string userinput, bool & triggersPresentInContainers, bool & triggersPresentInRoom);
 
@@ -40,6 +50,7 @@ int main (int argc, char ** argv) {
     int i = 0;
     // get the first room node
     XMLNode roomNode=xMainNode.getChildNode(i++);
+    //make a room map indexed by room name. 
     map<string, room> roomMap;
 
     do {
@@ -53,14 +64,17 @@ int main (int argc, char ** argv) {
     room entrance = roomMap["Entrance"];
     player user(entrance);
     bool foundExit = false;
+    //play the game!
     while (foundExit == false)
         {
         bool changedRooms = false;
+        //reads current room information.
         room current = user.currentLocation();
         current.readDescription();
+        //activates all creature and container triggers that aren't activated by user commands. 
         activateCreatureTriggers(current, user);
         activateContainerTriggers(current, user);
-
+        //takes user input and separates words. 
         string userinput;
         getline(cin, userinput);
         vector<string> inputVect;
@@ -83,25 +97,29 @@ int main (int argc, char ** argv) {
             {
             activateContainerCommandTriggers(triggerPresentContainer, userinput, triggersPresentInContainers, triggersPresentInRoom);
             }
-        //end of room and container triggers (activated by user commands)
+        
 
         if (!(triggersPresentInContainers) && !(triggersPresentInRoom))
             {
                 if (inputVect.size() == 1)
                 {
                     userinput = inputVect[0];
+                    //this allows the user to move to north, south, east, west if such a border exists. 
                     if ((userinput == "n") || (userinput == "s") || (userinput == "e") || (userinput == "w")) //change user's current location to n, s ,e, w if there are rooms in those directions
                         {
                         user.moveToBorder(roomMap, changedRooms, userinput);
                         }
+                    //reads user inventory 
                     else if (userinput == "i")
                         {
                         user.readInventory();
                         }
+                    //lets the user quit
                     else if (userinput == "quit")
                         {
                         foundExit = true;
                         }
+                    //invalid input
                     else
                         {
                         cout << "Invalid input " << endl;
@@ -109,24 +127,25 @@ int main (int argc, char ** argv) {
                 }
                 else if (inputVect.size() == 2)
                     {
-                        if (inputVect[0] == "take") //user takes an item if it's there
+                        //allows a user to take item, if the item is there. 
+                        if (inputVect[0] == "take") 
                             {
                             string passItemName = inputVect[1];
                             user.userTakeItem(current, passItemName);
                             }
-
-                        else if (inputVect[0] == "read") //user reads an item if they have it in inventory
+                        //allows a user to read an item's reading, if they have it in inventory
+                        else if (inputVect[0] == "read") 
                             {
                             string passItemName = inputVect[1];
                             user.userReadItem(passItemName);
                             }
-
-                        else if (inputVect[0] == "drop") //user drops an item into the room
+                        //user drops an item into the room, if they have such an item
+                        else if (inputVect[0] == "drop") 
                             {
                             string dropItemName = inputVect[1];
                             user.userDropItem(current, dropItemName);
                             }
-
+                        //user opens an exit or a container, if either of those things apply. 
                         else if (inputVect[0] == "open")
                             {
                             string secondWord = inputVect[1];
@@ -136,9 +155,10 @@ int main (int argc, char ** argv) {
                                 }
                             else
                                 {
-                                user.userOpenContainer(secondWord); //user opens a container
+                                user.userOpenContainer(secondWord); //user opens a container, if the container is present in the room
                                 }
                             }
+                        //invalid input
                         else
                             {
                             cout << "Invalid input " <<endl;
@@ -146,11 +166,12 @@ int main (int argc, char ** argv) {
                     }
                     else if (inputVect.size() == 3)
                         {
-                            if ((inputVect[0] == "turn") && (inputVect[1] == "on")) //user turns on an item
+                            if ((inputVect[0] == "turn") && (inputVect[1] == "on")) //user turns on an item, if they have such an item in inventory
                                 {
                                 string turnonItem = inputVect[2];
                                 user.userTurnonItem(turnonItem);
                                 }
+                            //invalid item
                             else
                                 {
                                 cout << "Invalid input " << endl;
@@ -158,12 +179,14 @@ int main (int argc, char ** argv) {
                         }
                     else if (inputVect.size() == 4)
                         {
+                            //user puts an item in a container, if the container exists and they have the item in inventory
                             if ((inputVect[0] == "put") && (inputVect[2] == "in"))
                                 {
                                 string itemName = inputVect[1];
                                 string containerName = inputVect[3];
                                 user.userPutItemInContainer(current, itemName, containerName);
                                 }
+                            //user attacks a creature with a specific item, if they have that item and if the creature exists. 
                             else if ((inputVect[0] == "attack") && (inputVect[2] == "with"))
                                 {
                                 string creatureName = inputVect[1];
