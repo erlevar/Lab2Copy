@@ -6,6 +6,8 @@
 # Put your user name below:
 USER= guidotti1
 
+#hi this is savannah making an edit to the makefile! i like cats
+
 CC= g++
 
 #For Optimization
