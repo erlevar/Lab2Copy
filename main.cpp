@@ -20,6 +20,9 @@
 #include <string>
 #include <iterator>
 
+//This is just Erin adding a comment
+//Don't mind me
+
 using namespace std;
 
 //this function will activate all creature triggers that are based on the status of the user's inventory
