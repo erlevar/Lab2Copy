@@ -22,6 +22,9 @@
 
 using namespace std;
 
+//a nice comment
+//a very helpful comment
+
 //this function will activate all creature triggers that are based on the status of the user's inventory
 //e.g. if the user has a flashlight that is turned on, they will see a certain creature as a result if that
 //creature has such a trigger
